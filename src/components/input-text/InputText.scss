@@ -1,0 +1,35 @@
+.input-text-container {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.input-text {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    &.error {
+        border-color: #dc3545;
+    }
+
+    &:disabled {
+        background-color: #f8f9fa;
+        cursor: not-allowed;
+    }
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    position: absolute;
+    bottom: -1.5rem;
+    left: 0;
+}
