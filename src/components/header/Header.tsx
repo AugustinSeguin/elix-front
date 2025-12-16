@@ -1,21 +1,52 @@
-import React from 'react';
-import { FaBars } from 'react-icons/fa';
-import './Header.scss';
+import { ReactNode } from "react";
+import { FaBars } from "react-icons/fa";
 
 interface HeaderProps {
-    title: string;
-    onMenuClick?: () => void;
+  title?: string;
+  children?: ReactNode;
+  sticky?: boolean;
+  onMenuClick?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, onMenuClick }) => {
-    return (
-        <header className="header">
-            <div className="menu-icon" onClick={onMenuClick}>
-                <FaBars />
-            </div>
-            <h1 className="header-title">{title}</h1>
-        </header>
-    );
+const Header = ({
+  title,
+  children,
+  sticky = true,
+  onMenuClick,
+}: HeaderProps) => {
+  return (
+    <header
+      className={`
+        bg-white shadow-md border-b border-gray-200
+        ${sticky ? "sticky top-0 z-50" : ""}
+      `}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Menu icon */}
+          {onMenuClick && (
+            <button
+              onClick={onMenuClick}
+              className="p-2 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+              aria-label="Menu"
+            >
+              <FaBars className="w-6 h-6 text-gray-700" />
+            </button>
+          )}
+
+          {/* Title */}
+          {title && (
+            <h1 className="text-xl font-bold text-primary-600">{title}</h1>
+          )}
+
+          {/* Custom children */}
+          {children && (
+            <div className="flex items-center gap-4">{children}</div>
+          )}
+        </div>
+      </div>
+    </header>
+  );
 };
 
 export default Header;
