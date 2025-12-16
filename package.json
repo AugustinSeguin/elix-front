@@ -7,52 +7,32 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "generate-pwa-assets": "pwa-assets-generator --preset minimal public/logo.svg"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.8.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
-    "react-toastify": "^11.0.5",
-    "sass": "^1.86.0"
+    "react-router-dom": "^7.10.1"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.6",
     "@eslint/js": "^9.21.0",
-    "@storybook/addon-essentials": "^8.6.9",
-    "@storybook/addon-interactions": "^8.6.9",
-    "@storybook/addon-onboarding": "^8.6.9",
-    "@storybook/blocks": "^8.6.9",
-    "@storybook/react": "^8.6.9",
-    "@storybook/react-vite": "^8.6.9",
-    "@storybook/test": "^8.6.9",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "@vite-pwa/assets-generator": "^0.2.6",
     "@vitejs/plugin-react": "^4.3.4",
-    "autoprefixer": "^10.4.23",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
-    "eslint-plugin-storybook": "^0.12.0",
     "globals": "^15.15.0",
     "postcss": "^8.5.6",
-    "storybook": "^8.6.9",
     "tailwindcss": "^4.1.18",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
-    "vite": "^6.2.0",
-    "vite-plugin-pwa": "^0.21.2"
+    "vite": "^6.2.0"
   },
   "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
+    "extends": []
   }
 }

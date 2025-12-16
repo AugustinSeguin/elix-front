@@ -6,6 +6,8 @@ Clonez le dépôt et installez les dépendances :
 
 ```bash
 npm install
+
+cp .env.example .env
 ```
 
 ## Run 
