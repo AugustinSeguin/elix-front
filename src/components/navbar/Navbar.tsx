@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AiFillHome, AiFillSetting, AiFillBell } from "react-icons/ai";
+import { AiFillHome, AiFillSetting } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { MdQuiz } from "react-icons/md";
+import { MdLocalLibrary } from "react-icons/md";
 import { IconType } from "react-icons";
 import Icon from "../icon/Icon";
 
@@ -34,10 +35,10 @@ const Navbar = () => {
       icon: MdQuiz,
     },
     {
-      id: "notifications",
-      path: "/notifications",
-      label: "Notifications",
-      icon: AiFillBell,
+      id: "resources",
+      path: "/resources",
+      label: "Ressources",
+      icon: MdLocalLibrary,
     },
   ];
 

@@ -15,6 +15,7 @@ import Register from "./views/auth/Register";
 import Home from "./views/Home";
 import Quiz from "./views/quiz/Quiz";
 import QuizResult from "./views/quiz/QuizResult";
+import Resources from "./views/Resources";
 import Navbar from "./components/navbar/Navbar";
 
 // Liste des routes publiques (accessible sans authentification)
@@ -69,6 +70,14 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <QuizResult />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/resources"
+          element={
+            <ProtectedRoute>
+              <Resources />
             </ProtectedRoute>
           }
         />
