@@ -68,7 +68,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/User/login`,
+        `/api/User/login`,
         {
           email: formData.email,
           password: formData.password,

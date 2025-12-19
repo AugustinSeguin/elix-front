@@ -163,7 +163,7 @@ const Register = () => {
       console.log("Registration payload:", payload);
 
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/User/register`,
+        `/api/User/register`,
         payload
       );
 
