@@ -34,7 +34,7 @@ interface RegisterErrors {
 
 const Register = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, setUser } = useAuth();
   const [formData, setFormData] = useState<RegisterFormData>({
     email: "",
     password: "",
@@ -162,16 +162,26 @@ const Register = () => {
 
       console.log("Registration payload:", payload);
 
-      const response = await axios.post(
-        `/api/User/register`,
-        payload
-      );
+      const response = await axios.post(`/api/User/register`, payload);
 
       console.log("Registration successful:", response.data);
 
       // Stocker le token et mettre à jour le contexte d'authentification
       if (response.data.token) {
         login(response.data.token);
+
+        // Récupérer les données utilisateur complètes
+        try {
+          const userResponse = await axios.get("/api/User/me", {
+            headers: {
+              Authorization: `Bearer ${response.data.token}`,
+            },
+          });
+          setUser(userResponse.data);
+          console.log("User data loaded:", userResponse.data);
+        } catch (err) {
+          console.error("Error fetching user data:", err);
+        }
       }
 
       // Redirection vers la page d'accueil

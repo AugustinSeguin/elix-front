@@ -18,6 +18,8 @@ import QuizResult from "./views/quiz/QuizResult";
 import Resources from "./views/Resources";
 import Settings from "./views/legal/Settings";
 import CGU from "./views/legal/CGU";
+import Profile from "./views/Profile";
+import EditProfile from "./views/EditProfile";
 import Navbar from "./components/navbar/Navbar";
 
 // Liste des routes publiques (accessible sans authentification)
@@ -56,6 +58,22 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/edit-profile"
+          element={
+            <ProtectedRoute>
+              <EditProfile />
             </ProtectedRoute>
           }
         />

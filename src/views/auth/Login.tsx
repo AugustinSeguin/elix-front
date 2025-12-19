@@ -18,7 +18,7 @@ interface LoginErrors {
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, setUser } = useAuth();
   const [formData, setFormData] = useState<LoginFormData>({
     email: "",
     password: "",
@@ -67,13 +67,10 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        `/api/User/login`,
-        {
-          email: formData.email,
-          password: formData.password,
-        }
-      );
+      const response = await axios.post(`/api/User/login`, {
+        email: formData.email,
+        password: formData.password,
+      });
 
       // Succès - stocker le token ou les infos utilisateur
       console.log("Login successful:", response.data);
@@ -81,6 +78,19 @@ const Login = () => {
       // Stocker le token et mettre à jour le contexte d'authentification
       if (response.data.token) {
         login(response.data.token);
+
+        // Récupérer les données utilisateur complètes
+        try {
+          const userResponse = await axios.get("/api/User/me", {
+            headers: {
+              Authorization: `Bearer ${response.data.token}`,
+            },
+          });
+          setUser(userResponse.data);
+          console.log("User data loaded:", userResponse.data);
+        } catch (err) {
+          console.error("Error fetching user data:", err);
+        }
       }
 
       // Redirection vers la page d'accueil
