@@ -13,6 +13,8 @@ import {
 import Login from "./views/auth/Login";
 import Register from "./views/auth/Register";
 import Home from "./views/Home";
+import Quiz from "./views/quiz/Quiz";
+import QuizResult from "./views/quiz/QuizResult";
 import Navbar from "./components/navbar/Navbar";
 
 // Liste des routes publiques (accessible sans authentification)
@@ -51,6 +53,22 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quiz"
+          element={
+            <ProtectedRoute>
+              <Quiz />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quiz-result"
+          element={
+            <ProtectedRoute>
+              <QuizResult />
             </ProtectedRoute>
           }
         />

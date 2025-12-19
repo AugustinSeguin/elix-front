@@ -4,9 +4,11 @@ import {
   useState,
   useEffect,
   ReactNode,
+  useMemo,
 } from "react";
 
 interface AuthContextType {
+  user: { id: number };
   token: string | null;
   isAuthenticated: boolean;
   login: (token: string) => void;
@@ -17,6 +19,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(null);
+  const [user, setUser] = useState<{ id: number } | null>(null);
 
   // Charger le token depuis localStorage au montage
   useEffect(() => {
@@ -34,12 +37,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     localStorage.removeItem("authToken");
     setToken(null);
+    setUser(null);
   };
 
   const isAuthenticated = !!token;
 
+  const value = useMemo(
+    () => ({ user: user || { id: 0 }, token, isAuthenticated, login, logout }),
+    [user, token, isAuthenticated, login, logout]
+  );
+
   return (
-    <AuthContext.Provider value={{ token, isAuthenticated, login, logout }}>
+    <AuthContext.Provider
+      value={value}
+    >
       {children}
     </AuthContext.Provider>
   );
