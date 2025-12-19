@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import {
   ProtectedRoute,
@@ -7,45 +13,61 @@ import {
 import Login from "./views/auth/Login";
 import Register from "./views/auth/Register";
 import Home from "./views/Home";
+import Navbar from "./components/navbar/Navbar";
 
 // Liste des routes publiques (accessible sans authentification)
+
+const AppContent = () => {
+  const location = useLocation();
+
+  // Routes où la Navbar ne doit pas apparaître
+  const hideNavbarRoutes = ["/login", "/register"];
+  const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
+
+  return (
+    <>
+      <Routes>
+        {/* Routes publiques (accessibles uniquement si NON authentifié) */}
+        <Route
+          path="/login"
+          element={
+            <PublicOnlyRoute>
+              <Login />
+            </PublicOnlyRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicOnlyRoute>
+              <Register />
+            </PublicOnlyRoute>
+          }
+        />
+
+        {/* Routes protégées (accessibles uniquement si authentifié) */}
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Redirection par défaut */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      {shouldShowNavbar && <Navbar />}
+    </>
+  );
+};
 
 const App = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Routes>
-          {/* Routes publiques (accessibles uniquement si NON authentifié) */}
-          <Route
-            path="/login"
-            element={
-              <PublicOnlyRoute>
-                <Login />
-              </PublicOnlyRoute>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <PublicOnlyRoute>
-                <Register />
-              </PublicOnlyRoute>
-            }
-          />
-
-          {/* Routes protégées (accessibles uniquement si authentifié) */}
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
-
-          {/* Redirection par défaut */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <AppContent />
       </BrowserRouter>
     </AuthProvider>
   );
