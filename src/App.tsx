@@ -18,6 +18,7 @@ import QuizResult from "./views/quiz/QuizResult";
 import Resources from "./views/Resources";
 import Settings from "./views/legal/Settings";
 import CGU from "./views/legal/CGU";
+import Faq from "./views/legal/Faq";
 import Profile from "./views/Profile";
 import EditProfile from "./views/EditProfile";
 import Navbar from "./components/navbar/Navbar";
@@ -114,6 +115,14 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <CGU />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            <ProtectedRoute>
+              <Faq />
             </ProtectedRoute>
           }
         />

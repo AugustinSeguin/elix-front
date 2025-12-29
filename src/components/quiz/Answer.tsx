@@ -20,12 +20,12 @@ const Answer = ({ answers, onAnswerSelect, selectedAnswerId }: AnswerProps) => {
           onClick={() => onAnswerSelect(answer.id)}
           className={`p-4 rounded-lg border-2 transition-colors duration-200 ${
             selectedAnswerId === answer.id
-              ? "border-blue-500 bg-blue-50"
-              : "border-gray-300 bg-white hover:border-blue-300"
+              ? "border-primary bg-primary"
+              : "border-gray-300 bg-white hover:border-primary"
           }`}
         >
           <div className="flex flex-col items-center gap-2">
-            <span className="text-lg font-bold text-blue-600">
+            <span className="text-lg font-bold text-primary">
               {letters[index]}
             </span>
             <p className="text-sm text-gray-700 text-center">{answer.title}</p>

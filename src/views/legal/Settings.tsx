@@ -9,6 +9,7 @@ import {
   FaPhone,
   FaTrash,
   FaSignOutAlt,
+  FaQuestionCircle,
 } from "react-icons/fa";
 import Icon from "../../components/icon/Icon";
 
@@ -69,7 +70,7 @@ const Settings = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
       {/* Header */}
-      <div className="bg-blue-500 text-white py-8 px-4 text-center sticky top-0 z-10">
+      <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
         <h1 className="text-3xl font-bold">Paramètres</h1>
       </div>
 
@@ -113,6 +114,20 @@ const Settings = () => {
           </div>
         </button>
 
+        {/* FAQ Link */}
+        <button
+          onClick={() => navigate("/faq")}
+          className="w-full bg-white rounded-lg shadow-md p-6 mb-4 text-left hover:shadow-lg transition-shadow"
+        >
+          <div className="flex items-center gap-3">
+            <Icon icon={FaQuestionCircle} size="lg" color="#3b82f6" />
+            <div>
+              <h3 className="text-lg font-bold text-gray-800">FAQ</h3>
+              <p className="text-sm text-gray-500">Foire aux questions</p>
+            </div>
+          </div>
+        </button>
+
         {/* Contact Link */}
         <a
           href="mailto:contact@elix.com"
@@ -150,7 +165,7 @@ const Settings = () => {
         <button
           onClick={handleLogout}
           disabled={loading}
-          className="w-full bg-blue-500 text-white rounded-lg p-6 hover:bg-blue-600 transition-colors disabled:opacity-50 flex items-center gap-3"
+          className="w-full bg-primary text-white rounded-lg p-6 hover:bg-blue-600 transition-colors disabled:opacity-50 flex items-center gap-3"
         >
           <Icon icon={FaSignOutAlt} size="lg" color="white" />
           <span className="font-bold">

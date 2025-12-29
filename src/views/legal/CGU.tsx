@@ -2,7 +2,7 @@ const CGU = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
       {/* Header */}
-      <div className="bg-blue-500 text-white py-8 px-4 text-center sticky top-0 z-10">
+      <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
         <h1 className="text-3xl font-bold">
           Conditions Générales d'Utilisation
         </h1>
@@ -104,7 +104,7 @@ const CGU = () => {
               <br />
               <a
                 href="mailto:contact@elix.com"
-                className="text-blue-500 hover:underline"
+                className="text-primary hover:underline"
               >
                 contact@elix.com
               </a>

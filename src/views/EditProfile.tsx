@@ -175,7 +175,7 @@ const EditProfile = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
       {/* Header */}
-      <div className="bg-blue-500 text-white py-8 px-4 text-center sticky top-0 z-10">
+      <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
         <h1 className="text-3xl font-bold">Modifier mon profil</h1>
       </div>
 
@@ -208,7 +208,7 @@ const EditProfile = () => {
                 />
               ) : (
                 <div className="w-32 h-32 rounded-full mx-auto bg-blue-200 flex items-center justify-center">
-                  <span className="text-4xl text-blue-500">📷</span>
+                  <span className="text-4xl text-primary">📷</span>
                 </div>
               )}
             </div>
@@ -216,7 +216,7 @@ const EditProfile = () => {
               type="file"
               accept="image/*"
               onChange={handleFileChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
 
@@ -242,7 +242,7 @@ const EditProfile = () => {
               onChange={(e) =>
                 setFormData({ ...formData, birthdate: e.target.value })
               }
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
             {errors.birthdate && (
               <p className="text-red-500 text-sm mt-1">{errors.birthdate}</p>
@@ -264,7 +264,7 @@ const EditProfile = () => {
                     : undefined,
                 })
               }
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">Sélectionner un genre</option>
               {GENDER_OPTIONS.map((opt) => (
@@ -336,7 +336,7 @@ const EditProfile = () => {
         {/* Back Button */}
         <button
           onClick={() => navigate("/profile")}
-          className="w-full mt-4 text-blue-500 hover:text-blue-700 font-semibold"
+          className="w-full mt-4 text-primary hover:text-blue-700 font-semibold"
         >
           Retour au profil
         </button>
