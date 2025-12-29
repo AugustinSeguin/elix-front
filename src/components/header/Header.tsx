@@ -27,7 +27,7 @@ const Header = ({
           {onMenuClick && (
             <button
               onClick={onMenuClick}
-              className="p-2 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="p-2 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
               aria-label="Menu"
             >
               <FaBars className="w-6 h-6 text-gray-700" />
@@ -35,9 +35,7 @@ const Header = ({
           )}
 
           {/* Title */}
-          {title && (
-            <h1 className="text-xl font-bold text-primary-600">{title}</h1>
-          )}
+          {title && <h1 className="text-xl font-bold text-primary">{title}</h1>}
 
           {/* Custom children */}
           {children && (
