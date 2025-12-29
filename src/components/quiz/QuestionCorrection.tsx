@@ -1,6 +1,5 @@
 import { QuestionDto, QuizQuestionResultDto } from "../../types/quiz";
 
-
 const QuestionCorrection = ({
   results,
 }: {
@@ -15,10 +14,10 @@ const QuestionCorrection = ({
   const total = results.length || 10;
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-bold text-gray-800">Corrections</h3>
-        <span className="text-sm font-semibold text-gray-700">
+        <h3 className="text-lg font-bold text-black">Corrections</h3>
+        <span className="text-sm font-semibold text-gray-600">
           Note: {correctCount}/{total}
         </span>
       </div>
@@ -40,7 +39,7 @@ const QuestionCorrection = ({
                   : "border-red-300 bg-red-50"
               }`}
             >
-              <p className="font-semibold text-gray-800">
+              <p className="font-semibold text-black">
                 Question {idx + 1}: {res.question.title}
               </p>
               <p
@@ -56,7 +55,7 @@ const QuestionCorrection = ({
                   <span className="font-semibold text-blue-600">
                     Correction:
                   </span>{" "}
-                  <span className="text-gray-800">{correctAnswerTitle}</span>
+                  <span className="text-gray-700">{correctAnswerTitle}</span>
                 </p>
               )}
             </div>

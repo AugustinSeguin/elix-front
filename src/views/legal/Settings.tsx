@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Toggle from "../../components/toggle/Toggle";
+import ThemeToggle from "../../components/toggle/ThemeToggle";
 import { useAuth } from "../../contexts/AuthContext";
 import { MdArrowForwardIos } from "react-icons/md";
 
 const Settings = () => {
   const navigate = useNavigate();
   const { user, token, logout } = useAuth();
-  const [themeEnabled, setThemeEnabled] = useState(false);
   const [daltonienEnabled, setDaltonienEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -149,11 +149,7 @@ const Settings = () => {
         </Section>
 
         <Section title="Préférences de Contenu">
-          <Item
-            label="Mode foncé"
-            toggle={themeEnabled}
-            onToggle={setThemeEnabled}
-          />
+          <ThemeToggle label="Mode foncé" ItemComponent={Item} />
           <Item
             label="Mode daltonien-ne"
             toggle={daltonienEnabled}

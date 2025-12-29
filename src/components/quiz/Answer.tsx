@@ -25,7 +25,7 @@ const Answer = ({ answers, onAnswerSelect, selectedAnswerId }: AnswerProps) => {
           }`}
         >
           <div className="flex flex-col items-center gap-2">
-            <span className="text-lg font-bold text-primary">
+            <span className="text-lg font-bold text-gray">
               {letters[index]}
             </span>
             <p className="text-sm text-gray-700 text-center">{answer.title}</p>
