@@ -4,34 +4,8 @@ import axios from "axios";
 import Question from "../../components/quiz/Question";
 import Answer from "../../components/quiz/Answer";
 import { useAuth } from "../../contexts/AuthContext";
+import { QuizDto, UserAnswer } from "../../types/quiz";
 
-interface AnswerDto {
-  id: number;
-  questionId: number;
-  title?: string;
-  explanation?: string;
-  isValid: boolean;
-}
-
-interface QuestionDto {
-  id: number;
-  title: string;
-  mediaPath?: string;
-  categoryId: number;
-  answers?: AnswerDto[];
-}
-
-interface QuizDto {
-  id: number;
-  title: string;
-  categoryId: number;
-  questions: QuestionDto[];
-}
-
-interface UserAnswer {
-  questionId: number;
-  answerIdSelected: number;
-}
 
 const Quiz = () => {
   const { categoryId = "1" } = useParams<{ categoryId: string }>();
@@ -193,7 +167,7 @@ const Quiz = () => {
       <div className="flex-1 flex items-center justify-center overflow-y-auto">
         <Question
           title={currentQuestion.title}
-          mediaPath={currentQuestion.mediaPath}
+          mediaPath={currentQuestion.mediaPath ?? undefined}
         />
       </div>
 

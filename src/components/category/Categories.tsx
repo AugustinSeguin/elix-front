@@ -2,13 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
 import { FaPlay } from "react-icons/fa";
+import { Category } from "../../types/category";
 
-interface Category {
-  id: number;
-  title: string;
-  description: string | null;
-  imageMediaPath: string;
-}
 
 interface CategoriesProps {
   onSelect?: (categoryId: number) => void;

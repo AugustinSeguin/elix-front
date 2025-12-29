@@ -1,31 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import QuestionCorrection from "../../components/quiz/QuestionCorrection";
-
-interface AnswerDto {
-  id: number;
-  questionId: number;
-  title?: string;
-  explanation?: string;
-  isValid: boolean;
-}
-
-interface QuestionDto {
-  id: number;
-  title: string;
-  mediaPath?: string;
-  categoryId: number;
-  answers?: AnswerDto[];
-}
-
-interface QuizQuestionResultDto {
-  questionId: number;
-  question: QuestionDto;
-  selectedAnswerId: number;
-  isCorrect: boolean;
-  explanation?: string | null;
-  answer: AnswerDto; // Correct answer returned by API
-}
+import { QuizQuestionResultDto } from "../../types/quiz";
 
 const QuizResult = () => {
   const location = useLocation();

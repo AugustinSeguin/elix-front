@@ -3,17 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
+import { Article } from "../../types/article";
 
-interface Article {
-  id: number;
-  title: string;
-  subtitle: string | null;
-  content: string;
-  mediaPath: string | null;
-  footer: string | null;
-  categoryId: number;
-  category: null;
-}
 
 const ArticlesByCategory = () => {
   const { categoryId } = useParams();

@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { FaqItem } from "../../types/faq";
 
-interface FaqItem {
-  question: string;
-  answer: string;
-}
+
 
 const Faq = () => {
   const navigate = useNavigate();
