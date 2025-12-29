@@ -3,24 +3,16 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Toggle from "../../components/toggle/Toggle";
 import { useAuth } from "../../contexts/AuthContext";
-import {
-  FaMoon,
-  FaFileAlt,
-  FaPhone,
-  FaTrash,
-  FaSignOutAlt,
-  FaQuestionCircle,
-  FaInfoCircle,
-  FaUserShield,
-} from "react-icons/fa";
-import Icon from "../../components/icon/Icon";
+import { MdArrowForwardIos } from "react-icons/md";
 
 const Settings = () => {
   const navigate = useNavigate();
   const { user, token, logout } = useAuth();
   const [themeEnabled, setThemeEnabled] = useState(false);
+  const [daltonienEnabled, setDaltonienEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -39,7 +31,6 @@ const Settings = () => {
     } catch (err) {
       console.error("Error logging out:", err);
       setError("Erreur lors de la déconnexion");
-      // Logout anyway
       logout();
       navigate("/login");
     } finally {
@@ -47,11 +38,11 @@ const Settings = () => {
     }
   };
 
-  const handleDeleteAccount = async () => {
-    if (!window.confirm("Êtes-vous sûr ? Cette action est irréversible.")) {
-      return;
-    }
+  const handleDeleteAccount = () => {
+    setShowDeleteModal(true);
+  };
 
+  const confirmDeleteAccount = async () => {
     try {
       setLoading(true);
       await axios.delete(`/api/User/${user?.id || 1}`, {
@@ -64,149 +55,164 @@ const Settings = () => {
     } catch (err) {
       console.error("Error deleting account:", err);
       setError("Erreur lors de la suppression du compte");
+      setShowDeleteModal(false);
     } finally {
       setLoading(false);
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gray-50 pb-20">
-      {/* Header */}
-      <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
-        <h1 className="text-3xl font-bold">Paramètres</h1>
+  const Section = ({
+    title,
+    children,
+  }: {
+    title: string;
+    children: React.ReactNode;
+  }) => (
+    <div className="mb-4 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <p className="text-[13px] text-gray-400 pt-4 px-4 font-medium">{title}</p>
+      <div className="flex flex-col">{children}</div>
+    </div>
+  );
+
+  const Item = ({
+    label,
+    onClick,
+    href,
+    color = "text-black",
+    arrow = false,
+    toggle,
+    onToggle,
+  }: {
+    label: string;
+    onClick?: () => void;
+    href?: string;
+    color?: string;
+    arrow?: boolean;
+    toggle?: boolean;
+    onToggle?: (val: boolean) => void;
+  }) => {
+    const content = (
+      <div className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors cursor-pointer border-b border-gray-100 last:border-0">
+        <span className={`text-[15px] font-medium ${color}`}>{label}</span>
+        {arrow && <MdArrowForwardIos className="w-4 h-4 text-gray-400" />}
+        {onToggle && (
+          <div onClick={(e) => e.stopPropagation()}>
+            <Toggle enabled={toggle || false} onChange={onToggle} />
+          </div>
+        )}
       </div>
+    );
+
+    if (href) {
+      return (
+        <a href={href} className="block">
+          {content}
+        </a>
+      );
+    }
+
+    return (
+      <div onClick={onClick} className="block">
+        {content}
+      </div>
+    );
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 pb-24">
+      {/* Header */}
+      <header className="relative flex items-center justify-center min-h-[60px] py-6 border-b border-gray-200 px-4 bg-white z-10 shadow-sm mb-6">
+        <h1 className="text-2xl font-bold text-black text-center tracking-wide">
+          Paramètres
+        </h1>
+      </header>
 
       {/* Content */}
-      <div className="max-w-md mx-auto px-4 py-8">
+      <main className="px-4 max-w-md mx-auto">
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6">
             {error}
           </div>
         )}
 
-        {/* Theme Toggle */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-4">
-          <div className="flex items-center gap-3 mb-4">
-            <Icon icon={FaMoon} size="lg" className="text-primary" />
-            <h3 className="text-lg font-bold text-gray-800">Thème</h3>
-          </div>
-          <Toggle
-            enabled={themeEnabled}
-            onChange={setThemeEnabled}
-            label="Thème sombre"
+        <Section title="Compte et Sécurité">
+          <Item
+            label="Informations personnelles"
+            onClick={() => navigate("/edit-profile")}
+            arrow
           />
-          <p className="text-sm text-gray-500 mt-3">(Fonctionnalité à venir)</p>
-        </div>
+          <Item
+            label="Supprimer mon compte"
+            onClick={handleDeleteAccount}
+            color="text-red-500"
+          />
+        </Section>
 
-        {/* CGU Link */}
-        <button
-          onClick={() => navigate("/cgu")}
-          className="w-full bg-white rounded-lg shadow-md p-6 mb-4 text-left hover:shadow-lg transition-shadow"
-        >
-          <div className="flex items-center gap-3">
-            <Icon icon={FaFileAlt} size="lg" className="text-primary" />
-            <div>
-              <h3 className="text-lg font-bold text-gray-800">
-                Conditions Générales
-              </h3>
-              <p className="text-sm text-gray-500">
-                Lire les CGU de la plateforme
-              </p>
-            </div>
-          </div>
-        </button>
+        <Section title="Préférences de Contenu">
+          <Item
+            label="Mode foncé"
+            toggle={themeEnabled}
+            onToggle={setThemeEnabled}
+          />
+          <Item
+            label="Mode daltonien-ne"
+            toggle={daltonienEnabled}
+            onToggle={setDaltonienEnabled}
+          />
+          <Item label="Taille du texte" arrow />
+        </Section>
 
-        {/* Privacy Policy Link */}
-        <button
-          onClick={() => navigate("/privacy-policy")}
-          className="w-full bg-white rounded-lg shadow-md p-6 mb-4 text-left hover:shadow-lg transition-shadow"
-        >
-          <div className="flex items-center gap-3">
-            <Icon icon={FaUserShield} size="lg" className="text-primary" />
-            <div>
-              <h3 className="text-lg font-bold text-gray-800">
-                Politique de confidentialité
-              </h3>
-              <p className="text-sm text-gray-500">Protection de vos données</p>
-            </div>
-          </div>
-        </button>
+        <Section title="Aide et Informations">
+          <Item label="F.A.Q" onClick={() => navigate("/faq")} arrow />
+          <Item label="Contact" href="mailto:contact@elix.com" arrow />
+          <Item label="À Propos" onClick={() => navigate("/about")} arrow />
+          <Item
+            label="Politique de confidentialité"
+            onClick={() => navigate("/privacy-policy")}
+            arrow
+          />
+          <Item
+            label="Termes et conditions"
+            onClick={() => navigate("/cgu")}
+            arrow
+          />
+        </Section>
 
-        {/* FAQ Link */}
-        <button
-          onClick={() => navigate("/faq")}
-          className="w-full bg-white rounded-lg shadow-md p-6 mb-4 text-left hover:shadow-lg transition-shadow"
-        >
-          <div className="flex items-center gap-3">
-            <Icon icon={FaQuestionCircle} size="lg" className="text-primary" />
-            <div>
-              <h3 className="text-lg font-bold text-gray-800">FAQ</h3>
-              <p className="text-sm text-gray-500">Foire aux questions</p>
-            </div>
-          </div>
-        </button>
-
-        {/* About Us Link */}
-        <button
-          onClick={() => navigate("/about")}
-          className="w-full bg-white rounded-lg shadow-md p-6 mb-4 text-left hover:shadow-lg transition-shadow"
-        >
-          <div className="flex items-center gap-3">
-            <Icon icon={FaInfoCircle} size="lg" className="text-primary" />
-            <div>
-              <h3 className="text-lg font-bold text-gray-800">A propos</h3>
-              <p className="text-sm text-gray-500">
-                Informations sur l'application
-              </p>
-            </div>
-          </div>
-        </button>
-
-        {/* Contact Link */}
-        <a
-          href="mailto:contact@elix.com"
-          className="w-full bg-white rounded-lg shadow-md p-6 mb-4 text-left hover:shadow-lg transition-shadow block"
-        >
-          <div className="flex items-center gap-3">
-            <Icon icon={FaPhone} size="lg" className="text-primary" />
-            <div>
-              <h3 className="text-lg font-bold text-gray-800">
-                Nous contacter
-              </h3>
-              <p className="text-sm text-gray-500">contact@elix.com</p>
-            </div>
-          </div>
-        </a>
-
-        {/* Delete Account Button */}
-        <button
-          onClick={handleDeleteAccount}
-          disabled={loading}
-          className="w-full bg-red-100 border-2 border-red-500 rounded-lg p-6 mb-4 text-left hover:bg-red-50 transition-colors disabled:opacity-50"
-        >
-          <div className="flex items-center gap-3">
-            <Icon icon={FaTrash} size="lg" className="text-primary" />
-            <div>
-              <h3 className="text-lg font-bold text-red-600">
-                Supprimer mon compte
-              </h3>
-              <p className="text-sm text-red-500">Action irréversible</p>
-            </div>
-          </div>
-        </button>
-
-        {/* Logout Button */}
         <button
           onClick={handleLogout}
           disabled={loading}
-          className="w-full bg-primary text-white rounded-lg p-6 hover:bg-blue-600 transition-colors disabled:opacity-50 flex items-center gap-3"
+          className="w-full bg-white text-red-500 font-bold rounded-xl p-4 shadow-sm border border-gray-100 hover:bg-red-50 transition-colors mt-4"
         >
-          <Icon icon={FaSignOutAlt} size="lg" color="white" />
-          <span className="font-bold">
-            {loading ? "Chargement..." : "Déconnexion"}
-          </span>
+          {loading ? "Chargement..." : "Déconnexion"}
         </button>
-      </div>
+      </main>
+
+      {/* Delete Account Modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl animate-in fade-in zoom-in duration-200">
+            <p className="text-center text-gray-600 mb-6 text-[15px]">
+              Veux-tu vraiment supprimer ton compte ?
+            </p>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={confirmDeleteAccount}
+                disabled={loading}
+                className="w-full bg-primary text-white font-bold py-3 rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
+              >
+                {loading ? "Suppression..." : "Supprimer mon compte"}
+              </button>
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                disabled={loading}
+                className="w-full bg-gray-300 text-gray-700 font-bold py-3 rounded-full hover:bg-gray-400 transition-colors disabled:opacity-50"
+              >
+                Annuler
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
