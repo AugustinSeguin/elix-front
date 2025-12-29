@@ -18,7 +18,9 @@ import QuizResult from "./views/quiz/QuizResult";
 import Resources from "./views/Resources";
 import Settings from "./views/legal/Settings";
 import CGU from "./views/legal/CGU";
+import PrivacyPolicy from "./views/legal/PrivacyPolicy";
 import Faq from "./views/legal/Faq";
+import AboutUs from "./views/legal/AboutUs";
 import Profile from "./views/Profile";
 import EditProfile from "./views/EditProfile";
 import Navbar from "./components/navbar/Navbar";
@@ -119,10 +121,26 @@ const AppContent = () => {
           }
         />
         <Route
+          path="/privacy-policy"
+          element={
+            <ProtectedRoute>
+              <PrivacyPolicy />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/faq"
           element={
             <ProtectedRoute>
               <Faq />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <ProtectedRoute>
+              <AboutUs />
             </ProtectedRoute>
           }
         />

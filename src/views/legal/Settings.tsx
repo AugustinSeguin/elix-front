@@ -10,6 +10,8 @@ import {
   FaTrash,
   FaSignOutAlt,
   FaQuestionCircle,
+  FaInfoCircle,
+  FaUserShield,
 } from "react-icons/fa";
 import Icon from "../../components/icon/Icon";
 
@@ -85,7 +87,7 @@ const Settings = () => {
         {/* Theme Toggle */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-4">
           <div className="flex items-center gap-3 mb-4">
-            <Icon icon={FaMoon} size="lg" color="#3b82f6" />
+            <Icon icon={FaMoon} size="lg" className="text-primary" />
             <h3 className="text-lg font-bold text-gray-800">Thème</h3>
           </div>
           <Toggle
@@ -102,7 +104,7 @@ const Settings = () => {
           className="w-full bg-white rounded-lg shadow-md p-6 mb-4 text-left hover:shadow-lg transition-shadow"
         >
           <div className="flex items-center gap-3">
-            <Icon icon={FaFileAlt} size="lg" color="#3b82f6" />
+            <Icon icon={FaFileAlt} size="lg" className="text-primary" />
             <div>
               <h3 className="text-lg font-bold text-gray-800">
                 Conditions Générales
@@ -114,16 +116,48 @@ const Settings = () => {
           </div>
         </button>
 
+        {/* Privacy Policy Link */}
+        <button
+          onClick={() => navigate("/privacy-policy")}
+          className="w-full bg-white rounded-lg shadow-md p-6 mb-4 text-left hover:shadow-lg transition-shadow"
+        >
+          <div className="flex items-center gap-3">
+            <Icon icon={FaUserShield} size="lg" className="text-primary" />
+            <div>
+              <h3 className="text-lg font-bold text-gray-800">
+                Politique de confidentialité
+              </h3>
+              <p className="text-sm text-gray-500">Protection de vos données</p>
+            </div>
+          </div>
+        </button>
+
         {/* FAQ Link */}
         <button
           onClick={() => navigate("/faq")}
           className="w-full bg-white rounded-lg shadow-md p-6 mb-4 text-left hover:shadow-lg transition-shadow"
         >
           <div className="flex items-center gap-3">
-            <Icon icon={FaQuestionCircle} size="lg" color="#3b82f6" />
+            <Icon icon={FaQuestionCircle} size="lg" className="text-primary" />
             <div>
               <h3 className="text-lg font-bold text-gray-800">FAQ</h3>
               <p className="text-sm text-gray-500">Foire aux questions</p>
+            </div>
+          </div>
+        </button>
+
+        {/* About Us Link */}
+        <button
+          onClick={() => navigate("/about")}
+          className="w-full bg-white rounded-lg shadow-md p-6 mb-4 text-left hover:shadow-lg transition-shadow"
+        >
+          <div className="flex items-center gap-3">
+            <Icon icon={FaInfoCircle} size="lg" className="text-primary" />
+            <div>
+              <h3 className="text-lg font-bold text-gray-800">A propos</h3>
+              <p className="text-sm text-gray-500">
+                Informations sur l'application
+              </p>
             </div>
           </div>
         </button>
@@ -134,7 +168,7 @@ const Settings = () => {
           className="w-full bg-white rounded-lg shadow-md p-6 mb-4 text-left hover:shadow-lg transition-shadow block"
         >
           <div className="flex items-center gap-3">
-            <Icon icon={FaPhone} size="lg" color="#3b82f6" />
+            <Icon icon={FaPhone} size="lg" className="text-primary" />
             <div>
               <h3 className="text-lg font-bold text-gray-800">
                 Nous contacter
@@ -151,7 +185,7 @@ const Settings = () => {
           className="w-full bg-red-100 border-2 border-red-500 rounded-lg p-6 mb-4 text-left hover:bg-red-50 transition-colors disabled:opacity-50"
         >
           <div className="flex items-center gap-3">
-            <Icon icon={FaTrash} size="lg" color="#ef4444" />
+            <Icon icon={FaTrash} size="lg" className="text-primary" />
             <div>
               <h3 className="text-lg font-bold text-red-600">
                 Supprimer mon compte

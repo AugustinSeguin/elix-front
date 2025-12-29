@@ -1,117 +1,74 @@
+import { useNavigate } from "react-router-dom";
+import { MdArrowBackIosNew } from "react-icons/md";
+
 const CGU = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
-      <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
-        <h1 className="text-3xl font-bold">
-          Conditions Générales d'Utilisation
+      <header className="relative flex items-center justify-center min-h-[60px] py-4 border-b border-gray-200 px-4 bg-white z-10 shadow-sm">
+        <button
+          onClick={() => navigate(-1)}
+          className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full hover:bg-gray-100 transition-colors"
+        >
+          <MdArrowBackIosNew className="w-5 h-5 text-black" />
+        </button>
+        <h1 className="text-lg font-bold tracking-widest text-black uppercase text-center leading-tight">
+          Termes & conditions<br />d'utilisation
         </h1>
-      </div>
+      </header>
 
       {/* Content */}
-      <div className="max-w-3xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-md p-8 space-y-6">
-          <section>
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">1. Objet</h2>
-            <p className="text-gray-600">
-              Les présentes conditions générales d'utilisation régissent l'accès
-              et l'utilisation de la plateforme Elix. Elix est une application
-              éducative destinée à l'éducation sexuelle des jeunes âgés de 10 à
-              18 ans.
-            </p>
-          </section>
+      <main className="flex-1 overflow-y-auto p-6 pb-24 flex flex-col items-center">
+        <div className="w-full max-w-md border border-gray-200 rounded-lg p-5 shadow-sm">
+          <p className="text-[15px] text-black mb-6">
+            En utilisant cette application, tu acceptes les règles suivantes :
+          </p>
 
-          <section>
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">
-              2. Acceptation des conditions
-            </h2>
-            <p className="text-gray-600">
-              En accédant à la plateforme Elix, vous acceptez sans réserve les
-              présentes conditions générales d'utilisation. Si vous n'acceptez
-              pas ces conditions, veuillez cesser l'utilisation de la
-              plateforme.
-            </p>
-          </section>
+          <div className="space-y-6">
+            {/* Section 1 */}
+            <div>
+              <h3 className="text-[15px] font-bold text-black mb-1">
+                1. C'est quoi cette appli ?
+              </h3>
+              <p className="text-[15px] text-black">
+                Cette application est un outil d'information et d'éducation sur la sexualité. Elle est conçue pour t'aider à mieux comprendre ton corps et tes relations.
+              </p>
+            </div>
 
-          <section>
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">
-              3. Inscription et sécurité du compte
-            </h2>
-            <p className="text-gray-600">
-              Vous êtes responsable du maintien de la confidentialité de vos
-              identifiants de connexion. Vous vous engagez à ne pas partager vos
-              identifiants avec des tiers et à informer immédiatement l'équipe
-              Elix de toute utilisation non autorisée de votre compte.
-            </p>
-          </section>
+            {/* Section 2 */}
+            <div>
+              <h3 className="text-[15px] font-bold text-black mb-1">
+                2. Pas un avis médical
+              </h3>
+              <p className="text-[15px] text-black">
+                Les informations ici sont sérieuses et vérifiées par des experts, mais elles ne remplacent jamais une visite chez un médecin ou un professionnel de santé. Si tu as un problème de santé, parles-en à un adulte de confiance ou à un docteur.
+              </p>
+            </div>
 
-          <section>
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">
-              4. Utilisation responsable
-            </h2>
-            <p className="text-gray-600">
-              Vous acceptez d'utiliser la plateforme Elix de manière responsable
-              et respectueuse. Vous vous engagez à ne pas :
-            </p>
-            <ul className="list-disc list-inside text-gray-600 mt-3 space-y-2">
-              <li>Accéder à des informations protégées</li>
-              <li>Utiliser la plateforme à des fins illégales</li>
-              <li>Déranger ou harceler d'autres utilisateurs</li>
-              <li>Télécharger des contenus malveillants</li>
-            </ul>
-          </section>
+            {/* Section 3 */}
+            <div>
+              <h3 className="text-[15px] font-bold text-black mb-1">
+                3. Ton comportement
+              </h3>
+              <p className="text-[15px] text-black">
+                L'application est un espace sûr. Si des fonctions communautaires (comme un forum ou des commentaires) sont ajoutées, tu t'engages à rester poli, respectueux et à ne jamais harceler personne.
+              </p>
+            </div>
 
-          <section>
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">
-              5. Contenu éducatif
-            </h2>
-            <p className="text-gray-600">
-              Le contenu fourni par Elix est conçu à titre éducatif uniquement.
-              Ce contenu ne remplace en aucun cas un conseil médical ou
-              psychologique professionnel.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">
-              6. Limitation de responsabilité
-            </h2>
-            <p className="text-gray-600">
-              Elix ne peut être tenu responsable de tout dommage direct,
-              indirect, ou consécutif résultant de l'utilisation ou de
-              l'impossibilité d'utiliser la plateforme.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">
-              7. Modification des conditions
-            </h2>
-            <p className="text-gray-600">
-              Elix se réserve le droit de modifier les présentes conditions
-              générales à tout moment. Les modifications seront publiées sur la
-              plateforme.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">
-              8. Contact
-            </h2>
-            <p className="text-gray-600">
-              Pour toute question concernant ces conditions, veuillez contacter
-              :
-              <br />
-              <a
-                href="mailto:contact@elix.com"
-                className="text-primary hover:underline"
-              >
-                contact@elix.com
-              </a>
-            </p>
-          </section>
+            {/* Section 4 */}
+            <div>
+              <h3 className="text-[15px] font-bold text-black mb-1">
+                4. Propriété
+              </h3>
+              <p className="text-[15px] text-black">
+                Tout ce que tu vois ici (textes, images, logos) appartient à l'équipe de l'application. Tu peux les lire pour toi, mais tu n'as pas le droit de les copier pour les vendre ou les utiliser ailleurs sans autorisation.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

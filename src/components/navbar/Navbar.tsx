@@ -44,6 +44,15 @@ const Navbar = () => {
   };
 
   const isActive = (path: string) => {
+    if (path === "/settings") {
+      return [
+        "/settings",
+        "/about",
+        "/cgu",
+        "/faq",
+        "/privacy-policy",
+      ].includes(location.pathname);
+    }
     return location.pathname === path;
   };
 

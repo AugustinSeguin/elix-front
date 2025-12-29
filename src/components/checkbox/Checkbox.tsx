@@ -58,7 +58,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     // Styles conditionnels (normal vs erreur)
     const stateStyles = error
       ? "border-red-500 text-red-600 focus:ring-red-500"
-      : "border-gray-300 text-primary-600 focus:ring-primary-500 checked:border-primary-600 checked:bg-primary-600";
+      : "border-gray-300 text-primary focus:ring-primary checked:border-primary checked:bg-primary accent-primary";
 
     const checkboxClassName =
       `${baseStyles} ${stateStyles} ${sizeStyles[checkboxSize]} ${className}`.trim();

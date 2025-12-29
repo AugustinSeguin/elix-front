@@ -34,19 +34,18 @@ const Faq = () => {
         >
           <MdArrowBackIosNew className="w-5 h-5 text-black" />
         </button>
-        <h1 className="text-lg font-bold tracking-widest text-black uppercase">FAQ</h1>
+        <h1 className="text-lg font-bold tracking-widest text-black uppercase">
+          FAQ
+        </h1>
       </header>
 
       {/* Content */}
-      <main className="flex-1 overflow-y-auto p-6 flex flex-col items-center">
-        <div className="w-full max-w-md">
+      <main className="flex-1 overflow-y-auto p-6 pb-24 flex flex-col items-center">
+        <div className="w-full max-w-md border border-gray-200 rounded-lg p-5 shadow-sm">
           {questions.map((item, index) => {
             const isOpen = openIndex === index;
             return (
-              <div
-                key={index}
-                className="w-full border-b border-gray-200 py-5"
-              >
+              <div key={index} className="w-full border-b border-gray-200 py-5">
                 <div
                   className="flex justify-between items-start cursor-pointer gap-4"
                   onClick={() => toggleItem(index)}
