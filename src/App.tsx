@@ -15,6 +15,10 @@ import Register from "./views/auth/Register";
 import Home from "./views/Home";
 import Quiz from "./views/quiz/Quiz";
 import QuizResult from "./views/quiz/QuizResult";
+import RunQuiz from "./views/quiz/RunQuiz";
+import ArticlesList from "./views/articles/ArticlesList";
+import ArticlesByCategory from "./views/articles/ArticlesByCategory";
+import Article from "./views/articles/Article";
 import Resources from "./views/Resources";
 import Settings from "./views/legal/Settings";
 import CGU from "./views/legal/CGU";
@@ -81,6 +85,14 @@ const AppContent = () => {
           }
         />
         <Route
+          path="/quiz/:categoryId"
+          element={
+            <ProtectedRoute>
+              <Quiz />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/quiz"
           element={
             <ProtectedRoute>
@@ -93,6 +105,38 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <QuizResult />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/run-quiz"
+          element={
+            <ProtectedRoute>
+              <RunQuiz />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/articles"
+          element={
+            <ProtectedRoute>
+              <ArticlesList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/articles/:categoryId"
+          element={
+            <ProtectedRoute>
+              <ArticlesByCategory />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/article/:articleId"
+          element={
+            <ProtectedRoute>
+              <Article />
             </ProtectedRoute>
           }
         />
