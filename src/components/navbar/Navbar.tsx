@@ -2,12 +2,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   AiFillHome,
   AiFillSetting,
-  AiFillCalendar,
-  AiFillMessage,
+  AiFillFolder,
+  AiFillFileText,
 } from "react-icons/ai";
-import { FaUser } from "react-icons/fa";
 import { IconType } from "react-icons";
 import Icon from "../icon/Icon";
+import { MdQuiz } from "react-icons/md";
 
 interface NavItem {
   id: string;
@@ -23,14 +23,19 @@ const Navbar = () => {
   // 5 items de navigation avec icônes différentes
   const navItems: NavItem[] = [
     { id: "home", path: "/", label: "Accueil", icon: AiFillHome },
-    { id: "calendar", path: "/calendar", label: "EDT", icon: AiFillCalendar },
     {
-      id: "messages",
-      path: "/messages",
-      label: "Message",
-      icon: AiFillMessage,
+      id: "resources",
+      path: "/resources",
+      label: "Ressources",
+      icon: AiFillFolder,
     },
-    { id: "profile", path: "/profile", label: "Profil", icon: FaUser },
+    { id: "run-quiz", path: "/run-quiz", label: "Quiz", icon: MdQuiz },
+    {
+      id: "articles",
+      path: "/articles",
+      label: "Articles",
+      icon: AiFillFileText,
+    },
     {
       id: "settings",
       path: "/settings",
@@ -44,6 +49,9 @@ const Navbar = () => {
   };
 
   const isActive = (path: string) => {
+    if (path === "/run-quiz") {
+      return location.pathname.toLowerCase().includes("quiz");
+    }
     if (path === "/settings") {
       return [
         "/settings",
