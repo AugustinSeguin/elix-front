@@ -1,27 +1,5 @@
-interface AnswerDto {
-  id: number;
-  questionId: number;
-  title?: string;
-  explanation?: string | null;
-  isValid: boolean;
-}
+import { QuestionDto, QuizQuestionResultDto } from "../../types/quiz";
 
-interface QuestionDto {
-  id: number;
-  title: string;
-  mediaPath?: string | null;
-  categoryId: number;
-  answers?: AnswerDto[];
-}
-
-interface QuizQuestionResultDto {
-  questionId: number;
-  question: QuestionDto;
-  selectedAnswerId: number;
-  isCorrect: boolean;
-  explanation?: string | null;
-  answer: AnswerDto; // Correct answer
-}
 
 const QuestionCorrection = ({
   results,

@@ -19,7 +19,8 @@ import RunQuiz from "./views/quiz/RunQuiz";
 import ArticlesList from "./views/articles/ArticlesList";
 import ArticlesByCategory from "./views/articles/ArticlesByCategory";
 import Article from "./views/articles/Article";
-import Resources from "./views/Resources";
+import Resources from "./views/resources/Resources";
+import ResourcesMap from "./views/resources/ResourcesMap";
 import Settings from "./views/legal/Settings";
 import CGU from "./views/legal/CGU";
 import PrivacyPolicy from "./views/legal/PrivacyPolicy";
@@ -145,6 +146,14 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <Resources />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/resources/map"
+          element={
+            <ProtectedRoute>
+              <ResourcesMap />
             </ProtectedRoute>
           }
         />
