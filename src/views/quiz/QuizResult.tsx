@@ -85,7 +85,7 @@ const QuizResult = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pb-20">
       {/* Header */}
-      <div className="bg-blue-500 text-white py-8 px-4 text-center">
+      <div className="bg-primary text-white py-8 px-4 text-center">
         <h1 className="text-3xl font-bold mb-2">Résultats du Quiz</h1>
         <p className="text-blue-100">
           Score: {score}/{totalQuestions}
@@ -147,13 +147,13 @@ const QuizResult = () => {
         <div className="flex gap-3">
           <button
             onClick={() => navigate("/quiz")}
-            className="flex-1 py-3 px-4 rounded-lg bg-blue-500 text-white font-semibold hover:bg-blue-600 transition-colors"
+            className="flex-1 py-3 px-4 rounded-lg bg-primary text-white font-semibold hover:bg-blue-600 transition-colors"
           >
             Refaire le quiz
           </button>
           <button
             onClick={() => navigate("/")}
-            className="flex-1 py-3 px-4 rounded-lg border-2 border-blue-500 text-blue-500 font-semibold hover:bg-blue-50 transition-colors"
+            className="flex-1 py-3 px-4 rounded-lg border-2 border-primary text-primary font-semibold hover:bg-blue-50 transition-colors"
           >
             Accueil
           </button>

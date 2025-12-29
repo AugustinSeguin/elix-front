@@ -1,9 +1,11 @@
-import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AiFillHome, AiFillSetting } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiFillSetting,
+  AiFillCalendar,
+  AiFillMessage,
+} from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
-import { MdQuiz } from "react-icons/md";
-import { MdLocalLibrary } from "react-icons/md";
 import { IconType } from "react-icons";
 import Icon from "../icon/Icon";
 
@@ -20,25 +22,20 @@ const Navbar = () => {
 
   // 5 items de navigation avec icônes différentes
   const navItems: NavItem[] = [
-    { id: "home", path: "/", label: "Home", icon: AiFillHome },
-    { id: "profile", path: "/profile", label: "Profile", icon: FaUser },
+    { id: "home", path: "/", label: "Accueil", icon: AiFillHome },
+    { id: "calendar", path: "/calendar", label: "EDT", icon: AiFillCalendar },
+    {
+      id: "messages",
+      path: "/messages",
+      label: "Message",
+      icon: AiFillMessage,
+    },
+    { id: "profile", path: "/profile", label: "Profil", icon: FaUser },
     {
       id: "settings",
       path: "/settings",
-      label: "Settings",
+      label: "Setting",
       icon: AiFillSetting,
-    },
-    {
-      id: "quiz",
-      path: "/quiz",
-      label: "Quiz",
-      icon: MdQuiz,
-    },
-    {
-      id: "resources",
-      path: "/resources",
-      label: "Ressources",
-      icon: MdLocalLibrary,
     },
   ];
 
@@ -47,24 +44,39 @@ const Navbar = () => {
   };
 
   const isActive = (path: string) => {
+    if (path === "/settings") {
+      return [
+        "/settings",
+        "/about",
+        "/cgu",
+        "/faq",
+        "/privacy-policy",
+      ].includes(location.pathname);
+    }
     return location.pathname === path;
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200">
-      <div className="flex justify-around items-center py-3 px-4">
+    <nav className="fixed bottom-0 left-0 right-0 h-[52px] md:h-[83px] bg-white border-t border-[#DEDEDE] flex flex-col items-center pt-[7px] pb-0 px-[12px] z-50">
+      <div className="flex justify-between items-center w-full max-w-[369px] px-[10px]">
         {navItems.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col items-center gap-1 cursor-pointer"
+            className="flex flex-col items-center gap-[2px] cursor-pointer"
             onClick={() => handleNavClick(item.path)}
           >
             <Icon
               icon={item.icon}
               size="lg"
-              color={isActive(item.path) ? "#3b82f6" : "#6b7280"}
-              className="transition-colors duration-200"
+              className={`transition-colors duration-200 ${
+                isActive(item.path) ? "text-primary" : "text-secondary"
+              }`}
             />
+            <span
+              className={`text-[10px] font-medium ${
+                isActive(item.path) ? "text-primary" : "text-secondary"
+              }`}
+            ></span>
           </div>
         ))}
       </div>

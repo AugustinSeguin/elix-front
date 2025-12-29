@@ -70,7 +70,7 @@ const Resources = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
       {/* Header */}
-      <div className="bg-blue-500 text-white py-8 px-4 text-center sticky top-0 z-10">
+      <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
         <h1 className="text-3xl font-bold">Ressources</h1>
         <p className="text-blue-100 mt-2">
           Trouvez les ressources qui vous conviennent
@@ -95,7 +95,7 @@ const Resources = () => {
                 <Icon icon={FaPhone} size="md" color="#3b82f6" />
                 <a
                   href={`tel:${resource.phoneNumber}`}
-                  className="text-blue-500 hover:underline text-sm"
+                  className="text-primary hover:underline text-sm"
                 >
                   {resource.phoneNumber}
                 </a>
@@ -111,12 +111,11 @@ const Resources = () => {
                       resource.localization.longitude
                     )
                   }
-                  className="text-blue-500 hover:underline text-sm"
+                  className="text-primary hover:underline text-sm"
                 >
                   Voir sur la carte
                 </button>
               </div>
-
             </div>
           ))}
         </div>
@@ -126,7 +125,7 @@ const Resources = () => {
           <div className="flex justify-center mt-10">
             <button
               onClick={handleLoadMore}
-              className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors"
+              className="px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors"
             >
               Voir plus ({displayedCount} / {resources.length})
             </button>

@@ -1,0 +1,44 @@
+{
+    "questions": [
+        {
+            "question": "Qui peut voir mes données ?",
+            "answer": "Personne d'autre que toi.\n• Toutes les données que tu entres (ta progression, les articles que tu lis, tes rappels personnels) sont cryptées et stockées uniquement sur ton téléphone (ou sur nos serveurs de manière anonyme).\n• Nous ne demandons jamais ton vrai nom ni ton adresse. Nous n'utilisons tes informations que pour te donner le meilleur contenu possible.\n• Nous ne vendons ni ne partageons tes données personnelles avec des entreprises tierces ou des parents. Tu as le contrôle total."
+        },
+        {
+            "question": "Est-ce que mes parents reçoivent des notifications ?",
+            "answer": "Uniquement si tu choisis de leur envoyer ton avancée."
+        },
+        {
+            "question": "Comment effacer mon historique de lecture ?",
+            "answer": "C'est très simple et immédiat.\nVa dans Mon Compte > Historique de lecture.\nTu y trouveras un bouton : \"Effacer l'historique et les recherches\".\nEn cliquant dessus, toutes les traces de ton activité de lecture dans l'application seront effacées. C'est comme vider le cache de ton navigateur."
+        },
+        {
+            "question": "J'ai oublié mon mot de passe, comment le réinitialiser ?",
+            "answer": "Pas de panique !\nSur l'écran de connexion, clique sur \"Mot de passe oublié ?\".\nNous t'enverrons un lien de réinitialisation à l'adresse e-mail que tu as utilisée pour créer ton compte.\nSi tu as des problèmes, contacte l'Assistance Technique."
+        },
+        {
+            "question": "Comment mettre à jour l'application ?",
+            "answer": "Ton application Elix se met à jour automatiquement !"
+        },
+        {
+            "question": "Qui écrit les leçons ?",
+            "answer": "Les leçons sont toutes écrites par des professionnels de santé et d’éducation sexuelle avec qui nous avons un partenariat."
+        },
+        {
+            "question": "Comment les sources sont-elles vérifiées ?",
+            "answer": "Nos informations sont 100 % vérifiées.\nToutes les leçons, articles et fiches sont rédigés et vérifiés par des professionnels de la santé et de l'éducation sexuelle (médecins, psychologues, éducateurs certifiés).\nNos sources sont toujours basées sur les données scientifiques et les recommandations officielles des organismes de santé."
+        },
+        {
+            "question": "Le contenu est-il adapté à mon âge ?",
+            "answer": "Oui, absolument.\nL'application est conçue pour l'éducation sexuelle des adolescents.\nTu peux aller dans Paramètres > Préférences de Contenu pour t'assurer que les sujets affichés correspondent à ton niveau de confort et d'apprentissage. Nous te recommandons d'explorer les sujets à ton propre rythme."
+        },
+        {
+            "question": "Comment suggérer un sujet qui n'est pas couvert ?",
+            "answer": "Si tu veux retrouver des informations sur un sujet qui n’est pas encore couvert, tu peux suggérer à Elixbot."
+        },
+        {
+            "question": "Comment gagner des badges ?",
+            "answer": "Pour gagner des badges, il te suffit d’atteindre 100% d’avancée sur les différentes thématiques."
+        }
+    ]
+}

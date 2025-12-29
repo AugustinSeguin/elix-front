@@ -28,7 +28,7 @@ const Profile = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
       {/* Header */}
-      <div className="bg-blue-500 text-white py-8 px-4 text-center sticky top-0 z-10">
+      <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
         <h1 className="text-3xl font-bold">Mon Profil</h1>
       </div>
 
@@ -44,7 +44,7 @@ const Profile = () => {
             />
           ) : (
             <div className="w-32 h-32 rounded-full mx-auto bg-blue-200 flex items-center justify-center mb-4">
-              <span className="text-4xl text-blue-500">👤</span>
+              <span className="text-4xl text-primary">👤</span>
             </div>
           )}
         </div>
@@ -127,7 +127,7 @@ const Profile = () => {
         {/* Edit Button */}
         <button
           onClick={() => navigate("/edit-profile")}
-          className="w-full bg-blue-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
+          className="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
         >
           <Icon icon={FaEdit} size="md" color="white" />
           Modifier mon profil

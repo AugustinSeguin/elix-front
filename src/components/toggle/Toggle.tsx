@@ -11,7 +11,7 @@ const Toggle = ({ enabled, onChange, label }: ToggleProps) => {
       <button
         onClick={() => onChange(!enabled)}
         className={`relative inline-flex items-center h-6 w-11 rounded-full transition-colors ${
-          enabled ? "bg-blue-500" : "bg-gray-300"
+          enabled ? "bg-primary" : "bg-gray-300"
         }`}
         role="switch"
         aria-checked={enabled}

@@ -171,7 +171,7 @@ const Quiz = () => {
   return (
     <div className="flex flex-col h-screen bg-gray-50 pb-20">
       {/* Progress bar */}
-      <div className="bg-blue-500 h-1">
+      <div className="bg-primary h-1">
         <div
           className="h-full bg-blue-600 transition-all duration-300"
           style={{
@@ -217,7 +217,7 @@ const Quiz = () => {
           <button
             onClick={handleNextQuestion}
             disabled={selectedAnswerId === undefined}
-            className="flex-1 py-3 px-4 rounded-lg bg-blue-500 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-600"
+            className="flex-1 py-3 px-4 rounded-lg bg-primary text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-600"
           >
             {isLastQuestion ? "Terminer" : "Suivant"}
           </button>

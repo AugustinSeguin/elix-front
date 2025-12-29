@@ -28,13 +28,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // Styles par variante
     const variantStyles = {
       primary:
-        "bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 active:bg-primary-700",
+        "bg-primary text-white hover:opacity-90 focus:ring-primary active:opacity-100",
       secondary:
-        "bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500 active:bg-secondary-700",
+        "bg-secondary text-white hover:opacity-90 focus:ring-secondary active:opacity-100",
       outline:
-        "border-2 border-primary-500 text-primary-500 hover:bg-primary-50 focus:ring-primary-500 active:bg-primary-100",
+        "border-2 border-primary text-primary hover:bg-primary/10 focus:ring-primary active:bg-primary/20",
       ghost:
-        "text-primary-500 hover:bg-primary-50 focus:ring-primary-500 active:bg-primary-100",
+        "text-primary hover:bg-primary/10 focus:ring-primary active:bg-primary/20",
       danger:
         "bg-red-500 text-white hover:bg-red-600 focus:ring-red-500 active:bg-red-700",
     };
