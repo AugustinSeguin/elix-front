@@ -52,6 +52,9 @@ const Navbar = () => {
     if (path === "/run-quiz") {
       return location.pathname.toLowerCase().includes("quiz");
     }
+    if (path === "/articles") {
+      return location.pathname.toLowerCase().includes("article");
+    }
     if (path === "/settings") {
       return [
         "/settings",
