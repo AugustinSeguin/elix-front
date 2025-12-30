@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { execSync } from "child_process";
+import { execSync } from "node:child_process";
 
 // Get git tag
 let version = "1.0.0";

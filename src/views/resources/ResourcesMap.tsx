@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import { FaLocationArrow, FaMapMarkerAlt } from "react-icons/fa";
+import { FaLocationArrow } from "react-icons/fa";
 import axios from "axios";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -74,7 +74,6 @@ const MapUpdater = ({ center }: { center: [number, number] }) => {
 const ResourcesMap = () => {
   const { token } = useAuth();
   const [resources, setResources] = useState<Resource[]>([]);
-  const [loading, setLoading] = useState(true);
   const [userLocation, setUserLocation] = useState<[number, number] | null>(
     null
   );
@@ -119,7 +118,6 @@ const ResourcesMap = () => {
       try {
         // Enforce minimum search length before calling the API
         if (searchTerm && searchTerm.length < 3) {
-          setLoading(false);
           return;
         }
 
@@ -130,7 +128,6 @@ const ResourcesMap = () => {
         // Vérifier si le cache est valide
         if (cached && now - cached.timestamp < CACHE_DURATION) {
           setResources(cached.data);
-          setLoading(false);
           return;
         }
 
@@ -156,8 +153,6 @@ const ResourcesMap = () => {
         setResources(response.data);
       } catch (err) {
         console.error("Error loading resources:", err);
-      } finally {
-        setLoading(false);
       }
     };
 
