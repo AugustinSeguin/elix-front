@@ -8,6 +8,7 @@ import {
 } from "react";
 import axios from "axios";
 import { AuthContextType, User } from "../types/user";
+import api from "../api/axiosConfig";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 

@@ -26,7 +26,7 @@ import CGU from "./views/legal/CGU";
 import PrivacyPolicy from "./views/legal/PrivacyPolicy";
 import Faq from "./views/legal/Faq";
 import AboutUs from "./views/legal/AboutUs";
-import Profile from "./views/Profile";
+import Profile from "./views/user/Profile";
 import EditProfile from "./views/user/EditProfile";
 import Navbar from "./components/navbar/Navbar";
 

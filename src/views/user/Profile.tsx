@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { FaEdit } from "react-icons/fa";
-import Icon from "../components/icon/Icon";
+import Icon from "../../components/icon/Icon";
 
 const GENDER_MAP: Record<number, string> = {
   0: "Fille",
