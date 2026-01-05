@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Toggle from "../../components/toggle/Toggle";
 import ThemeToggle from "../../components/toggle/ThemeToggle";
 import { useAuth } from "../../contexts/AuthContext";
 import { MdArrowForwardIos } from "react-icons/md";
+import api from "../../api/axiosConfig";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Settings = () => {
   const handleLogout = async () => {
     try {
       setLoading(true);
-      await axios.post(
+      await api.post(
         "/api/User/logout",
         {},
         {
@@ -45,7 +45,7 @@ const Settings = () => {
   const confirmDeleteAccount = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/User/${user?.id || 1}`, {
+      await api.delete(`/api/User/${user?.id || 1}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

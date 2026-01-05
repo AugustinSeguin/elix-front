@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
-import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
+import api from "../../api/axiosConfig";
 
 interface ArticleData {
   id: number;
@@ -29,7 +29,7 @@ const Article = () => {
       if (!token || !articleId) return;
 
       try {
-        const response = await axios.get(`/api/Article/${articleId}`, {
+        const response = await api.get(`/api/Article/${articleId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

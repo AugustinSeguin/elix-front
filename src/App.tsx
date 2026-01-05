@@ -12,7 +12,7 @@ import {
 } from "./components/routes/RouteGuards";
 import Login from "./views/auth/Login";
 import Register from "./views/auth/Register";
-import Home from "./views/Home";
+import Home from "./views/user/Home";
 import Quiz from "./views/quiz/Quiz";
 import QuizResult from "./views/quiz/QuizResult";
 import RunQuiz from "./views/quiz/RunQuiz";
@@ -27,7 +27,7 @@ import PrivacyPolicy from "./views/legal/PrivacyPolicy";
 import Faq from "./views/legal/Faq";
 import AboutUs from "./views/legal/AboutUs";
 import Profile from "./views/Profile";
-import EditProfile from "./views/EditProfile";
+import EditProfile from "./views/user/EditProfile";
 import Navbar from "./components/navbar/Navbar";
 
 // Liste des routes publiques (accessible sans authentification)

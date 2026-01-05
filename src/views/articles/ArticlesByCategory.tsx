@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
-import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
 import { Article } from "../../types/article";
-
+import api from "../../api/axiosConfig";
 
 const ArticlesByCategory = () => {
   const { categoryId } = useParams();
@@ -33,14 +32,11 @@ const ArticlesByCategory = () => {
       if (!token || !categoryId) return;
 
       try {
-        const response = await axios.get(
-          `/api/Article/category/${categoryId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await api.get(`/api/Article/category/${categoryId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setArticles(response.data);
       } catch (err) {
         console.error("Error fetching articles:", err);

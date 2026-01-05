@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { FaPhone } from "react-icons/fa";
-import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
 import ResourcesHeader from "../../components/resources/ResourcesHeader";
 import { Resource } from "../../types/resource";
+import api from "../../api/axiosConfig";
 
 const Resources = () => {
   const { token } = useAuth();
@@ -64,7 +64,7 @@ const Resources = () => {
           )}`;
         }
 
-        const response = await axios.get(url, {
+        const response = await api.get(url, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

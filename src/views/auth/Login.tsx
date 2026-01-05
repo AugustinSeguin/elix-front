@@ -1,9 +1,9 @@
 import { useState, FormEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
 import { MdArrowForwardIos } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import api from "../../api/axiosConfig";
 
 interface LoginFormData {
   email: string;
@@ -62,7 +62,7 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(`/api/User/login`, {
+      const response = await api.post(`/api/User/login`, {
         email: formData.email,
         password: formData.password,
       });
@@ -70,7 +70,7 @@ const Login = () => {
       if (response.data.token) {
         login(response.data.token);
         try {
-          const userResponse = await axios.get("/api/User/me", {
+          const userResponse = await api.get("/api/User/me", {
             headers: {
               Authorization: `Bearer ${response.data.token}`,
             },

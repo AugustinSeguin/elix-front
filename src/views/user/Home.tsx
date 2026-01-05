@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { useAuth } from "../contexts/AuthContext";
-import Header from "../components/header/Header";
-import InputText from "../components/input-text/InputText";
-import Button from "../components/button/Button";
-import Footer from "../components/footer/Footer";
-import Checkbox from "../components/checkbox/Checkbox";
-import InputNumber from "../components/input-number/InputNumber";
-import SelectList from "../components/select-list/SelectList";
-import Icon from "../components/icon/Icon";
-import Image from "../components/media/Image";
-import Video from "../components/media/Video";
+import { useAuth } from "../../contexts/AuthContext";
+import Header from "../../components/header/Header";
+import InputText from "../../components/input-text/InputText";
+import Button from "../../components/button/Button";
+import Footer from "../../components/footer/Footer";
+import Checkbox from "../../components/checkbox/Checkbox";
+import InputNumber from "../../components/input-number/InputNumber";
+import SelectList from "../../components/select-list/SelectList";
+import Icon from "../../components/icon/Icon";
+import Image from "../../components/media/Image";
+import Video from "../../components/media/Video";
 import { FaHeart, FaUser, FaStar, FaSignOutAlt } from "react-icons/fa";
 
 const Home = () => {

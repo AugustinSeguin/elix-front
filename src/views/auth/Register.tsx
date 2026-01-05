@@ -1,9 +1,9 @@
 import { useState, FormEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
 import { MdArrowForwardIos } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import api from "../../api/axiosConfig";
 
 interface RegisterFormData {
   email: string;
@@ -163,7 +163,7 @@ const Register = () => {
 
       console.log("Registration payload:", payload);
 
-      const response = await axios.post(`/api/User/register`, payload);
+      const response = await api.post(`/api/User/register`, payload);
 
       console.log("Registration successful:", response.data);
 
@@ -173,7 +173,7 @@ const Register = () => {
 
         // Récupérer les données utilisateur complètes
         try {
-          const userResponse = await axios.get("/api/User/me", {
+          const userResponse = await api.get("/api/User/me", {
             headers: {
               Authorization: `Bearer ${response.data.token}`,
             },
@@ -254,9 +254,7 @@ const Register = () => {
         {/* Erreur générale */}
         {errors.general && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-sm text-red-600 text-center">
-              {errors.general}
-            </p>
+            <p className="text-sm text-red-600 text-center">{errors.general}</p>
           </div>
         )}
 
@@ -264,7 +262,10 @@ const Register = () => {
           {/* Informations personnelles */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1">
-              <label htmlFor="firstname" className="block text-sm text-gray-600 ml-1">
+              <label
+                htmlFor="firstname"
+                className="block text-sm text-gray-600 ml-1"
+              >
                 Prénom
               </label>
               <input
@@ -273,11 +274,14 @@ const Register = () => {
                 value={formData.firstname}
                 onChange={(e) => {
                   setFormData({ ...formData, firstname: e.target.value });
-                  if (errors.firstname) setErrors({ ...errors, firstname: undefined });
+                  if (errors.firstname)
+                    setErrors({ ...errors, firstname: undefined });
                 }}
                 placeholder="Jean"
                 className={`w-full px-6 py-3.5 rounded-full border ${
-                  errors.firstname ? "border-red-400 text-red-500" : "border-gray-300 text-gray-900"
+                  errors.firstname
+                    ? "border-red-400 text-red-500"
+                    : "border-gray-300 text-gray-900"
                 } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
                 disabled={isLoading}
               />
@@ -287,7 +291,10 @@ const Register = () => {
             </div>
 
             <div className="space-y-1">
-              <label htmlFor="lastname" className="block text-sm text-gray-600 ml-1">
+              <label
+                htmlFor="lastname"
+                className="block text-sm text-gray-600 ml-1"
+              >
                 Nom
               </label>
               <input
@@ -296,11 +303,14 @@ const Register = () => {
                 value={formData.lastname}
                 onChange={(e) => {
                   setFormData({ ...formData, lastname: e.target.value });
-                  if (errors.lastname) setErrors({ ...errors, lastname: undefined });
+                  if (errors.lastname)
+                    setErrors({ ...errors, lastname: undefined });
                 }}
                 placeholder="Dupont"
                 className={`w-full px-6 py-3.5 rounded-full border ${
-                  errors.lastname ? "border-red-400 text-red-500" : "border-gray-300 text-gray-900"
+                  errors.lastname
+                    ? "border-red-400 text-red-500"
+                    : "border-gray-300 text-gray-900"
                 } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
                 disabled={isLoading}
               />
@@ -311,7 +321,10 @@ const Register = () => {
           </div>
 
           <div className="space-y-1">
-            <label htmlFor="username" className="block text-sm text-gray-600 ml-1">
+            <label
+              htmlFor="username"
+              className="block text-sm text-gray-600 ml-1"
+            >
               Nom d'utilisateur
             </label>
             <input
@@ -321,11 +334,14 @@ const Register = () => {
               value={formData.username}
               onChange={(e) => {
                 setFormData({ ...formData, username: e.target.value });
-                if (errors.username) setErrors({ ...errors, username: undefined });
+                if (errors.username)
+                  setErrors({ ...errors, username: undefined });
               }}
               placeholder="johndoe1"
               className={`w-full px-6 py-3.5 rounded-full border ${
-                errors.username ? "border-red-400 text-red-500" : "border-gray-300 text-gray-900"
+                errors.username
+                  ? "border-red-400 text-red-500"
+                  : "border-gray-300 text-gray-900"
               } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
               disabled={isLoading}
             />
@@ -350,7 +366,9 @@ const Register = () => {
               }}
               placeholder="votre@email.com"
               className={`w-full px-6 py-3.5 rounded-full border ${
-                errors.email ? "border-red-400 text-red-500" : "border-gray-300 text-gray-900"
+                errors.email
+                  ? "border-red-400 text-red-500"
+                  : "border-gray-300 text-gray-900"
               } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
               disabled={isLoading}
             />
@@ -362,7 +380,10 @@ const Register = () => {
           {/* Date de naissance et genre */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1">
-              <label htmlFor="birthdate" className="block text-sm text-gray-600 ml-1">
+              <label
+                htmlFor="birthdate"
+                className="block text-sm text-gray-600 ml-1"
+              >
                 Date de naissance
               </label>
               <input
@@ -371,10 +392,13 @@ const Register = () => {
                 value={formData.birthdate}
                 onChange={(e) => {
                   setFormData({ ...formData, birthdate: e.target.value });
-                  if (errors.birthdate) setErrors({ ...errors, birthdate: undefined });
+                  if (errors.birthdate)
+                    setErrors({ ...errors, birthdate: undefined });
                 }}
                 className={`w-full px-6 py-3.5 rounded-full border ${
-                  errors.birthdate ? "border-red-400 text-red-500" : "border-gray-300 text-gray-900"
+                  errors.birthdate
+                    ? "border-red-400 text-red-500"
+                    : "border-gray-300 text-gray-900"
                 } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
                 disabled={isLoading}
               />
@@ -384,7 +408,10 @@ const Register = () => {
             </div>
 
             <div className="space-y-1">
-              <label htmlFor="gender" className="block text-sm text-gray-600 ml-1">
+              <label
+                htmlFor="gender"
+                className="block text-sm text-gray-600 ml-1"
+              >
                 Genre
               </label>
               <div className="relative">
@@ -393,14 +420,19 @@ const Register = () => {
                   value={formData.gender}
                   onChange={(e) => {
                     setFormData({ ...formData, gender: e.target.value });
-                    if (errors.gender) setErrors({ ...errors, gender: undefined });
+                    if (errors.gender)
+                      setErrors({ ...errors, gender: undefined });
                   }}
                   className={`w-full px-6 py-3.5 rounded-full border appearance-none bg-white ${
-                    errors.gender ? "border-red-400 text-red-500" : "border-gray-300 text-gray-900"
+                    errors.gender
+                      ? "border-red-400 text-red-500"
+                      : "border-gray-300 text-gray-900"
                   } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
                   disabled={isLoading}
                 >
-                  <option value="" disabled>Sélectionnez votre genre</option>
+                  <option value="" disabled>
+                    Sélectionnez votre genre
+                  </option>
                   {genderOptions.map((option) => (
                     <option key={option.value} value={option.value}>
                       {option.label}
@@ -408,8 +440,12 @@ const Register = () => {
                   ))}
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
-                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                  <svg
+                    className="fill-current h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                   </svg>
                 </div>
               </div>
@@ -421,7 +457,10 @@ const Register = () => {
 
           {/* Téléphone (optionnel) */}
           <div className="space-y-1">
-            <label htmlFor="phoneNumber" className="block text-sm text-gray-600 ml-1">
+            <label
+              htmlFor="phoneNumber"
+              className="block text-sm text-gray-600 ml-1"
+            >
               Numéro de téléphone (optionnel)
             </label>
             <input
@@ -430,11 +469,14 @@ const Register = () => {
               value={formData.phoneNumber}
               onChange={(e) => {
                 setFormData({ ...formData, phoneNumber: e.target.value });
-                if (errors.phoneNumber) setErrors({ ...errors, phoneNumber: undefined });
+                if (errors.phoneNumber)
+                  setErrors({ ...errors, phoneNumber: undefined });
               }}
               placeholder="123456789"
               className={`w-full px-6 py-3.5 rounded-full border ${
-                errors.phoneNumber ? "border-red-400 text-red-500" : "border-gray-300 text-gray-900"
+                errors.phoneNumber
+                  ? "border-red-400 text-red-500"
+                  : "border-gray-300 text-gray-900"
               } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
               disabled={isLoading}
             />
@@ -443,11 +485,13 @@ const Register = () => {
             )}
           </div>
 
-
           {/* Mots de passe */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1">
-              <label htmlFor="password" className="block text-sm text-gray-600 ml-1">
+              <label
+                htmlFor="password"
+                className="block text-sm text-gray-600 ml-1"
+              >
                 Mot de passe
               </label>
               <div className="relative">
@@ -458,11 +502,14 @@ const Register = () => {
                   value={formData.password}
                   onChange={(e) => {
                     setFormData({ ...formData, password: e.target.value });
-                    if (errors.password) setErrors({ ...errors, password: undefined });
+                    if (errors.password)
+                      setErrors({ ...errors, password: undefined });
                   }}
                   placeholder="••••••••"
                   className={`w-full px-6 py-3.5 rounded-full border ${
-                    errors.password ? "border-red-400 text-red-500" : "border-gray-300 text-gray-900"
+                    errors.password
+                      ? "border-red-400 text-red-500"
+                      : "border-gray-300 text-gray-900"
                   } focus:outline-none focus:ring-1 focus:ring-primary transition-colors pr-12`}
                   disabled={isLoading}
                 />
@@ -484,7 +531,10 @@ const Register = () => {
             </div>
 
             <div className="space-y-1">
-              <label htmlFor="passwordRepeated" className="block text-sm text-gray-600 ml-1">
+              <label
+                htmlFor="passwordRepeated"
+                className="block text-sm text-gray-600 ml-1"
+              >
                 Confirmer le mot de passe
               </label>
               <div className="relative">
@@ -494,12 +544,18 @@ const Register = () => {
                   autoComplete="new-password"
                   value={formData.passwordRepeated}
                   onChange={(e) => {
-                    setFormData({ ...formData, passwordRepeated: e.target.value });
-                    if (errors.passwordRepeated) setErrors({ ...errors, passwordRepeated: undefined });
+                    setFormData({
+                      ...formData,
+                      passwordRepeated: e.target.value,
+                    });
+                    if (errors.passwordRepeated)
+                      setErrors({ ...errors, passwordRepeated: undefined });
                   }}
                   placeholder="••••••••"
                   className={`w-full px-6 py-3.5 rounded-full border ${
-                    errors.passwordRepeated ? "border-red-400 text-red-500" : "border-gray-300 text-gray-900"
+                    errors.passwordRepeated
+                      ? "border-red-400 text-red-500"
+                      : "border-gray-300 text-gray-900"
                   } focus:outline-none focus:ring-1 focus:ring-primary transition-colors pr-12`}
                   disabled={isLoading}
                 />
@@ -516,7 +572,9 @@ const Register = () => {
                 </button>
               </div>
               {errors.passwordRepeated && (
-                <p className="text-xs text-red-400 ml-1">{errors.passwordRepeated}</p>
+                <p className="text-xs text-red-400 ml-1">
+                  {errors.passwordRepeated}
+                </p>
               )}
             </div>
           </div>

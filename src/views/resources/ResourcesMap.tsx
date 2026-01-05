@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { FaLocationArrow } from "react-icons/fa";
-import axios from "axios";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useAuth } from "../../contexts/AuthContext";
@@ -12,6 +11,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 // Fix for default marker icon in Leaflet with React
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import api from "../../api/axiosConfig";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
@@ -138,7 +138,7 @@ const ResourcesMap = () => {
           )}`;
         }
 
-        const response = await axios.get(url, {
+        const response = await api.get(url, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

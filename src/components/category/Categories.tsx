@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
 import { FaPlay } from "react-icons/fa";
 import { Category } from "../../types/category";
-
+import api from "../../api/axiosConfig";
 
 interface CategoriesProps {
   onSelect?: (categoryId: number) => void;
@@ -30,7 +29,7 @@ const Categories = ({ onSelect }: CategoriesProps) => {
       }
 
       try {
-        const response = await axios.get("/api/Category", {
+        const response = await api.get("/api/Category", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

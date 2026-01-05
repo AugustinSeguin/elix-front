@@ -9,7 +9,6 @@ import {
 import axios from "axios";
 import { AuthContextType, User } from "../types/user";
 
-
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
@@ -22,7 +21,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     if (!currentToken) return;
 
     try {
-      const response = await axios.get("/api/User/me", {
+      const response = await api.get("/api/User/me", {
         headers: {
           Authorization: `Bearer ${currentToken}`,
         },

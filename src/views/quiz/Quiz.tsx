@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import Question from "../../components/quiz/Question";
 import Answer from "../../components/quiz/Answer";
 import { useAuth } from "../../contexts/AuthContext";
 import { QuizDto, UserAnswer } from "../../types/quiz";
-
+import api from "../../api/axiosConfig";
 
 const Quiz = () => {
   const { categoryId = "1" } = useParams<{ categoryId: string }>();
@@ -22,7 +21,7 @@ const Quiz = () => {
     const startQuiz = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
+        const response = await api.get(
           `/api/Quiz/StartQuiz?userId=${
             user?.id || 1
           }&categoryId=${categoryId}`,
@@ -90,7 +89,7 @@ const Quiz = () => {
 
   const submitQuiz = async () => {
     try {
-      const response = await axios.post(
+      const response = await api.post(
         "/api/Quiz/SubmitQuiz",
         {
           userId: user?.id || 1,
