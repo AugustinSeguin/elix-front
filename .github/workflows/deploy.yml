@@ -27,6 +27,19 @@ jobs:
         env:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
+      # Étape de nettoyage manuel pour éviter le "status 1" du SCP
+      - name: Pre-deployment cleanup
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            sudo mkdir -p ${{ secrets.VPS_TARGET_PATH }}
+            sudo chown -R ${{ secrets.VPS_USER }}:${{ secrets.VPS_USER }} ${{ secrets.VPS_TARGET_PATH }}
+            rm -rf ${{ secrets.VPS_TARGET_PATH }}/*
+
       - name: Deploy to VPS via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -34,7 +47,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
-          rm: true 
+          rm: false # Désactivé car on a nettoyé juste avant via SSH
           source: "dist/*"
           strip_components: 1
           target: ${{ secrets.VPS_TARGET_PATH }}
@@ -45,8 +58,3 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT }}
-          script: |
-            echo "Déploiement React terminé avec succès !"
-            # Optionnel : décommenter si tu as besoin de recharger Nginx
-            # sudo systemctl reload nginx
