@@ -53,7 +53,7 @@ const Article = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex justify-center items-center">
+      <div className="min-h-screen flex justify-center items-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
       </div>
     );
@@ -61,7 +61,7 @@ const Article = () => {
 
   if (error || !article) {
     return (
-      <div className="min-h-screen bg-white px-6 pt-8 flex flex-col items-center justify-center">
+      <div className="min-h-screen px-6 pt-8 flex flex-col items-center justify-center">
         <div className="text-center text-red-500">
           {error || "Article introuvable"}
         </div>
@@ -79,7 +79,7 @@ const Article = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header jaune */}
-      <div className="bg-yellow-400 px-6 py-4 flex">
+      <div className="bg-primary-400 px-6 py-4 flex">
         <Button
           onClick={() => navigate(-1)}
           variant="ghost"

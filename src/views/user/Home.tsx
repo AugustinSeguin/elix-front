@@ -36,10 +36,6 @@ const Home = () => {
     console.log("Form data submitted:", formData);
   };
 
-  const handleLogout = () => {
-    logout();
-  };
-
   const themeOptions = [
     { value: "1", label: "Contraception" },
     { value: "2", label: "Consentement" },
@@ -49,16 +45,10 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header title="EliX - Démo des composants">
-        <Button
-          label="Déconnexion"
-          variant="outline"
-          size="sm"
-          onClick={handleLogout}
-        >
-          <FaSignOutAlt className="w-4 h-4" />
-        </Button>
+    <div className="min-h-screen flex flex-col">
+      <Header 
+        title="EliX - Démo des composants"
+        sticky={true}>
       </Header>
 
       <main className="flex-1 container-app py-8">

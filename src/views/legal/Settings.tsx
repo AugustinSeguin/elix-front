@@ -69,7 +69,7 @@ const Settings = () => {
     title: string;
     children: React.ReactNode;
   }) => (
-    <div className="mb-4 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div className="mb-4 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
       <p className="text-[13px] text-gray-400 pt-4 px-4 font-medium">{title}</p>
       <div className="flex flex-col">{children}</div>
     </div>
@@ -93,7 +93,7 @@ const Settings = () => {
     onToggle?: (val: boolean) => void;
   }) => {
     const content = (
-      <div className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors cursor-pointer border-b border-gray-100 last:border-0">
+      <div className="flex items-center justify-between p-4 transition-colors cursor-pointer border-b border-gray-100 last:border-0">
         <span className={`text-[15px] font-medium ${color}`}>{label}</span>
         {arrow && <MdArrowForwardIos className="w-4 h-4 text-gray-400" />}
         {onToggle && (
@@ -120,9 +120,9 @@ const Settings = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-24">
+    <div className="min-h-screenpb-24">
       {/* Header */}
-      <header className="relative flex items-center justify-center min-h-[60px] py-6 border-b border-gray-200 px-4 bg-white z-10 shadow-sm mb-6">
+      <header className="relative flex items-center justify-center min-h-[60px] py-6 border-b border-gray-200 px-4 z-10 shadow-sm mb-6">
         <h1 className="text-2xl font-bold text-black text-center tracking-wide">
           Paramètres
         </h1>
@@ -179,7 +179,7 @@ const Settings = () => {
           onClick={handleLogout}
           disabled={loading}
           variant="ghost"
-          className="w-full bg-white text-red-500 font-bold rounded-xl p-4 shadow-sm border border-gray-100 hover:bg-red-50 transition-colors mt-4"
+          className="w-full text-red-500 font-bold rounded-xl p-4 shadow-sm border border-gray-100 hover:bg-red-50 transition-colors mt-4"
         >
           {loading ? "Chargement..." : "Déconnexion"}
         </Button>
@@ -188,7 +188,7 @@ const Settings = () => {
       {/* Delete Account Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl animate-in fade-in zoom-in duration-200">
+          <div className="rounded-2xl p-6 w-full max-w-sm shadow-xl animate-in fade-in zoom-in duration-200">
             <p className="text-center text-gray-600 mb-6 text-[15px]">
               Veux-tu vraiment supprimer ton compte ?
             </p>

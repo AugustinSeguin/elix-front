@@ -6,9 +6,9 @@ const CGU = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="relative flex items-center justify-center min-h-[60px] py-4 border-b border-gray-200 px-4 bg-white z-10 shadow-sm">
+      <header className="relative flex items-center justify-center min-h-[60px] py-4 border-b border-gray-200 px-4 z-10 shadow-sm">
         <Button
           onClick={() => navigate(-1)}
           variant="ghost"

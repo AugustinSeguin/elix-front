@@ -117,7 +117,7 @@ const Resources = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pb-24">
+    <div className="min-h-screen pb-24">
       <ResourcesHeader
         activeTab="list"
         searchTerm={searchTerm}
@@ -139,7 +139,7 @@ const Resources = () => {
           resources.map((resource) => (
             <div
               key={resource.id}
-              className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm flex items-center justify-between"
+              className="border border-gray-200 rounded-xl p-4 shadow-sm flex items-center justify-between"
             >
               <div className="flex-1">
                 <h3 className="font-medium text-gray-900 text-base">

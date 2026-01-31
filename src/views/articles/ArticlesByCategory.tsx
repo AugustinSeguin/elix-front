@@ -55,7 +55,7 @@ const ArticlesByCategory = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white px-6 pt-8 pb-24">
+    <div className="min-h-screen px-6 pt-8 pb-24">
       <div className="mb-8 flex items-center gap-4">
         <Button
           onClick={() => navigate(-1)}
@@ -89,7 +89,7 @@ const ArticlesByCategory = () => {
             <div
               key={article.id}
               onClick={() => handleArticleClick(article.id)}
-              className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+              className="border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
             >
               {article.mediaPath && (
                 <img

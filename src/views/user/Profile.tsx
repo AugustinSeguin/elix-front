@@ -27,7 +27,7 @@ const Profile = () => {
     : "-";
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen pb-20">
       {/* Header */}
       <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
         <h1 className="text-3xl font-bold">Mon Profil</h1>
@@ -36,7 +36,7 @@ const Profile = () => {
       {/* Profile Content */}
       <div className="max-w-md mx-auto px-4 py-8">
         {/* Profile Picture */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6 text-center">
+        <div className="rounded-lg shadow-md p-6 mb-6 text-center">
           {user.pictureMediaPath ? (
             <img
               src={user.pictureMediaPath}
@@ -51,7 +51,7 @@ const Profile = () => {
         </div>
 
         {/* Profile Info */}
-        <div className="bg-white rounded-lg shadow-md p-6 space-y-4 mb-6">
+        <div className="rounded-lg shadow-md p-6 space-y-4 mb-6">
           {/* Email */}
           <div>
             <p className="text-sm text-gray-500">Email</p>

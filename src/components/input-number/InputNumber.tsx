@@ -93,7 +93,7 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
     } ${showControls ? "" : widthStyle} ${className}`.trim();
 
     const buttonBaseStyles =
-      "flex items-center justify-center rounded-lg border-2 border-gray-300 bg-white hover:bg-gray-50 active:bg-gray-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed";
+      "flex items-center justify-center rounded-lg border-2 border-gray-300 active:bg-gray-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed";
 
     return (
       <div className={`flex flex-col gap-1.5 ${fullWidth ? "w-full" : ""}`}>

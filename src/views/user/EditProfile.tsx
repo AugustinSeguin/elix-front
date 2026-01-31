@@ -173,7 +173,7 @@ const EditProfile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen pb-20">
       {/* Header */}
       <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
         <h1 className="text-3xl font-bold">Modifier mon profil</h1>

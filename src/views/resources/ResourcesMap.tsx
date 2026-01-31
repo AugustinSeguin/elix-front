@@ -165,7 +165,7 @@ const ResourcesMap = () => {
   }, [token, searchTerm]);
 
   return (
-    <div className="flex flex-col h-screen bg-white pb-[83px]">
+    <div className="flex flex-col h-screen pb-[83px]">
       <ResourcesHeader
         activeTab="map"
         searchTerm={searchTerm}
@@ -246,7 +246,7 @@ const ResourcesMap = () => {
             onClick={() => setMapCenter(userLocation)}
             variant="ghost"
             size="sm"
-            className="absolute bottom-4 right-4 z-[1000] bg-white p-3 rounded-full shadow-lg text-gray-700 hover:text-primary transition-colors"
+            className="absolute bottom-4 right-4 z-[1000] p-3 rounded-full shadow-lg text-gray-700 hover:text-primary transition-colors"
           >
             <FaLocationArrow size={20} />
           </Button>

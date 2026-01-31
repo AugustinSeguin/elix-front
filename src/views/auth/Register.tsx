@@ -227,7 +227,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-12 sm:px-8">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12 sm:px-8">
       {/* Logo Section */}
       <div className="flex flex-row items-center justify-center mb-12 gap-4">
         <div>
@@ -424,7 +424,7 @@ const Register = () => {
                     if (errors.gender)
                       setErrors({ ...errors, gender: undefined });
                   }}
-                  className={`w-full px-6 py-3.5 rounded-full border appearance-none bg-white ${
+                  className={`w-full px-6 py-3.5 rounded-full border appearance-none ${
                     errors.gender
                       ? "border-red-400 text-red-500"
                       : "border-gray-300 text-gray-900"

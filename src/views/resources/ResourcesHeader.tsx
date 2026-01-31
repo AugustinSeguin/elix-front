@@ -16,7 +16,7 @@ const ResourcesHeader = ({
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white pt-6 pb-4 px-4 sticky top-0 z-20">
+    <div className="pt-6 pb-4 px-4 sticky top-0 z-20">
       {/* Title */}
       <h1 className="text-2xl font-bold text-center text-black mb-6">
         Ressources
@@ -35,15 +35,15 @@ const ResourcesHeader = ({
       </div>
 
       {/* Toggle Switch */}
-      <div className="flex bg-white rounded-full p-1 gap-4 mb-2">
+      <div className="flex rounded-full p-1 gap-4 mb-2">
         <Button
           onClick={() => navigate("/resources")}
           variant="ghost"
           size="sm"
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "list"
-              ? "bg-secondary text-black shadow-sm"
-              : "bg-white text-black border border-gray-200"
+              ? "bg-primary text-black shadow-sm"
+              : "text-black border border-gray-200"
           }`}
         >
           Liste
@@ -54,8 +54,8 @@ const ResourcesHeader = ({
           size="sm"
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "map"
-              ? "bg-secondary text-black shadow-sm"
-              : "bg-white text-black border border-gray-200"
+              ? "bg-primary text-black shadow-sm"
+              : "text-black border border-gray-200"
           }`}
         >
           Carte

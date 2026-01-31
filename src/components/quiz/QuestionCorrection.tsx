@@ -14,7 +14,7 @@ const QuestionCorrection = ({
   const total = results.length || 10;
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
+    <div className="rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-bold text-black">Corrections</h3>
         <span className="text-sm font-semibold text-gray-600">

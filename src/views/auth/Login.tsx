@@ -76,7 +76,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 sm:px-8">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 sm:px-8">
       {/* Logo Section */}
       <div className="flex flex-col items-center justify-center mb-8">
         <div className="flex items-center gap-3 mb-4">
@@ -175,14 +175,14 @@ const Login = () => {
           </div>
 
           {/* Submit Button */}
-              <Button
-              type="submit"
-              disabled={isLoading}
-              variant="primary"
-              size="lg"
-            >
-              <span>Connexion</span>
-            </Button>
+          <Button
+            type="submit"
+            disabled={isLoading}
+            variant="primary"
+            size="lg"
+          >
+            <span>Connexion</span>
+          </Button>
 
           {/* Register Link */}
           <div className="text-center pt-2">

@@ -71,7 +71,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 h-[52px] md:h-[83px] bg-white border-t border-[#DEDEDE] flex flex-col items-center pt-[7px] pb-0 px-[12px] z-50">
+    <nav
+      className="fixed bottom-0 left-0 right-0 h-[52px] md:h-[83px] border-t border-[#DEDEDE] flex flex-col items-center pt-[7px] pb-0 px-[12px] z-50"
+      style={{ backgroundColor: "var(--color-primary-700)" }}
+    >
       <div className="flex justify-between items-center w-full max-w-[369px] px-[10px]">
         {navItems.map((item) => (
           <div

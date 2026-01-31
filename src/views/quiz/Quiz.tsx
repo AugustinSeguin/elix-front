@@ -143,7 +143,7 @@ const Quiz = () => {
   const isLastQuestion = currentQuestionIndex === quiz.questions.length - 1;
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50 pb-20">
+    <div className="flex flex-col h-screen pb-20">
       {/* Progress bar */}
       <div className="bg-primary h-1">
         <div
@@ -157,7 +157,7 @@ const Quiz = () => {
       </div>
 
       {/* Quiz title */}
-      <div className="bg-white shadow-sm p-4">
+      <div className="shadow-sm p-4">
         <p className="text-sm text-gray-600">
           Question {currentQuestionIndex + 1} / {quiz.questions.length}
         </p>
@@ -172,7 +172,7 @@ const Quiz = () => {
       </div>
 
       {/* Answers section (bottom) */}
-      <div className="bg-white shadow-lg">
+      <div className="shadow-lg">
         <Answer
           answers={currentQuestion.answers || []}
           onAnswerSelect={handleAnswerSelect}
@@ -185,7 +185,7 @@ const Quiz = () => {
             onClick={handlePreviousQuestion}
             disabled={currentQuestionIndex === 0}
             variant="ghost"
-            className="flex-1 py-3 px-4 rounded-lg border-2 border-gray-300 font-semibold text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+            className="flex-1 py-3 px-4 rounded-lg border-2 border-gray-300 font-semibold text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Précédent
           </Button>

@@ -60,7 +60,7 @@ const QuizResult = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen pb-20">
       {/* Header */}
       <div className="text-white py-8 px-4 text-center">
         <h1 className="text-2xl font-bold text-gray-900">Résultats du Quiz</h1>
@@ -132,7 +132,7 @@ const QuizResult = () => {
           <Button
             onClick={() => navigate("/")}
             variant="ghost"
-            className="flex-1 py-3 px-4 rounded-lg border-2 border-primary text-primary font-semibold bg-white hover:bg-gray-100 transition-colors"
+            className="flex-1 py-3 px-4 rounded-lg border-2 border-primary text-primary font-semibold hover:bg-gray-100 transition-colors"
           >
             Accueil
           </Button>

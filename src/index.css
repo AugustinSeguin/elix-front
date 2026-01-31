@@ -2,13 +2,35 @@
 
 /* Configuration Tailwind v4 avec variables CSS natives */
 @theme {
-  /* Couleurs personnalisées */
-  --color-primary: #993d80;
-  --color-secondary: #d7b2d4;
+  --color-primary: #ffd700;
+  --color-secondary: #f0f9ff;
 }
 
 /* Variables CSS personnalisées pour compléter Tailwind */
 :root {
+  /* Couleurs personnalisées (runtime) */
+  --color-primary-50: #f0f9ff;
+  --color-primary-100: #f0f9ff;
+  --color-primary-200: #bae6fd;
+  --color-primary-300: #7dd3fc;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #ffd700;
+  --color-primary-600: #ffc700;
+  --color-primary-700: #3c3c3b;
+  --color-primary-800: #075985;
+  --color-primary-900: #0c4a6e;
+
+  --color-secondary-50: #faf5ff;
+  --color-secondary-100: #f3e8ff;
+  --color-secondary-200: #e9d5ff;
+  --color-secondary-300: #d8b4fe;
+  --color-secondary-400: #c084fc;
+  --color-secondary-500: #a855f7;
+  --color-secondary-600: #9333ea;
+  --color-secondary-700: #7e22ce;
+  --color-secondary-800: #6b21a8;
+  --color-secondary-900: #581c87;
+
   /* Spacing system */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
@@ -34,8 +56,31 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
 
-  padding: 0 6px;
+html.dark {
+  /* Couleurs personnalisées (runtime) - Dark */
+  --color-primary-50: #f0f9ff;
+  --color-primary-100: #111827;
+  --color-primary-200: #1f2937;
+  --color-primary-300: #374151;
+  --color-primary-400: #4b5563;
+  --color-primary-500: #ffd700;
+  --color-primary-600: #9ca3af;
+  --color-primary-700: #3c3c3b;
+  --color-primary-800: #e5e7eb;
+  --color-primary-900: #f9fafb;
+
+  --color-secondary-50: #1b1720;
+  --color-secondary-100: #2a2430;
+  --color-secondary-200: #3a3343;
+  --color-secondary-300: #4b4258;
+  --color-secondary-400: #6b5f7a;
+  --color-secondary-500: #8b7a9a;
+  --color-secondary-600: #a78fb8;
+  --color-secondary-700: #c3abd6;
+  --color-secondary-800: #dcc9ee;
+  --color-secondary-900: #f3e8ff;
 }
 
 /* Styles de base */
@@ -46,145 +91,40 @@ html {
 }
 
 body {
-  background-color: #f9fafb;
-  color: #111827;
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-900);
   min-height: 100vh;
   margin: 0;
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Dark mode styles */
-html.dark body {
-  background-color: #111827;
-  color: #f9fafb;
-}
-
-html.dark .bg-white {
-  background-color: #1f2937 !important;
-}
-
-html.dark .bg-gray-50 {
-  background-color: #111827 !important;
-}
-
-html.dark .bg-gray-100 {
-  background-color: #1f2937 !important;
-}
 
 html.dark .text-black {
-  color: #f9fafb !important;
+  color: var(--color-primary-50) !important;
 }
 
 html.dark .text-gray-400 {
-  color: #9ca3af !important;
+  color: var(--color-primary-50) !important;
 }
 
 html.dark .text-gray-500 {
-  color: #9ca3af !important;
+  color: var(--color-primary-50) !important;
 }
 
 html.dark .text-gray-600 {
-  color: #d1d5db !important;
+  color: var(--color-primary-100) !important;
 }
 
 html.dark .text-gray-700 {
-  color: #e5e7eb !important;
+  color: var(--color-primary-100) !important;
 }
 
 html.dark .text-gray-800 {
-  color: #f3f4f6 !important;
+  color: var(--color-primary-100) !important;
 }
 
 html.dark .text-gray-900 {
-  color: #f9fafb !important;
-}
-
-html.dark .border-gray-100 {
-  border-color: #374151 !important;
-}
-
-html.dark .border-gray-200 {
-  border-color: #374151 !important;
-}
-
-html.dark .border-gray-300 {
-  border-color: #4b5563 !important;
-}
-
-html.dark .hover\:bg-gray-50:hover {
-  background-color: #374151 !important;
-}
-
-html.dark .shadow-sm {
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.3) !important;
-}
-
-html.dark .bg-green-50 {
-  background-color: #14532d !important;
-}
-
-html.dark .border-green-300 {
-  border-color: #166534 !important;
-}
-
-html.dark .text-green-700 {
-  color: #86efac !important;
-}
-
-html.dark .bg-red-50 {
-  background-color: #450a0a !important;
-}
-
-html.dark .border-red-300 {
-  border-color: #991b1b !important;
-}
-
-html.dark .text-red-700 {
-  color: #fca5a5 !important;
-}
-
-html.dark .hover\:bg-gray-100:hover {
-  background-color: #374151 !important;
-}
-
-html.dark .bg-blue-50 {
-  background-color: #1e3a5f !important;
-}
-
-html.dark .bg-blue-100 {
-  background-color: #1e4976 !important;
-}
-
-html.dark .hover\:bg-blue-100:hover {
-  background-color: #1e4976 !important;
-}
-
-html.dark .bg-pink-50 {
-  background-color: #4a1942 !important;
-}
-
-html.dark .bg-pink-100 {
-  background-color: #5c1f52 !important;
-}
-
-html.dark .bg-purple-50 {
-  background-color: #3b1f4a !important;
-}
-
-html.dark .bg-purple-100 {
-  background-color: #4c2760 !important;
-}
-
-html.dark .bg-red-100 {
-  background-color: #7f1d1d !important;
-}
-
-html.dark .bg-green-100 {
-  background-color: #14532d !important;
-}
-
-html.dark .bg-yellow-100 {
-  background-color: #713f12 !important;
+  color: var(--color-primary-50) !important;
 }
 
 h1 {
@@ -208,4 +148,8 @@ a {
 
 a:hover {
   color: #0284c7;
+}
+
+main {
+  padding: 0 6px;
 }

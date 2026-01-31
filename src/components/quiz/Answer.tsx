@@ -25,7 +25,7 @@ const Answer = ({ answers, onAnswerSelect, selectedAnswerId }: AnswerProps) => {
           className={`p-4 rounded-lg border-2 transition-colors duration-200 ${
             selectedAnswerId === answer.id
               ? "border-primary bg-primary"
-              : "border-gray-300 bg-white hover:border-primary"
+              : "border-gray-300 hover:border-primary"
           }`}
         >
           <div className="flex flex-col items-center gap-2">
