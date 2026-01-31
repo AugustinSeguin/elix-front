@@ -16,6 +16,8 @@ const Categories = ({ onSelect }: CategoriesProps) => {
 
   useEffect(() => {
     const fetchCategories = async () => {
+      console.log("categories fetch initiated", categories);
+
       if (!token) {
         setLoading(false);
         return;
@@ -43,6 +45,7 @@ const Categories = ({ onSelect }: CategoriesProps) => {
           setError("Impossible de charger les catégories");
         }
       } finally {
+        console.log("Categories fetched:", categories);
         setLoading(false);
       }
     };
@@ -72,13 +75,18 @@ const Categories = ({ onSelect }: CategoriesProps) => {
         >
           <div className="flex-shrink-0">
             <img
-              src={category.imageMediaPath}
+              src={
+                category.imageMediaPath?.startsWith("http")
+                  ? category.imageMediaPath // Si c'est déjà une URL, on l'utilise telle quelle
+                  : `https://api.elix.cleanascode.fr/uploads/${category.imageMediaPath}` // Sinon, on ajoute le préfixe
+              }
               alt={category.title}
               className="w-16 h-16 rounded-xl object-cover"
               onError={(e) => {
-                // Fallback image if load fails
-                (e.target as HTMLImageElement).src =
-                  "https://placehold.co/64x64?text=IMG";
+                const target = e.target as HTMLImageElement;
+                // On garde ton log pour vérifier la nouvelle URL en cas d'échec
+                console.error("Échec du chargement :", target.src);
+                target.src = "https://placehold.co/64x64?text=IMG";
               }}
             />
           </div>

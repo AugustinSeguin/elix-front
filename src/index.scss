@@ -8,8 +8,8 @@
   --color-primary-200: #bae6fd;
   --color-primary-300: #7dd3fc;
   --color-primary-400: #38bdf8;
-  --color-primary-500: #0ea5e9;
-  --color-primary-600: #0284c7;
+  --color-primary-500: #FFD700;
+  --color-primary-600: #FFC700;
   --color-primary-700: #0369a1;
   --color-primary-800: #075985;
   --color-primary-900: #0c4a6e;
@@ -53,6 +53,12 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+  /* Couleurs pour Login */
+  --color-logo-light: #000000;
+  --color-logo-dark: #ffffff;
+  --color-text-light: #000000;
+  --color-text-dark: #ffffff;
 }
 
 /* Styles de base */
@@ -91,3 +97,4 @@ a {
 a:hover {
   color: #0284c7;
 }
+

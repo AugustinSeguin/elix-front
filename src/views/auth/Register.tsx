@@ -231,7 +231,7 @@ const Register = () => {
       <div className="flex flex-row items-center justify-center mb-12 gap-4">
         <div>
           <img
-            src="/logo.png"
+            src="/logo.svg"
             alt="ELIX Logo"
             className="w-20 h-20 object-contain"
           />
