@@ -4,6 +4,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { useAuth } from "../../contexts/AuthContext";
 import api from "../../api/axiosConfig";
 import { IoArrowBack } from "react-icons/io5";
+import Button from "../../components/button/Button";
 
 interface ArticleData {
   id: number;
@@ -64,12 +65,13 @@ const Article = () => {
         <div className="text-center text-red-500">
           {error || "Article introuvable"}
         </div>
-        <button
+        <Button
           onClick={() => navigate(-1)}
+          variant="primary"
           className="mt-6 px-6 py-2 bg-primary-500 text-white rounded-full hover:opacity-90"
         >
           Retour
-        </button>
+        </Button>
       </div>
     );
   }
@@ -78,12 +80,14 @@ const Article = () => {
     <div className="min-h-screen bg-white">
       {/* Header jaune */}
       <div className="bg-yellow-400 px-6 py-4 flex">
-        <button
+        <Button
           onClick={() => navigate(-1)}
+          variant="ghost"
+          size="sm"
           className="p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
         >
           <IoArrowBack size={24} />
-        </button>
+        </Button>
         <div className="flex items-center justify-center">
           <h1 className="text-lg font-semibold text-black">Article</h1>
         </div>
@@ -139,17 +143,6 @@ const Article = () => {
             {article.footer}
           </div>
         )}
-      </div>
-
-      {/* Bouton action fixé en bas */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-6 py-4">
-        <button
-          onClick={() => navigate("/articles")}
-          className="w-full bg-primary-500 hover:opacity-90 text-white font-semibold py-3.5 rounded-full flex items-center justify-center relative transition-all"
-        >
-          <span>Lire plus</span>
-          <MdArrowForwardIos className="absolute right-6 w-4 h-4" />
-        </button>
       </div>
     </div>
   );

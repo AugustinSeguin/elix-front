@@ -1,5 +1,6 @@
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Button from "../button/Button";
 
 interface ResourcesHeaderProps {
   activeTab: "list" | "map";
@@ -35,8 +36,10 @@ const ResourcesHeader = ({
 
       {/* Toggle Switch */}
       <div className="flex bg-white rounded-full p-1 gap-4 mb-2">
-        <button
+        <Button
           onClick={() => navigate("/resources")}
+          variant="ghost"
+          size="sm"
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "list"
               ? "bg-secondary text-black shadow-sm"
@@ -44,9 +47,11 @@ const ResourcesHeader = ({
           }`}
         >
           Liste
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => navigate("/resources/map")}
+          variant="ghost"
+          size="sm"
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "map"
               ? "bg-secondary text-black shadow-sm"
@@ -54,7 +59,7 @@ const ResourcesHeader = ({
           }`}
         >
           Carte
-        </button>
+        </Button>
       </div>
     </div>
   );

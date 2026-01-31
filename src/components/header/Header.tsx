@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { FaBars } from "react-icons/fa";
+import Button from "../button/Button";
 
 interface HeaderProps {
   title?: string;
@@ -25,13 +26,15 @@ const Header = ({
         <div className="flex items-center justify-between h-16">
           {/* Menu icon */}
           {onMenuClick && (
-            <button
+            <Button
               onClick={onMenuClick}
+              variant="ghost"
+              size="sm"
               className="p-2 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
               aria-label="Menu"
             >
               <FaBars className="w-6 h-6 text-gray-700" />
-            </button>
+            </Button>
           )}
 
           {/* Title */}

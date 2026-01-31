@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import QuestionCorrection from "../../components/quiz/QuestionCorrection";
 import { QuizQuestionResultDto } from "../../types/quiz";
+import Button from "../../components/button/Button";
 
 const QuizResult = () => {
   const location = useLocation();
@@ -121,18 +122,20 @@ const QuizResult = () => {
 
         {/* Action buttons */}
         <div className="flex gap-3">
-          <button
+          <Button
             onClick={() => navigate("/run-quiz")}
+            variant="primary"
             className="flex-1 py-3 px-4 rounded-lg bg-primary text-white font-semibold hover:bg-blue-600 transition-colors"
           >
             Refaire le quiz
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => navigate("/")}
+            variant="ghost"
             className="flex-1 py-3 px-4 rounded-lg border-2 border-primary text-primary font-semibold bg-white hover:bg-gray-100 transition-colors"
           >
             Accueil
-          </button>
+          </Button>
         </div>
       </div>
     </div>

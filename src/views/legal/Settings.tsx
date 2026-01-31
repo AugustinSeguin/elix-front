@@ -5,6 +5,7 @@ import ThemeToggle from "../../components/toggle/ThemeToggle";
 import { useAuth } from "../../contexts/AuthContext";
 import { MdArrowForwardIos } from "react-icons/md";
 import api from "../../api/axiosConfig";
+import Button from "../../components/button/Button";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -174,13 +175,14 @@ const Settings = () => {
           />
         </Section>
 
-        <button
+        <Button
           onClick={handleLogout}
           disabled={loading}
+          variant="ghost"
           className="w-full bg-white text-red-500 font-bold rounded-xl p-4 shadow-sm border border-gray-100 hover:bg-red-50 transition-colors mt-4"
         >
           {loading ? "Chargement..." : "Déconnexion"}
-        </button>
+        </Button>
       </main>
 
       {/* Delete Account Modal */}
@@ -191,20 +193,22 @@ const Settings = () => {
               Veux-tu vraiment supprimer ton compte ?
             </p>
             <div className="flex flex-col gap-3">
-              <button
+              <Button
                 onClick={confirmDeleteAccount}
                 disabled={loading}
+                variant="primary"
                 className="w-full bg-primary text-white font-bold py-3 rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 {loading ? "Suppression..." : "Supprimer mon compte"}
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={() => setShowDeleteModal(false)}
                 disabled={loading}
+                variant="ghost"
                 className="w-full bg-gray-300 text-gray-700 font-bold py-3 rounded-full hover:bg-gray-400 transition-colors disabled:opacity-50"
               >
                 Annuler
-              </button>
+              </Button>
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import Button from "../button/Button";
+
 interface ToggleProps {
   enabled: boolean;
   onChange: (enabled: boolean) => void;
@@ -8,9 +10,12 @@ const Toggle = ({ enabled, onChange, label }: ToggleProps) => {
   return (
     <div className="flex items-center gap-3">
       {label && <span className="text-gray-700 font-medium">{label}</span>}
-      <button
+      <Button
+        type="button"
         onClick={() => onChange(!enabled)}
-        className={`relative inline-flex items-center h-6 w-11 rounded-full transition-colors ${
+        variant="ghost"
+        size="sm"
+        className={`relative inline-flex items-center h-6 w-11 rounded-full transition-colors p-0 ${
           enabled ? "bg-primary" : "bg-gray-300"
         }`}
         role="switch"
@@ -21,7 +26,7 @@ const Toggle = ({ enabled, onChange, label }: ToggleProps) => {
             enabled ? "translate-x-6" : "translate-x-1"
           }`}
         />
-      </button>
+      </Button>
     </div>
   );
 };

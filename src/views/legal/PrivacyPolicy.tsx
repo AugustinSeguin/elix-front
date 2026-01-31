@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { MdArrowBackIosNew } from "react-icons/md";
+import Button from "../../components/button/Button";
 
 const PrivacyPolicy = () => {
   const navigate = useNavigate();
@@ -8,14 +9,18 @@ const PrivacyPolicy = () => {
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
       <header className="relative flex items-center justify-center min-h-[60px] py-4 border-b border-gray-200 px-4 bg-white z-10 shadow-sm">
-        <button
+        <Button
           onClick={() => navigate(-1)}
+          variant="ghost"
+          size="sm"
           className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full hover:bg-gray-100 transition-colors"
         >
           <MdArrowBackIosNew className="w-5 h-5 text-black" />
-        </button>
+        </Button>
         <h1 className="text-lg font-bold tracking-widest text-black uppercase text-center leading-tight">
-          Politiques de<br />confidentialité
+          Politiques de
+          <br />
+          confidentialité
         </h1>
       </header>
 

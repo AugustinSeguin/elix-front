@@ -4,6 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { MdArrowForwardIos } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import api from "../../api/axiosConfig";
+import Button from "../../components/button/Button";
 
 interface LoginFormData {
   email: string;
@@ -148,17 +149,19 @@ const Login = () => {
                 } placeholder:text-gray`}
                 disabled={isLoading}
               />
-              <button
+              <Button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                variant="ghost"
+                size="sm"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 p-0"
               >
                 {showPassword ? (
                   <AiOutlineEyeInvisible className="w-5 h-5" />
                 ) : (
                   <AiOutlineEye className="w-5 h-5" />
                 )}
-              </button>
+              </Button>
             </div>
             {errors.password && (
               <p className="text-xs text-red-500 ml-4">{errors.password}</p>
@@ -172,16 +175,14 @@ const Login = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="pt-2">
-            <button
+              <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-yellow-500 hover:bg-primary-600 text-black font-semibold py-3 rounded-full shadow-md transition-colors disabled:opacity-50 flex items-center justify-center relative"
+              variant="primary"
+              size="lg"
             >
               <span>Connexion</span>
-              <MdArrowForwardIos className="absolute right-6 w-4 h-4" />
-            </button>
-          </div>
+            </Button>
 
           {/* Register Link */}
           <div className="text-center pt-2">

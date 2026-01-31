@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { MdArrowBackIosNew } from "react-icons/md";
+import Button from "../../components/button/Button";
 
 const AboutUs = () => {
   const navigate = useNavigate();
@@ -39,12 +40,14 @@ const AboutUs = () => {
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
       <header className="relative flex items-center justify-center h-[60px] border-b border-gray-200 px-4 bg-white z-10 shadow-sm">
-        <button
+        <Button
           onClick={() => navigate(-1)}
+          variant="ghost"
+          size="sm"
           className="absolute left-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
         >
           <MdArrowBackIosNew className="w-5 h-5 text-black" />
-        </button>
+        </Button>
         <h1 className="text-lg font-bold tracking-widest text-black uppercase">
           A propos
         </h1>

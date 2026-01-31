@@ -5,6 +5,7 @@ import Answer from "../../components/quiz/Answer";
 import { useAuth } from "../../contexts/AuthContext";
 import { QuizDto, UserAnswer } from "../../types/quiz";
 import api from "../../api/axiosConfig";
+import Button from "../../components/button/Button";
 
 const Quiz = () => {
   const { categoryId = "1" } = useParams<{ categoryId: string }>();
@@ -180,20 +181,22 @@ const Quiz = () => {
 
         {/* Navigation buttons */}
         <div className="flex gap-4 px-4 py-6">
-          <button
+          <Button
             onClick={handlePreviousQuestion}
             disabled={currentQuestionIndex === 0}
+            variant="ghost"
             className="flex-1 py-3 px-4 rounded-lg border-2 border-gray-300 font-semibold text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
           >
             Précédent
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={handleNextQuestion}
             disabled={selectedAnswerId === undefined}
+            variant="primary"
             className="flex-1 py-3 px-4 rounded-lg bg-primary text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-600"
           >
             {isLastQuestion ? "Terminer" : "Suivant"}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

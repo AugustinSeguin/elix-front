@@ -7,6 +7,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import ResourcesHeader from "../../components/resources/ResourcesHeader";
 import { Resource } from "../../types/resource";
 import { renderToStaticMarkup } from "react-dom/server";
+import Button from "../../components/button/Button";
 
 // Fix for default marker icon in Leaflet with React
 import icon from "leaflet/dist/images/marker-icon.png";
@@ -221,15 +222,17 @@ const ResourcesMap = () => {
                         </a>
                       </p>
                     )}
-                    <button
+                    <Button
                       onClick={() => {
                         const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
                         window.open(url, "_blank");
                       }}
-                      className="text-sm text-primary hover:underline"
+                      variant="ghost"
+                      size="sm"
+                      className="text-sm text-primary hover:underline p-0"
                     >
                       Itinéraire
-                    </button>
+                    </Button>
                   </div>
                 </Popup>
               </Marker>
@@ -239,12 +242,14 @@ const ResourcesMap = () => {
 
         {/* Recenter Button */}
         {userLocation && (
-          <button
+          <Button
             onClick={() => setMapCenter(userLocation)}
+            variant="ghost"
+            size="sm"
             className="absolute bottom-4 right-4 z-[1000] bg-white p-3 rounded-full shadow-lg text-gray-700 hover:text-primary transition-colors"
           >
             <FaLocationArrow size={20} />
-          </button>
+          </Button>
         )}
       </div>
     </div>

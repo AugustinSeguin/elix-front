@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { FaEdit } from "react-icons/fa";
 import Icon from "../../components/icon/Icon";
+import Button from "../../components/button/Button";
 
 const GENDER_MAP: Record<number, string> = {
   0: "Fille",
@@ -125,13 +126,14 @@ const Profile = () => {
         </div>
 
         {/* Edit Button */}
-        <button
+        <Button
           onClick={() => navigate("/edit-profile")}
+          variant="primary"
           className="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
         >
           <Icon icon={FaEdit} size="md" color="white" />
           Modifier mon profil
-        </button>
+        </Button>
       </div>
     </div>
   );

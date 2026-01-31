@@ -1,5 +1,6 @@
 import { InputHTMLAttributes, forwardRef, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import Button from "../button/Button";
 
 interface InputNumberProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
@@ -113,17 +114,19 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 
         <div className={`flex items-center gap-2 ${fullWidth ? "w-full" : ""}`}>
           {showControls && (
-            <button
+            <Button
               type="button"
               onClick={() => handleAdjust(-step)}
               disabled={
                 disabled || (min !== undefined && Number(value) <= Number(min))
               }
-              className={`${buttonBaseStyles} ${buttonSizeStyles[inputSize]}`}
+              variant="ghost"
+              size="sm"
+              className={`${buttonBaseStyles} ${buttonSizeStyles[inputSize]} p-0`}
               aria-label="Décrémenter"
             >
               <FaMinus className="w-3 h-3 text-gray-600" />
-            </button>
+            </Button>
           )}
 
           <input
@@ -150,17 +153,19 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
           />
 
           {showControls && (
-            <button
+            <Button
               type="button"
               onClick={() => handleAdjust(step)}
               disabled={
                 disabled || (max !== undefined && Number(value) >= Number(max))
               }
-              className={`${buttonBaseStyles} ${buttonSizeStyles[inputSize]}`}
+              variant="ghost"
+              size="sm"
+              className={`${buttonBaseStyles} ${buttonSizeStyles[inputSize]} p-0`}
               aria-label="Incrémenter"
             >
               <FaPlus className="w-3 h-3 text-gray-600" />
-            </button>
+            </Button>
           )}
         </div>
 

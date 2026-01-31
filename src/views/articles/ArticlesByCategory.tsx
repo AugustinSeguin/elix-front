@@ -4,6 +4,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { useAuth } from "../../contexts/AuthContext";
 import { Article } from "../../types/article";
 import api from "../../api/axiosConfig";
+import Button from "../../components/button/Button";
 
 const ArticlesByCategory = () => {
   const { categoryId } = useParams();
@@ -56,12 +57,14 @@ const ArticlesByCategory = () => {
   return (
     <div className="min-h-screen bg-white px-6 pt-8 pb-24">
       <div className="mb-8 flex items-center gap-4">
-        <button
+        <Button
           onClick={() => navigate(-1)}
+          variant="ghost"
+          size="sm"
           className="p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
         >
           <IoArrowBack size={24} />
-        </button>
+        </Button>
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Articles</h1>
           <p className="text-gray-500 mt-1">

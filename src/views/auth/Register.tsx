@@ -4,6 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { MdArrowForwardIos } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import api from "../../api/axiosConfig";
+import Button from "../../components/button/Button";
 
 interface RegisterFormData {
   email: string;
@@ -513,17 +514,19 @@ const Register = () => {
                   } focus:outline-none focus:ring-1 focus:ring-primary transition-colors pr-12`}
                   disabled={isLoading}
                 />
-                <button
+                <Button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 p-0"
                 >
                   {showPassword ? (
                     <AiOutlineEyeInvisible className="w-5 h-5" />
                   ) : (
                     <AiOutlineEye className="w-5 h-5" />
                   )}
-                </button>
+                </Button>
               </div>
               {errors.password && (
                 <p className="text-xs text-red-400 ml-1">{errors.password}</p>
@@ -559,17 +562,18 @@ const Register = () => {
                   } focus:outline-none focus:ring-1 focus:ring-primary transition-colors pr-12`}
                   disabled={isLoading}
                 />
-                <button
+                <Button
                   type="button"
                   onClick={() => setShowPasswordRepeated(!showPasswordRepeated)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  variant="ghost"
+                  size="sm"
                 >
                   {showPasswordRepeated ? (
                     <AiOutlineEyeInvisible className="w-5 h-5" />
                   ) : (
                     <AiOutlineEye className="w-5 h-5" />
                   )}
-                </button>
+                </Button>
               </div>
               {errors.passwordRepeated && (
                 <p className="text-xs text-red-400 ml-1">
@@ -580,14 +584,14 @@ const Register = () => {
           </div>
 
           <div className="pt-4">
-            <button
+            <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-primary text-white font-bold py-3.5 rounded-full shadow-lg hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center relative"
+              variant="primary"
+              size="lg"
             >
               <span>{isLoading ? "Inscription..." : "S'inscrire"}</span>
-              <MdArrowForwardIos className="absolute right-6 w-4 h-4" />
-            </button>
+            </Button>
           </div>
         </form>
 

@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { FaqItem } from "../../types/faq";
-
-
+import Button from "../../components/button/Button";
 
 const Faq = () => {
   const navigate = useNavigate();
@@ -26,12 +25,14 @@ const Faq = () => {
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
       <header className="relative flex items-center justify-center h-[60px] border-b border-gray-200 px-4 bg-white z-10 shadow-sm">
-        <button
+        <Button
           onClick={() => navigate(-1)}
+          variant="ghost"
+          size="sm"
           className="absolute left-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
         >
           <MdArrowBackIosNew className="w-5 h-5 text-black" />
-        </button>
+        </Button>
         <h1 className="text-lg font-bold tracking-widest text-black uppercase">
           FAQ
         </h1>
@@ -51,13 +52,18 @@ const Faq = () => {
                   <h3 className="text-[15px] font-bold text-black text-left flex-1 leading-tight">
                     {item.question}
                   </h3>
-                  <button className="text-primary flex-shrink-0 mt-0.5">
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="text-primary flex-shrink-0 mt-0.5 p-0"
+                  >
                     {isOpen ? (
                       <AiOutlineMinus className="w-5 h-5" />
                     ) : (
                       <AiOutlinePlus className="w-5 h-5" />
                     )}
-                  </button>
+                  </Button>
                 </div>
 
                 {isOpen && (

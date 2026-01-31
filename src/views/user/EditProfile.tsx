@@ -325,6 +325,8 @@ const EditProfile = () => {
 
           {/* Submit Button */}
           <Button
+            variant="primary"
+            size="lg"
             label={
               isLoading ? "Mise à jour..." : "Enregistrer les modifications"
             }
@@ -334,12 +336,13 @@ const EditProfile = () => {
         </form>
 
         {/* Back Button */}
-        <button
+        <Button
           onClick={() => navigate("/profile")}
+          variant="ghost"
           className="w-full mt-4 text-primary hover:text-blue-700 font-semibold"
         >
           Retour au profil
-        </button>
+        </Button>
       </div>
     </div>
   );
