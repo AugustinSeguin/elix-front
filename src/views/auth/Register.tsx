@@ -5,6 +5,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import api from "../../api/axiosConfig";
 import Button from "../../components/button/Button";
+import InputText from "../../components/input-text/InputText";
 
 interface RegisterFormData {
   email: string;
@@ -259,148 +260,89 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Informations personnelles */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <label
-                htmlFor="firstname"
-                className="block text-sm text-black ml-1"
-              >
-                Prénom
-              </label>
-              <input
-                id="firstname"
-                type="text"
-                value={formData.firstname}
-                onChange={(e) => {
-                  setFormData({ ...formData, firstname: e.target.value });
-                  if (errors.firstname)
-                    setErrors({ ...errors, firstname: undefined });
-                }}
-                placeholder="Jean"
-                className={`w-full px-6 py-3.5 rounded-full border ${
-                  errors.firstname
-                    ? "border-red-400 text-red-500"
-                    : "border-gray-300 text-black"
-                } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
-                disabled={isLoading}
-              />
-              {errors.firstname && (
-                <p className="text-xs text-red-400 ml-1">{errors.firstname}</p>
-              )}
-            </div>
-
-            <div className="space-y-1">
-              <label
-                htmlFor="lastname"
-                className="block text-sm text-black ml-1"
-              >
-                Nom
-              </label>
-              <input
-                id="lastname"
-                type="text"
-                value={formData.lastname}
-                onChange={(e) => {
-                  setFormData({ ...formData, lastname: e.target.value });
-                  if (errors.lastname)
-                    setErrors({ ...errors, lastname: undefined });
-                }}
-                placeholder="Dupont"
-                className={`w-full px-6 py-3.5 rounded-full border ${
-                  errors.lastname
-                    ? "border-red-400 text-red-500"
-                    : "border-gray-300 text-black"
-                } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
-                disabled={isLoading}
-              />
-              {errors.lastname && (
-                <p className="text-xs text-red-400 ml-1">{errors.lastname}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="space-y-1">
-            <label htmlFor="username" className="block text-sm text-black ml-1">
-              Nom d'utilisateur
-            </label>
-            <input
-              id="username"
+            <InputText
+              id="firstname"
+              label="Prénom"
               type="text"
-              autoComplete="username"
-              value={formData.username}
+              value={formData.firstname}
               onChange={(e) => {
-                setFormData({ ...formData, username: e.target.value });
-                if (errors.username)
-                  setErrors({ ...errors, username: undefined });
+                setFormData({ ...formData, firstname: e.target.value });
+                if (errors.firstname)
+                  setErrors({ ...errors, firstname: undefined });
               }}
-              placeholder="johndoe1"
-              className={`w-full px-6 py-3.5 rounded-full border ${
-                errors.username
-                  ? "border-red-400 text-red-500"
-                  : "border-gray-300 text-black"
-              } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
+              placeholder="Jean"
+              error={errors.firstname}
               disabled={isLoading}
+              fullWidth
             />
-            {errors.username && (
-              <p className="text-xs text-red-400 ml-1">{errors.username}</p>
-            )}
+
+            <InputText
+              id="lastname"
+              label="Nom"
+              type="text"
+              value={formData.lastname}
+              onChange={(e) => {
+                setFormData({ ...formData, lastname: e.target.value });
+                if (errors.lastname)
+                  setErrors({ ...errors, lastname: undefined });
+              }}
+              placeholder="Dupont"
+              error={errors.lastname}
+              disabled={isLoading}
+              fullWidth
+            />
           </div>
+
+          <InputText
+            id="username"
+            label="Nom d'utilisateur"
+            type="text"
+            autoComplete="username"
+            value={formData.username}
+            onChange={(e) => {
+              setFormData({ ...formData, username: e.target.value });
+              if (errors.username)
+                setErrors({ ...errors, username: undefined });
+            }}
+            placeholder="johndoe1"
+            error={errors.username}
+            disabled={isLoading}
+            fullWidth
+          />
 
           {/* Email */}
-          <div className="space-y-1">
-            <label htmlFor="email" className="block text-sm text-black ml-1">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              autoComplete="email"
-              value={formData.email}
-              onChange={(e) => {
-                setFormData({ ...formData, email: e.target.value });
-                if (errors.email) setErrors({ ...errors, email: undefined });
-              }}
-              placeholder="votre@email.com"
-              className={`w-full px-6 py-3.5 rounded-full border ${
-                errors.email
-                  ? "border-red-400 text-red-500"
-                  : "border-gray-300 text-black"
-              } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
-              disabled={isLoading}
-            />
-            {errors.email && (
-              <p className="text-xs text-red-400 ml-1">{errors.email}</p>
-            )}
-          </div>
+          <InputText
+            id="email"
+            label="Email"
+            type="email"
+            autoComplete="email"
+            value={formData.email}
+            onChange={(e) => {
+              setFormData({ ...formData, email: e.target.value });
+              if (errors.email) setErrors({ ...errors, email: undefined });
+            }}
+            placeholder="votre@email.com"
+            error={errors.email}
+            disabled={isLoading}
+            fullWidth
+          />
 
           {/* Date de naissance et genre */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <label
-                htmlFor="birthdate"
-                className="block text-sm text-black ml-1"
-              >
-                Date de naissance
-              </label>
-              <input
-                id="birthdate"
-                type="date"
-                value={formData.birthdate}
-                onChange={(e) => {
-                  setFormData({ ...formData, birthdate: e.target.value });
-                  if (errors.birthdate)
-                    setErrors({ ...errors, birthdate: undefined });
-                }}
-                className={`w-full px-6 py-3.5 rounded-full border ${
-                  errors.birthdate
-                    ? "border-red-400 text-red-500"
-                    : "border-gray-300 text-black"
-                } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
-                disabled={isLoading}
-              />
-              {errors.birthdate && (
-                <p className="text-xs text-red-400 ml-1">{errors.birthdate}</p>
-              )}
-            </div>
+            <InputText
+              id="birthdate"
+              label="Date de naissance"
+              type="date"
+              value={formData.birthdate}
+              onChange={(e) => {
+                setFormData({ ...formData, birthdate: e.target.value });
+                if (errors.birthdate)
+                  setErrors({ ...errors, birthdate: undefined });
+              }}
+              error={errors.birthdate}
+              disabled={isLoading}
+              fullWidth
+            />
 
             <div className="space-y-1">
               <label htmlFor="gender" className="block text-sm text-black ml-1">
@@ -448,34 +390,21 @@ const Register = () => {
           </div>
 
           {/* Téléphone (optionnel) */}
-          <div className="space-y-1">
-            <label
-              htmlFor="phoneNumber"
-              className="block text-sm text-black ml-1"
-            >
-              Numéro de téléphone (optionnel)
-            </label>
-            <input
-              id="phoneNumber"
-              type="tel"
-              value={formData.phoneNumber}
-              onChange={(e) => {
-                setFormData({ ...formData, phoneNumber: e.target.value });
-                if (errors.phoneNumber)
-                  setErrors({ ...errors, phoneNumber: undefined });
-              }}
-              placeholder="123456789"
-              className={`w-full px-6 py-3.5 rounded-full border ${
-                errors.phoneNumber
-                  ? "border-red-400 text-red-500"
-                  : "border-gray-300 text-black"
-              } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
-              disabled={isLoading}
-            />
-            {errors.phoneNumber && (
-              <p className="text-xs text-red-400 ml-1">{errors.phoneNumber}</p>
-            )}
-          </div>
+          <InputText
+            id="phoneNumber"
+            label="Numéro de téléphone (optionnel)"
+            type="tel"
+            value={formData.phoneNumber}
+            onChange={(e) => {
+              setFormData({ ...formData, phoneNumber: e.target.value });
+              if (errors.phoneNumber)
+                setErrors({ ...errors, phoneNumber: undefined });
+            }}
+            placeholder="123456789"
+            error={errors.phoneNumber}
+            disabled={isLoading}
+            fullWidth
+          />
 
           {/* Mots de passe */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

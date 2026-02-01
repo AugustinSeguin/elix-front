@@ -2,6 +2,7 @@ import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/Button";
 import Header from "../header/Header";
+import InputText from "../input-text/InputText";
 
 interface ResourcesHeaderProps {
   activeTab: "list" | "map";
@@ -22,14 +23,14 @@ const ResourcesHeader = ({
 
       {/* Search Bar */}
       <div className="relative mb-6">
-        <input
+        <InputText
           type="text"
           placeholder="Ressource recherchée"
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full py-3 pl-4 pr-12 rounded-full border border-gray-200 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 shadow-sm"
+          fullWidth
         />
-        <FaSearch className="absolute right-5 top-1/2 transform -translate-y-1/2 text-black text-lg" />
+        <FaSearch className="absolute right-5 top-1/2 transform -translate-y-1/2 text-black dark:text-white text-lg pointer-events-none" />
       </div>
 
       {/* Toggle Switch */}

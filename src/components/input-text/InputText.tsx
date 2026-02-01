@@ -32,7 +32,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
 
     // Styles de base pour l'input
     const baseInputStyles =
-      "rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 disabled:bg-gray-100 disabled:cursor-not-allowed";
+      "rounded-full border transition-all duration-200 focus:outline-none focus:ring-2 disabled:bg-gray-100 disabled:cursor-not-allowed";
 
     // Styles conditionnels (normal vs erreur)
     const stateStyles = error

@@ -232,22 +232,16 @@ const EditProfile = () => {
           />
 
           {/* Birthdate */}
-          <div>
-            <label className="block text-sm font-semibold text-black mb-2">
-              Date de naissance
-            </label>
-            <input
-              type="date"
-              value={formData.birthdate || ""}
-              onChange={(e) =>
-                setFormData({ ...formData, birthdate: e.target.value })
-              }
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-            {errors.birthdate && (
-              <p className="text-red-500 text-sm mt-1">{errors.birthdate}</p>
-            )}
-          </div>
+          <InputText
+            label="Date de naissance"
+            type="date"
+            value={formData.birthdate || ""}
+            onChange={(e) =>
+              setFormData({ ...formData, birthdate: e.target.value })
+            }
+            error={errors.birthdate}
+            fullWidth
+          />
 
           {/* Gender */}
           <div>

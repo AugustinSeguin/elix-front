@@ -5,6 +5,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import api from "../../api/axiosConfig";
 import Button from "../../components/button/Button";
+import InputText from "../../components/input-text/InputText";
 
 interface LoginFormData {
   email: string;
@@ -96,36 +97,28 @@ const Login = () => {
       <div className="w-full max-w-md">
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email/Identifiant Field */}
-          <div className="space-y-2">
-            <label htmlFor="email" className="block text-xs text-black ml-4">
-              Identifiant
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => {
-                setFormData({ ...formData, email: e.target.value });
-                if (errors.email) setErrors({ ...errors, email: undefined });
-              }}
-              placeholder="jean.dupont@gmail.com"
-              className={`w-full px-5 py-3 rounded-full border ${
-                errors.email ? "border-red-500" : ""
-              } placeholder:text-black dark:placeholder:text-white`}
-              disabled={isLoading}
-            />
-            {errors.email && (
-              <p className="text-xs text-red-500 ml-4">{errors.email}</p>
-            )}
-          </div>
+          <InputText
+            id="email"
+            label="Identifiant"
+            type="email"
+            value={formData.email}
+            onChange={(e) => {
+              setFormData({ ...formData, email: e.target.value });
+              if (errors.email) setErrors({ ...errors, email: undefined });
+            }}
+            placeholder="jean.dupont@gmail.com"
+            error={errors.email}
+            disabled={isLoading}
+            fullWidth
+          />
 
           {/* Password Field */}
           <div className="space-y-2">
-            <label htmlFor="password" className="block text-xs text-black ml-4">
+            <label htmlFor="password" className="block text-xs">
               Mot de passe
             </label>
             <div className="relative">
-              <input
+              <InputText
                 id="password"
                 type={showPassword ? "text" : "password"}
                 value={formData.password}
@@ -135,17 +128,17 @@ const Login = () => {
                     setErrors({ ...errors, password: undefined });
                 }}
                 placeholder="Mot de passe"
-                className={`w-full px-5 py-3 rounded-full border pr-12 ${
-                  errors.password ? "border-red-500" : ""
-                } placeholder:text-black dark:placeholder:text-white`}
+                error={errors.password}
                 disabled={isLoading}
+                fullWidth
+                className="pr-10"
               />
               <Button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 variant="ghost"
                 size="sm"
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-black hover:text-black dark:hover:text-white p-0"
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-0"
               >
                 {showPassword ? (
                   <AiOutlineEyeInvisible className="w-5 h-5" />
@@ -154,12 +147,9 @@ const Login = () => {
                 )}
               </Button>
             </div>
-            {errors.password && (
-              <p className="text-xs text-red-500 ml-4">{errors.password}</p>
-            )}
             {/* Mot de passe oublié */}
-            <div className="text-left ml-4">
-              <span className="text-xs text-black">Mot de passe oublié ?</span>
+            <div className="text-left">
+              <span className="text-xs">Mot de passe oublié ?</span>
             </div>
           </div>
 
