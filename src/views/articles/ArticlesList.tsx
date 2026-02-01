@@ -11,8 +11,8 @@ const ArticlesList = () => {
   return (
     <div className="min-h-screen px-6 pt-8 pb-24">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Liste des articles</h1>
-        <p className="text-gray-500 mt-1">Choisis le thème</p>
+        <h1 className="text-2xl font-bold text-black">Liste des articles</h1>
+        <p className="text-black mt-1">Choisis le thème</p>
       </div>
 
       <Categories onSelect={handleCategorySelect} />

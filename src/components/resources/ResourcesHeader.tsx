@@ -1,6 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/Button";
+import Header from "../header/Header";
 
 interface ResourcesHeaderProps {
   activeTab: "list" | "map";
@@ -16,11 +17,8 @@ const ResourcesHeader = ({
   const navigate = useNavigate();
 
   return (
-    <div className="pt-6 pb-4 px-4 sticky top-0 z-20">
-      {/* Title */}
-      <h1 className="text-2xl font-bold text-center text-black mb-6">
-        Ressources
-      </h1>
+    <div className="min-h-screen flex flex-col">
+      <Header title="Ressources" />
 
       {/* Search Bar */}
       <div className="relative mb-6">
@@ -29,9 +27,9 @@ const ResourcesHeader = ({
           placeholder="Ressource recherchée"
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full py-3 pl-4 pr-12 rounded-full border border-gray-200 text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 shadow-sm"
+          className="w-full py-3 pl-4 pr-12 rounded-full border border-gray-200 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 shadow-sm"
         />
-        <FaSearch className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg" />
+        <FaSearch className="absolute right-5 top-1/2 transform -translate-y-1/2 text-black text-lg" />
       </div>
 
       {/* Toggle Switch */}

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Categories from "../../components/category/Categories";
+import Header from "../../components/header/Header";
 
 const RunQuiz = () => {
   const navigate = useNavigate();
@@ -9,10 +10,10 @@ const RunQuiz = () => {
   };
 
   return (
-    <div className="min-h-screen px-6 pt-8 pb-24">
+    <div className="min-h-screen flex flex-col">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Lancer un quiz</h1>
-        <p className="text-gray-500 mt-1">Choisis le thème</p>
+        <Header title="Lancer un quiz" />
+        <p className="text-black mt-1">Choisis le thème</p>
       </div>
 
       <Categories onSelect={handleCategorySelect} />

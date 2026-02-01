@@ -84,7 +84,7 @@ const Article = () => {
           onClick={() => navigate(-1)}
           variant="ghost"
           size="sm"
-          className="p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+          className="p-2 -ml-2 text-black hover:bg-gray-100 rounded-full transition-colors"
         >
           <IoArrowBack size={24} />
         </Button>
@@ -116,30 +116,30 @@ const Article = () => {
       {/* Contenu */}
       <div className="px-6 py-6 pb-28">
         {/* Titre avec emphasis */}
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 leading-tight">
+        <h2 className="text-2xl font-bold text-black mb-6 leading-tight">
           {article.title}
         </h2>
 
         {/* Subtitle */}
         {article.subtitle && (
-          <p className="text-base text-gray-600 font-medium mb-6">
+          <p className="text-base text-black font-medium mb-6">
             {article.subtitle}
           </p>
         )}
 
         {/* Contenu principal */}
-        <div className="text-sm text-gray-700 leading-relaxed space-y-4">
+        <div className="text-sm text-black leading-relaxed space-y-4">
           {article.content
             .split("\n")
             .map(
               (paragraph, index) =>
-                paragraph.trim() && <p key={index}>{paragraph}</p>
+                paragraph.trim() && <p key={index}>{paragraph}</p>,
             )}
         </div>
 
         {/* Footer */}
         {article.footer && (
-          <div className="mt-8 pt-6 border-t border-gray-200 text-xs text-gray-500 italic">
+          <div className="mt-8 pt-6 border-t border-gray-200 text-xs text-black italic">
             {article.footer}
           </div>
         )}

@@ -2,8 +2,10 @@ import { InputHTMLAttributes, forwardRef, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import Button from "../button/Button";
 
-interface InputNumberProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
+interface InputNumberProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "type" | "size"
+> {
   label?: string;
   error?: string;
   helperText?: string;
@@ -32,7 +34,7 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
       disabled,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isFocused, setIsFocused] = useState(false);
 
@@ -68,7 +70,7 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
     // Styles conditionnels (normal vs erreur)
     const stateStyles = error
       ? "border-red-500 focus:border-red-500 focus:ring-red-500 text-red-900"
-      : "border-gray-300 focus:border-primary-500 focus:ring-primary-500 text-gray-900";
+      : "border-gray-300 focus:border-primary-500 focus:ring-primary-500 text-black";
 
     // Styles de taille
     const sizeStyles = {
@@ -104,8 +106,8 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
               isFocused
                 ? "text-primary-600"
                 : error
-                ? "text-red-600"
-                : "text-gray-700"
+                  ? "text-red-600"
+                  : "text-black"
             }`}
           >
             {label}
@@ -125,7 +127,7 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
               className={`${buttonBaseStyles} ${buttonSizeStyles[inputSize]} p-0`}
               aria-label="Décrémenter"
             >
-              <FaMinus className="w-3 h-3 text-gray-600" />
+              <FaMinus className="w-3 h-3 text-black" />
             </Button>
           )}
 
@@ -164,21 +166,19 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
               className={`${buttonBaseStyles} ${buttonSizeStyles[inputSize]} p-0`}
               aria-label="Incrémenter"
             >
-              <FaPlus className="w-3 h-3 text-gray-600" />
+              <FaPlus className="w-3 h-3 text-black" />
             </Button>
           )}
         </div>
 
         {(error || helperText) && (
-          <span
-            className={`text-sm ${error ? "text-red-600" : "text-gray-500"}`}
-          >
+          <span className={`text-sm ${error ? "text-red-600" : "text-black"}`}>
             {error || helperText}
           </span>
         )}
       </div>
     );
-  }
+  },
 );
 
 InputNumber.displayName = "InputNumber";

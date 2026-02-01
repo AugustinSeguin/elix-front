@@ -79,7 +79,7 @@ const Login = () => {
     <div className="min-h-screen flex flex-col items-center justify-center px-6 sm:px-8">
       {/* Logo Section */}
       <div className="flex flex-col items-center justify-center mb-8">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-8">
           <img
             src="/logo.svg"
             alt="ELIX Logo"
@@ -90,9 +90,6 @@ const Login = () => {
             }}
           />
         </div>
-        <div className="flex items-center gap-3 mb-4">
-          <h1 className="text-4xl font-bold tracking-wider text-black">ELIX</h1>
-        </div>
         <h2 className="text-xl font-semibold text-black">Connexion</h2>
       </div>
 
@@ -100,10 +97,7 @@ const Login = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email/Identifiant Field */}
           <div className="space-y-2">
-            <label
-              htmlFor="email"
-              className="block text-xs text-white dark:text-gray-500 ml-4"
-            >
+            <label htmlFor="email" className="block text-xs text-black ml-4">
               Identifiant
             </label>
             <input
@@ -117,7 +111,7 @@ const Login = () => {
               placeholder="jean.dupont@gmail.com"
               className={`w-full px-5 py-3 rounded-full border ${
                 errors.email ? "border-red-500" : ""
-              } placeholder:text-gray`}
+              } placeholder:text-black dark:placeholder:text-white`}
               disabled={isLoading}
             />
             {errors.email && (
@@ -127,10 +121,7 @@ const Login = () => {
 
           {/* Password Field */}
           <div className="space-y-2">
-            <label
-              htmlFor="password"
-              className="block text-xs text-white dark:text-gray-500 ml-4"
-            >
+            <label htmlFor="password" className="block text-xs text-black ml-4">
               Mot de passe
             </label>
             <div className="relative">
@@ -146,7 +137,7 @@ const Login = () => {
                 placeholder="Mot de passe"
                 className={`w-full px-5 py-3 rounded-full border pr-12 ${
                   errors.password ? "border-red-500" : ""
-                } placeholder:text-gray`}
+                } placeholder:text-black dark:placeholder:text-white`}
                 disabled={isLoading}
               />
               <Button
@@ -154,7 +145,7 @@ const Login = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 variant="ghost"
                 size="sm"
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 p-0"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-black hover:text-black dark:hover:text-white p-0"
               >
                 {showPassword ? (
                   <AiOutlineEyeInvisible className="w-5 h-5" />
@@ -168,9 +159,7 @@ const Login = () => {
             )}
             {/* Mot de passe oublié */}
             <div className="text-left ml-4">
-              <span className="text-xs text-gray-400">
-                Mot de passe oublié ?
-              </span>
+              <span className="text-xs text-black">Mot de passe oublié ?</span>
             </div>
           </div>
 
@@ -186,7 +175,7 @@ const Login = () => {
 
           {/* Register Link */}
           <div className="text-center pt-2">
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-black">
               Pas de compte ?{" "}
               <Link
                 to="/register"

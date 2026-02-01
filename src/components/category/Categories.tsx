@@ -91,7 +91,7 @@ const Categories = ({ onSelect }: CategoriesProps) => {
             />
           </div>
           <div className="ml-4 flex-1 min-w-0">
-            <h3 className="font-bold text-gray-900 text-base truncate">
+            <h3 className="font-bold text-black text-base truncate">
               {index + 1}. {category.title}
             </h3>
           </div>

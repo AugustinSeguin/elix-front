@@ -30,7 +30,7 @@ const Quiz = () => {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
         setQuiz(response.data);
       } catch (err) {
@@ -50,7 +50,7 @@ const Quiz = () => {
 
     // Ensure the selected answerId belongs to the current question
     const validAnswer = (currentQuestion.answers || []).find(
-      (a) => a.id === answerId
+      (a) => a.id === answerId,
     );
     if (!validAnswer) {
       console.warn("Selected answerId not found in current question answers", {
@@ -62,7 +62,7 @@ const Quiz = () => {
 
     setUserAnswers((prev) => {
       const newAnswers = prev.filter(
-        (a) => a.questionId !== currentQuestion.id
+        (a) => a.questionId !== currentQuestion.id,
       );
       return [
         ...newAnswers,
@@ -101,7 +101,7 @@ const Quiz = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       // Redirection vers la page de résultats avec les résultats
@@ -115,7 +115,7 @@ const Quiz = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-lg text-gray-600">Chargement du quiz...</p>
+        <p className="text-lg text-black">Chargement du quiz...</p>
       </div>
     );
   }
@@ -131,14 +131,14 @@ const Quiz = () => {
   if (!quiz || quiz.questions.length === 0) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-lg text-gray-600">Aucune question disponible</p>
+        <p className="text-lg text-black">Aucune question disponible</p>
       </div>
     );
   }
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
   const selectedAnswerId = userAnswers.find(
-    (a) => a.questionId === currentQuestion.id
+    (a) => a.questionId === currentQuestion.id,
   )?.answerIdSelected;
   const isLastQuestion = currentQuestionIndex === quiz.questions.length - 1;
 
@@ -158,7 +158,7 @@ const Quiz = () => {
 
       {/* Quiz title */}
       <div className="shadow-sm p-4">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-black">
           Question {currentQuestionIndex + 1} / {quiz.questions.length}
         </p>
       </div>
@@ -185,7 +185,7 @@ const Quiz = () => {
             onClick={handlePreviousQuestion}
             disabled={currentQuestionIndex === 0}
             variant="ghost"
-            className="flex-1 py-3 px-4 rounded-lg border-2 border-gray-300 font-semibold text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 py-3 px-4 rounded-lg border-2 border-gray-300 font-semibold text-black disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Précédent
           </Button>

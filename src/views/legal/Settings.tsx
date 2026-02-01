@@ -6,6 +6,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { MdArrowForwardIos } from "react-icons/md";
 import api from "../../api/axiosConfig";
 import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Settings = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       logout();
       navigate("/login");
@@ -70,7 +71,7 @@ const Settings = () => {
     children: React.ReactNode;
   }) => (
     <div className="mb-4 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-      <p className="text-[13px] text-gray-400 pt-4 px-4 font-medium">{title}</p>
+      <p className="text-[13px] text-black pt-4 px-4 font-medium">{title}</p>
       <div className="flex flex-col">{children}</div>
     </div>
   );
@@ -95,7 +96,7 @@ const Settings = () => {
     const content = (
       <div className="flex items-center justify-between p-4 transition-colors cursor-pointer border-b border-gray-100 last:border-0">
         <span className={`text-[15px] font-medium ${color}`}>{label}</span>
-        {arrow && <MdArrowForwardIos className="w-4 h-4 text-gray-400" />}
+        {arrow && <MdArrowForwardIos className="w-4 h-4 text-black" />}
         {onToggle && (
           <div onClick={(e) => e.stopPropagation()}>
             <Toggle enabled={toggle || false} onChange={onToggle} />
@@ -120,13 +121,8 @@ const Settings = () => {
   };
 
   return (
-    <div className="min-h-screenpb-24">
-      {/* Header */}
-      <header className="relative flex items-center justify-center min-h-[60px] py-6 border-b border-gray-200 px-4 z-10 shadow-sm mb-6">
-        <h1 className="text-2xl font-bold text-black text-center tracking-wide">
-          Paramètres
-        </h1>
-      </header>
+    <div className="min-h-screen flex flex-col">
+      <Header title="Paramètres" />
 
       {/* Content */}
       <main className="px-4 max-w-md mx-auto">
@@ -189,7 +185,7 @@ const Settings = () => {
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4">
           <div className="rounded-2xl p-6 w-full max-w-sm shadow-xl animate-in fade-in zoom-in duration-200">
-            <p className="text-center text-gray-600 mb-6 text-[15px]">
+            <p className="text-center text-black mb-6 text-[15px]">
               Veux-tu vraiment supprimer ton compte ?
             </p>
             <div className="flex flex-col gap-3">
@@ -205,7 +201,7 @@ const Settings = () => {
                 onClick={() => setShowDeleteModal(false)}
                 disabled={loading}
                 variant="ghost"
-                className="w-full bg-gray-300 text-gray-700 font-bold py-3 rounded-full hover:bg-gray-400 transition-colors disabled:opacity-50"
+                className="w-full bg-gray-300 text-black font-bold py-3 rounded-full hover:bg-gray-400 transition-colors disabled:opacity-50"
               >
                 Annuler
               </Button>

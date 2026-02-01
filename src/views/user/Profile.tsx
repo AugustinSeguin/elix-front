@@ -17,7 +17,7 @@ const Profile = () => {
   if (!user) {
     return (
       <div className="flex items-center justify-center min-h-screen pb-20">
-        <p className="text-lg text-gray-600">Chargement du profil...</p>
+        <p className="text-lg text-black">Chargement du profil...</p>
       </div>
     );
   }
@@ -54,15 +54,15 @@ const Profile = () => {
         <div className="rounded-lg shadow-md p-6 space-y-4 mb-6">
           {/* Email */}
           <div>
-            <p className="text-sm text-gray-500">Email</p>
-            <p className="text-lg font-semibold text-gray-800">{user.email}</p>
+            <p className="text-sm text-black">Email</p>
+            <p className="text-lg font-semibold text-black">{user.email}</p>
           </div>
 
           {/* Username */}
           {user.username && (
             <div>
-              <p className="text-sm text-gray-500">Nom d'utilisateur</p>
-              <p className="text-lg font-semibold text-gray-800">
+              <p className="text-sm text-black">Nom d'utilisateur</p>
+              <p className="text-lg font-semibold text-black">
                 {user.username}
               </p>
             </div>
@@ -71,8 +71,8 @@ const Profile = () => {
           {/* Firstname */}
           {user.firstname && (
             <div>
-              <p className="text-sm text-gray-500">Prénom</p>
-              <p className="text-lg font-semibold text-gray-800">
+              <p className="text-sm text-black">Prénom</p>
+              <p className="text-lg font-semibold text-black">
                 {user.firstname}
               </p>
             </div>
@@ -81,8 +81,8 @@ const Profile = () => {
           {/* Lastname */}
           {user.lastname && (
             <div>
-              <p className="text-sm text-gray-500">Nom</p>
-              <p className="text-lg font-semibold text-gray-800">
+              <p className="text-sm text-black">Nom</p>
+              <p className="text-lg font-semibold text-black">
                 {user.lastname}
               </p>
             </div>
@@ -91,16 +91,16 @@ const Profile = () => {
           {/* Birthdate */}
           {user.birthdate && (
             <div>
-              <p className="text-sm text-gray-500">Date de naissance</p>
-              <p className="text-lg font-semibold text-gray-800">{birthDate}</p>
+              <p className="text-sm text-black">Date de naissance</p>
+              <p className="text-lg font-semibold text-black">{birthDate}</p>
             </div>
           )}
 
           {/* Gender */}
           {user.gender !== undefined && (
             <div>
-              <p className="text-sm text-gray-500">Genre</p>
-              <p className="text-lg font-semibold text-gray-800">
+              <p className="text-sm text-black">Genre</p>
+              <p className="text-lg font-semibold text-black">
                 {GENDER_MAP[user.gender] || "-"}
               </p>
             </div>
@@ -109,8 +109,8 @@ const Profile = () => {
           {/* Phone Number */}
           {user.phoneNumber && (
             <div>
-              <p className="text-sm text-gray-500">Numéro de téléphone</p>
-              <p className="text-lg font-semibold text-gray-800">
+              <p className="text-sm text-black">Numéro de téléphone</p>
+              <p className="text-lg font-semibold text-black">
                 {user.phoneNumber}
               </p>
             </div>
@@ -118,8 +118,8 @@ const Profile = () => {
 
           {/* Premium Status */}
           <div>
-            <p className="text-sm text-gray-500">Statut</p>
-            <p className="text-lg font-semibold text-gray-800">
+            <p className="text-sm text-black">Statut</p>
+            <p className="text-lg font-semibold text-black">
               {user.isPremium ? "Premium ⭐" : "Gratuit"}
             </p>
           </div>

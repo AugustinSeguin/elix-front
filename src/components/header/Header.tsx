@@ -49,7 +49,7 @@ const Header = ({
                 className="p-2 rounded-lg hover:bg-black/10 transition-colors focus:outline-none focus:ring-2 focus:ring-black/20"
                 aria-label="Menu"
               >
-                <FaBars className="w-6 h-6 text-gray-700" />
+                <FaBars className="w-6 h-6 text-black" />
               </Button>
             )}
           </div>

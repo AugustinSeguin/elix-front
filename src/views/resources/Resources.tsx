@@ -11,7 +11,7 @@ const Resources = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState(
-    () => localStorage.getItem("resources_search") || ""
+    () => localStorage.getItem("resources_search") || "",
   );
 
   // Persist keyword across views
@@ -19,7 +19,7 @@ const Resources = () => {
     localStorage.setItem("resources_search", searchTerm);
   }, [searchTerm]);
   const [userLocation, setUserLocation] = useState<[number, number] | null>(
-    null
+    null,
   );
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Resources = () => {
             position.coords.longitude,
           ]);
         },
-        (error) => console.error("Error getting location:", error)
+        (error) => console.error("Error getting location:", error),
       );
     }
   }, []);
@@ -60,7 +60,7 @@ const Resources = () => {
         let url = "/api/Resource";
         if (searchTerm && searchTerm.length >= 3) {
           url = `/api/Resource/search/keyword?keyword=${encodeURIComponent(
-            searchTerm
+            searchTerm,
           )}`;
         }
 
@@ -96,7 +96,7 @@ const Resources = () => {
     lat1: number,
     lon1: number,
     lat2: number,
-    lon2: number
+    lon2: number,
   ) => {
     const R = 6371; // Radius of the earth in km
     const dLat = deg2rad(lat2 - lat1);
@@ -132,7 +132,7 @@ const Resources = () => {
         ) : error ? (
           <div className="text-center py-12 text-red-500">{error}</div>
         ) : resources.length === 0 ? (
-          <div className="text-center py-12 text-gray-500">
+          <div className="text-center py-12 text-black">
             Aucune ressource trouvée.
           </div>
         ) : (
@@ -142,19 +142,19 @@ const Resources = () => {
               className="border border-gray-200 rounded-xl p-4 shadow-sm flex items-center justify-between"
             >
               <div className="flex-1">
-                <h3 className="font-medium text-gray-900 text-base">
+                <h3 className="font-medium text-black text-base">
                   {resource.name}
                 </h3>
               </div>
 
               <div className="flex items-center gap-4">
                 {userLocation && (
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-black">
                     {calculateDistance(
                       userLocation[0],
                       userLocation[1],
                       resource.localization.latitude,
-                      resource.localization.longitude
+                      resource.localization.longitude,
                     )}{" "}
                     km
                   </span>

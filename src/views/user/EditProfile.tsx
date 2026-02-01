@@ -46,7 +46,7 @@ const EditProfile = () => {
     passwordRepeated: "",
   });
   const [previewImage, setPreviewImage] = useState<string | null>(
-    user?.pictureMediaPath || null
+    user?.pictureMediaPath || null,
   );
 
   const validateForm = (): boolean => {
@@ -139,7 +139,7 @@ const EditProfile = () => {
               Authorization: `Bearer ${token}`,
               "Content-Type": "multipart/form-data",
             },
-          }
+          },
         );
         // Utiliser la réponse avec la photo mise à jour
         setUser(pictureResponse.data);
@@ -167,7 +167,7 @@ const EditProfile = () => {
   if (!user) {
     return (
       <div className="flex items-center justify-center min-h-screen pb-20">
-        <p className="text-lg text-gray-600">Chargement...</p>
+        <p className="text-lg text-black">Chargement...</p>
       </div>
     );
   }
@@ -196,7 +196,7 @@ const EditProfile = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Profile Picture */}
           <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Photo de profil
             </label>
             <div className="text-center mb-4">
@@ -233,7 +233,7 @@ const EditProfile = () => {
 
           {/* Birthdate */}
           <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Date de naissance
             </label>
             <input
@@ -251,7 +251,7 @@ const EditProfile = () => {
 
           {/* Gender */}
           <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Genre
             </label>
             <select
@@ -292,9 +292,9 @@ const EditProfile = () => {
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Mot de passe{" "}
-              <span className="text-gray-500">
+              <span className="text-black">
                 (laissez vide pour ne pas le changer)
               </span>
             </label>

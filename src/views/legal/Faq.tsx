@@ -67,7 +67,7 @@ const Faq = () => {
                 </div>
 
                 {isOpen && (
-                  <div className="mt-3 text-[13px] text-gray-500 text-left whitespace-pre-line leading-relaxed pl-1">
+                  <div className="mt-3 text-[13px] text-black text-left whitespace-pre-line leading-relaxed pl-1">
                     {item.answer}
                   </div>
                 )}

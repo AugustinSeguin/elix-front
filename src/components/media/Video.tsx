@@ -41,7 +41,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
       className = "",
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(muted);
@@ -157,7 +157,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
       return () =>
         document.removeEventListener(
           "fullscreenchange",
-          handleFullscreenChange
+          handleFullscreenChange,
         );
     }, []);
 
@@ -278,7 +278,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
               <p className="text-white text-lg mb-2">
                 Erreur de chargement de la vidéo
               </p>
-              <p className="text-gray-400 text-sm">
+              <p className="text-black text-sm">
                 Le fichier vidéo est introuvable ou corrompu.
               </p>
             </div>
@@ -286,7 +286,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Video.displayName = "Video";

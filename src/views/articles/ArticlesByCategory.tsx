@@ -61,13 +61,13 @@ const ArticlesByCategory = () => {
           onClick={() => navigate(-1)}
           variant="ghost"
           size="sm"
-          className="p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+          className="p-2 -ml-2 text-black hover:bg-gray-100 rounded-full transition-colors"
         >
           <IoArrowBack size={24} />
         </Button>
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Articles</h1>
-          <p className="text-gray-500 mt-1">
+          <h1 className="text-2xl font-bold text-black">Articles</h1>
+          <p className="text-black mt-1">
             {categoryTitle ? categoryTitle : `Catégorie ${categoryId}`}
           </p>
         </div>
@@ -80,7 +80,7 @@ const ArticlesByCategory = () => {
       ) : error ? (
         <div className="text-center py-12 text-red-500">{error}</div>
       ) : articles.length === 0 ? (
-        <div className="text-center py-12 text-gray-500">
+        <div className="text-center py-12 text-black">
           Aucun article disponible dans cette catégorie.
         </div>
       ) : (
@@ -98,7 +98,7 @@ const ArticlesByCategory = () => {
                   className="w-full h-40 object-cover rounded-xl mb-4"
                 />
               )}
-              <h3 className="text-lg font-bold text-gray-900 mb-1">
+              <h3 className="text-lg font-bold text-black mb-1">
                 {article.title}
               </h3>
               {article.subtitle && (
@@ -106,7 +106,7 @@ const ArticlesByCategory = () => {
                   {article.subtitle}
                 </p>
               )}
-              <p className="text-gray-600 text-sm line-clamp-3">
+              <p className="text-black text-sm line-clamp-3">
                 {article.content}
               </p>
             </div>

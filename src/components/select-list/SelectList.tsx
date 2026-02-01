@@ -42,7 +42,7 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
       className = "",
       id,
     },
-    ref
+    ref,
   ) => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
@@ -73,7 +73,7 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
     const filteredOptions =
       searchable && searchTerm
         ? options.filter((opt) =>
-            opt.label.toLowerCase().includes(searchTerm.toLowerCase())
+            opt.label.toLowerCase().includes(searchTerm.toLowerCase()),
           )
         : options;
 
@@ -106,7 +106,7 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
     const getDisplayLabel = () => {
       if (multiple) {
         const selectedOptions = options.filter(
-          (opt) => Array.isArray(value) && value.includes(opt.value)
+          (opt) => Array.isArray(value) && value.includes(opt.value),
         );
         if (selectedOptions.length === 0) return placeholder;
         if (selectedOptions.length === 1) return selectedOptions[0].label;
@@ -150,8 +150,8 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
               isFocused
                 ? "text-primary-600"
                 : error
-                ? "text-red-600"
-                : "text-gray-700"
+                  ? "text-red-600"
+                  : "text-black"
             }`}
           >
             {label}
@@ -171,11 +171,11 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
             aria-haspopup="listbox"
             aria-expanded={isOpen}
           >
-            <span className={value ? "text-gray-900" : "text-gray-400"}>
+            <span className={value ? "text-black" : "text-black"}>
               {getDisplayLabel()}
             </span>
             <FaChevronDown
-              className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${
+              className={`w-4 h-4 text-black transition-transform duration-200 ${
                 isOpen ? "rotate-180" : ""
               }`}
             />
@@ -201,7 +201,7 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
               {/* Options List */}
               <div className="overflow-y-auto max-h-48">
                 {filteredOptions.length === 0 ? (
-                  <div className="px-4 py-3 text-sm text-gray-500 text-center">
+                  <div className="px-4 py-3 text-sm text-black text-center">
                     Aucune option trouvée
                   </div>
                 ) : (
@@ -226,7 +226,7 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
                         className={`text-sm ${
                           isSelected(option.value)
                             ? "font-medium text-primary-700"
-                            : "text-gray-700"
+                            : "text-black"
                         }`}
                       >
                         {option.label}
@@ -243,15 +243,13 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
         </div>
 
         {(error || helperText) && (
-          <span
-            className={`text-sm ${error ? "text-red-600" : "text-gray-500"}`}
-          >
+          <span className={`text-sm ${error ? "text-red-600" : "text-black"}`}>
             {error || helperText}
           </span>
         )}
       </div>
     );
-  }
+  },
 );
 
 SelectList.displayName = "SelectList";

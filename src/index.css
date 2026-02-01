@@ -85,7 +85,10 @@ html.dark {
 
 /* Styles de base */
 html {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -95,35 +98,12 @@ body {
   color: var(--color-primary-900);
   min-height: 100vh;
   margin: 0;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
-
 
 html.dark .text-black {
-  color: var(--color-primary-50) !important;
-}
-
-html.dark .text-gray-400 {
-  color: var(--color-primary-50) !important;
-}
-
-html.dark .text-gray-500 {
-  color: var(--color-primary-50) !important;
-}
-
-html.dark .text-gray-600 {
-  color: var(--color-primary-100) !important;
-}
-
-html.dark .text-gray-700 {
-  color: var(--color-primary-100) !important;
-}
-
-html.dark .text-gray-800 {
-  color: var(--color-primary-100) !important;
-}
-
-html.dark .text-gray-900 {
   color: var(--color-primary-50) !important;
 }
 

@@ -1,7 +1,9 @@
 import { InputHTMLAttributes, forwardRef, useEffect, useRef } from "react";
 
-interface CheckboxProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
+interface CheckboxProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "type" | "size"
+> {
   label?: string;
   error?: string;
   helperText?: string;
@@ -21,7 +23,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       id,
       ...props
     },
-    ref
+    ref,
   ) => {
     const internalRef = useRef<HTMLInputElement>(null);
     const checkboxRef = (ref as any) || internalRef;
@@ -78,7 +80,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             <label
               htmlFor={checkboxId}
               className={`cursor-pointer select-none ${
-                error ? "text-red-600" : "text-gray-700"
+                error ? "text-red-600" : "text-black"
               } ${labelSizeStyles[checkboxSize]}`}
             >
               {label}
@@ -88,16 +90,14 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
         {(error || helperText) && (
           <span
-            className={`text-sm ml-7 ${
-              error ? "text-red-600" : "text-gray-500"
-            }`}
+            className={`text-sm ml-7 ${error ? "text-red-600" : "text-black"}`}
           >
             {error || helperText}
           </span>
         )}
       </div>
     );
-  }
+  },
 );
 
 Checkbox.displayName = "Checkbox";

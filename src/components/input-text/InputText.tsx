@@ -1,7 +1,9 @@
 import { InputHTMLAttributes, forwardRef, useState } from "react";
 
-interface InputTextProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
+interface InputTextProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "size"
+> {
   label?: string;
   error?: string;
   helperText?: string;
@@ -21,7 +23,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
       id,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isFocused, setIsFocused] = useState(false);
 
@@ -35,7 +37,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
     // Styles conditionnels (normal vs erreur)
     const stateStyles = error
       ? "border-red-500 focus:border-red-500 focus:ring-red-500 text-red-900"
-      : "border-gray-300 focus:border-primary-500 focus:ring-primary-500 text-gray-900";
+      : "border-gray-300 focus:border-primary-500 focus:ring-primary-500 text-black";
 
     // Styles de taille
     const sizeStyles = {
@@ -60,8 +62,8 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
               isFocused
                 ? "text-primary-600"
                 : error
-                ? "text-red-600"
-                : "text-gray-700"
+                  ? "text-red-600"
+                  : "text-black"
             }`}
           >
             {label}
@@ -84,15 +86,13 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
         />
 
         {(error || helperText) && (
-          <span
-            className={`text-sm ${error ? "text-red-600" : "text-gray-500"}`}
-          >
+          <span className={`text-sm ${error ? "text-red-600" : "text-black"}`}>
             {error || helperText}
           </span>
         )}
       </div>
     );
-  }
+  },
 );
 
 InputText.displayName = "InputText";
