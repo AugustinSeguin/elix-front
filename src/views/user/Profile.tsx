@@ -3,6 +3,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { FaEdit } from "react-icons/fa";
 import Icon from "../../components/icon/Icon";
 import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 
 const GENDER_MAP: Record<number, string> = {
   0: "Fille",
@@ -29,9 +30,7 @@ const Profile = () => {
   return (
     <div className="min-h-screen pb-20">
       {/* Header */}
-      <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
-        <h1 className="text-3xl font-bold">Mon Profil</h1>
-      </div>
+      <Header title="Mon profil" />
 
       {/* Profile Content */}
       <div className="max-w-md mx-auto px-4 py-8">

@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { IoArrowBack } from "react-icons/io5";
 import { useAuth } from "../../contexts/AuthContext";
 import { Article } from "../../types/article";
 import api from "../../api/axiosConfig";
-import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 
 const ArticlesByCategory = () => {
   const { categoryId } = useParams();
@@ -55,23 +54,8 @@ const ArticlesByCategory = () => {
   };
 
   return (
-    <div className="min-h-screen px-6 pt-8 pb-24">
-      <div className="mb-8 flex items-center gap-4">
-        <Button
-          onClick={() => navigate(-1)}
-          variant="ghost"
-          size="sm"
-          className="p-2 -ml-2 text-black hover:bg-gray-100 rounded-full transition-colors"
-        >
-          <IoArrowBack size={24} />
-        </Button>
-        <div>
-          <h1 className="text-2xl font-bold text-black">Articles</h1>
-          <p className="text-black mt-1">
-            {categoryTitle ? categoryTitle : `Catégorie ${categoryId}`}
-          </p>
-        </div>
-      </div>
+    <div className="min-h-screen pb-24">
+      <Header title="Articles" sticky={true}></Header>
 
       {loading ? (
         <div className="flex justify-center py-12">

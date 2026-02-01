@@ -23,4 +23,24 @@ interface AuthContextType {
   fetchUserData: () => Promise<void>;
 }
 
-export type { User, AuthContextType };
+interface EditFormData {
+  username?: string;
+  birthdate?: string;
+  gender?: number;
+  phoneNumber?: string;
+  password: string;
+  passwordRepeated: string;
+  pictureFile?: File;
+}
+
+interface FormErrors {
+  username?: string;
+  birthdate?: string;
+  gender?: string;
+  phoneNumber?: string;
+  password?: string;
+  passwordRepeated?: string;
+  general?: string;
+}
+
+export type { User, AuthContextType, EditFormData, FormErrors };

@@ -4,32 +4,8 @@ import { useAuth } from "../../contexts/AuthContext";
 import InputText from "../../components/input-text/InputText";
 import Button from "../../components/button/Button";
 import api from "../../api/axiosConfig";
-
-interface EditFormData {
-  username?: string;
-  birthdate?: string;
-  gender?: number;
-  phoneNumber?: string;
-  password: string;
-  passwordRepeated: string;
-  pictureFile?: File;
-}
-
-interface FormErrors {
-  username?: string;
-  birthdate?: string;
-  gender?: string;
-  phoneNumber?: string;
-  password?: string;
-  passwordRepeated?: string;
-  general?: string;
-}
-
-const GENDER_OPTIONS = [
-  { label: "Fille", value: 0 },
-  { label: "Garçon", value: 1 },
-  { label: "Non binaire", value: 2 },
-];
+import Header from "../../components/header/Header";
+import { FormErrors, EditFormData } from "../../types/user";
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -48,6 +24,12 @@ const EditProfile = () => {
   const [previewImage, setPreviewImage] = useState<string | null>(
     user?.pictureMediaPath || null,
   );
+
+  const GENDER_OPTIONS = [
+    { label: "Fille", value: 0 },
+    { label: "Garçon", value: 1 },
+    { label: "Non binaire", value: 2 },
+  ];
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -175,9 +157,7 @@ const EditProfile = () => {
   return (
     <div className="min-h-screen pb-20">
       {/* Header */}
-      <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
-        <h1 className="text-3xl font-bold">Modifier mon profil</h1>
-      </div>
+      <Header title="Modifier mon profil" />
 
       {/* Form */}
       <div className="max-w-md mx-auto px-4 py-8">

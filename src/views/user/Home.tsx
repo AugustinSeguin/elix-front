@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useAuth } from "../../contexts/AuthContext";
 import Header from "../../components/header/Header";
 import InputText from "../../components/input-text/InputText";
 import Button from "../../components/button/Button";
@@ -10,10 +9,9 @@ import SelectList from "../../components/select-list/SelectList";
 import Icon from "../../components/icon/Icon";
 import Image from "../../components/media/Image";
 import Video from "../../components/media/Video";
-import { FaHeart, FaUser, FaStar, FaSignOutAlt } from "react-icons/fa";
+import { FaHeart, FaUser, FaStar } from "react-icons/fa";
 
 const Home = () => {
-  const { logout } = useAuth();
   const [formData, setFormData] = useState({
     nom: "",
     prenom: "",

@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { MdArrowForwardIos } from "react-icons/md";
 import { useAuth } from "../../contexts/AuthContext";
 import api from "../../api/axiosConfig";
-import { IoArrowBack } from "react-icons/io5";
 import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 
 interface ArticleData {
   id: number;
@@ -78,20 +77,7 @@ const Article = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header jaune */}
-      <div className="bg-primary-400 px-6 py-4 flex">
-        <Button
-          onClick={() => navigate(-1)}
-          variant="ghost"
-          size="sm"
-          className="p-2 -ml-2 text-black hover:bg-gray-100 rounded-full transition-colors"
-        >
-          <IoArrowBack size={24} />
-        </Button>
-        <div className="flex items-center justify-center">
-          <h1 className="text-lg font-semibold text-black">Article</h1>
-        </div>
-      </div>
+      <Header title="Article" sticky={true}></Header>
 
       {/* Badge catégorie */}
       {article.category && (

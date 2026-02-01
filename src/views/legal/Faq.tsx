@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { MdArrowBackIosNew } from "react-icons/md";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { FaqItem } from "../../types/faq";
 import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 
 const Faq = () => {
   const navigate = useNavigate();
@@ -24,19 +24,7 @@ const Faq = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="relative flex items-center justify-center h-[60px] border-b border-gray-200 px-4 z-10 shadow-sm">
-        <Button
-          onClick={() => navigate(-1)}
-          variant="ghost"
-          size="sm"
-          className="absolute left-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
-        >
-          <MdArrowBackIosNew className="w-5 h-5 text-black" />
-        </Button>
-        <h1 className="text-lg font-bold tracking-widest text-black uppercase">
-          FAQ
-        </h1>
-      </header>
+      <Header title="FAQ" sticky={true}></Header>
 
       {/* Content */}
       <main className="flex-1 overflow-y-auto p-6 pb-24 flex flex-col items-center">

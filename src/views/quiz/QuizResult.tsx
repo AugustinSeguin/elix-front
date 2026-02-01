@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import QuestionCorrection from "../../components/quiz/QuestionCorrection";
 import { QuizQuestionResultDto } from "../../types/quiz";
 import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 
 const QuizResult = () => {
   const location = useLocation();
@@ -62,8 +63,9 @@ const QuizResult = () => {
   return (
     <div className="min-h-screen pb-20">
       {/* Header */}
+      <Header title="Résultats du Quiz" sticky={true}></Header>
+
       <div className="text-white py-8 px-4 text-center">
-        <h1 className="text-2xl font-bold text-black">Résultats du Quiz</h1>
         <p className="text-black mt-1">
           Score: {score}/{totalQuestions}
         </p>
