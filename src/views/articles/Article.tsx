@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { IoArrowBack } from "react-icons/io5";
 import { useAuth } from "../../contexts/AuthContext";
 import api from "../../api/axiosConfig";
+import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 
 interface ArticleData {
   id: number;
@@ -12,7 +13,10 @@ interface ArticleData {
   mediaPath: string | null;
   footer: string | null;
   categoryId: number;
-  category: null;
+  category: {
+    id: number;
+    name: string;
+  } | null;
 }
 
 const Article = () => {
@@ -48,85 +52,82 @@ const Article = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex justify-center items-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
       </div>
     );
   }
 
   if (error || !article) {
     return (
-      <div className="min-h-screen bg-white px-6 pt-8">
-        <div className="mb-8">
-          <button
-            onClick={() => navigate(-1)}
-            className="p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
-          >
-            <IoArrowBack size={24} />
-          </button>
-        </div>
+      <div className="min-h-screen px-6 pt-8 flex flex-col items-center justify-center">
         <div className="text-center text-red-500">
           {error || "Article introuvable"}
         </div>
+        <Button
+          onClick={() => navigate(-1)}
+          variant="primary"
+          className="mt-6 px-6 py-2 bg-primary-500 text-white rounded-full hover:opacity-90"
+        >
+          Retour
+        </Button>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white pb-24">
-      {/* Header avec image ou juste bouton retour */}
-      <div className="relative">
-        {article.mediaPath ? (
-          <div className="h-64 w-full relative">
-            <img
-              src={article.mediaPath}
-              alt={article.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/50 to-transparent"></div>
-            <button
-              onClick={() => navigate(-1)}
-              className="absolute top-8 left-6 p-2 text-white hover:bg-white/20 rounded-full transition-colors"
-            >
-              <IoArrowBack size={24} />
-            </button>
-          </div>
-        ) : (
-          <div className="px-6 pt-8 mb-6">
-            <button
-              onClick={() => navigate(-1)}
-              className="p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
-            >
-              <IoArrowBack size={24} />
-            </button>
-          </div>
-        )}
+    <div className="min-h-screen">
+      <div className="mb-4">
+        <Header title="Article" sticky={true}></Header>
       </div>
 
-      <div className="px-6 -mt-6 relative z-10 bg-white rounded-t-3xl pt-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-          {article.title}
-        </h1>
+      {/* Badge catégorie */}
+      {article.category && (
+        <div className="px-6 pt-4 pb-2">
+          <span className="inline-block bg-green-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
+            {article.category.name}
+          </span>
+        </div>
+      )}
 
+      {/* Image */}
+      {article.mediaPath && (
+        <div className="px-6 py-4">
+          <img
+            src={article.mediaPath}
+            alt={article.title}
+            className="w-full h-auto rounded-lg object-cover"
+          />
+        </div>
+      )}
+
+      {/* Contenu */}
+      <div className="px-6 py-6 pb-28">
+        {/* Titre avec emphasis */}
+        <h2 className="text-2xl font-bold text-black mb-6 leading-tight">
+          {article.title}
+        </h2>
+
+        {/* Subtitle */}
         {article.subtitle && (
-          <p className="text-lg text-primary font-medium mb-6">
+          <p className="text-base text-black font-medium mb-6">
             {article.subtitle}
           </p>
         )}
 
-        <div className="prose prose-gray max-w-none">
-          {article.content.split("\n").map(
-            (paragraph, index) =>
-              paragraph.trim() && (
-                <p key={index} className="mb-4 text-gray-700 leading-relaxed">
-                  {paragraph}
-                </p>
-              )
-          )}
+        {/* Contenu principal */}
+        <div className="text-sm text-black leading-relaxed space-y-4">
+          {article.content
+            .split("\n")
+            .map(
+              (paragraph, index) =>
+                paragraph.trim() && <p key={index}>{paragraph}</p>,
+            )}
         </div>
 
+        {/* Footer */}
         {article.footer && (
-          <div className="mt-8 pt-6 border-t border-gray-100 text-sm text-gray-500 italic">
+          <div className="mt-8 pt-6 border-t border-gray-200 text-xs text-black italic">
             {article.footer}
           </div>
         )}

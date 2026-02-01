@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#993D80",
-        secondary: "#D7B2D4",
+        primary: "var(--color-primary-500)",
+        secondary: "var(--color-secondary-500)",
       },
       spacing: {
         128: "32rem",

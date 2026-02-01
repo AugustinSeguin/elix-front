@@ -4,6 +4,8 @@ import { useAuth } from "../../contexts/AuthContext";
 import { MdArrowForwardIos } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import api from "../../api/axiosConfig";
+import Button from "../../components/button/Button";
+import InputText from "../../components/input-text/InputText";
 
 interface RegisterFormData {
   email: string;
@@ -226,30 +228,24 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-12 sm:px-8">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12 sm:px-8">
       {/* Logo Section */}
-      <div className="flex flex-row items-center justify-center mb-12 gap-4">
-        <div>
+      <div className="flex flex-col items-center justify-center mb-8">
+        <div className="flex items-center gap-3 mb-8">
           <img
-            src="/logo.png"
+            src="/logo.svg"
             alt="ELIX Logo"
-            className="w-20 h-20 object-contain"
+            style={{
+              width: "111px",
+              height: "151px",
+              opacity: 1,
+            }}
           />
         </div>
-        <div className="flex flex-col items-start">
-          <h1 className="text-4xl font-bold tracking-widest text-black leading-none">
-            ELIX
-          </h1>
-          <p className="text-[10px] uppercase tracking-widest text-black">
-            Le savoir qui libère tes relations
-          </p>
-        </div>
+        <h2 className="text-xl font-semibold text-black">Inscription</h2>
       </div>
 
       <div className="w-full max-w-2xl">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-8 tracking-wide">
-          Inscription
-        </h2>
 
         {/* Erreur générale */}
         {errors.general && (
@@ -261,157 +257,92 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Informations personnelles */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <label
-                htmlFor="firstname"
-                className="block text-sm text-gray-600 ml-1"
-              >
-                Prénom
-              </label>
-              <input
-                id="firstname"
-                type="text"
-                value={formData.firstname}
-                onChange={(e) => {
-                  setFormData({ ...formData, firstname: e.target.value });
-                  if (errors.firstname)
-                    setErrors({ ...errors, firstname: undefined });
-                }}
-                placeholder="Jean"
-                className={`w-full px-6 py-3.5 rounded-full border ${
-                  errors.firstname
-                    ? "border-red-400 text-red-500"
-                    : "border-gray-300 text-gray-900"
-                } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
-                disabled={isLoading}
-              />
-              {errors.firstname && (
-                <p className="text-xs text-red-400 ml-1">{errors.firstname}</p>
-              )}
-            </div>
-
-            <div className="space-y-1">
-              <label
-                htmlFor="lastname"
-                className="block text-sm text-gray-600 ml-1"
-              >
-                Nom
-              </label>
-              <input
-                id="lastname"
-                type="text"
-                value={formData.lastname}
-                onChange={(e) => {
-                  setFormData({ ...formData, lastname: e.target.value });
-                  if (errors.lastname)
-                    setErrors({ ...errors, lastname: undefined });
-                }}
-                placeholder="Dupont"
-                className={`w-full px-6 py-3.5 rounded-full border ${
-                  errors.lastname
-                    ? "border-red-400 text-red-500"
-                    : "border-gray-300 text-gray-900"
-                } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
-                disabled={isLoading}
-              />
-              {errors.lastname && (
-                <p className="text-xs text-red-400 ml-1">{errors.lastname}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="space-y-1">
-            <label
-              htmlFor="username"
-              className="block text-sm text-gray-600 ml-1"
-            >
-              Nom d'utilisateur
-            </label>
-            <input
-              id="username"
+            <InputText
+              id="firstname"
+              label="Prénom"
               type="text"
-              autoComplete="username"
-              value={formData.username}
+              value={formData.firstname}
               onChange={(e) => {
-                setFormData({ ...formData, username: e.target.value });
-                if (errors.username)
-                  setErrors({ ...errors, username: undefined });
+                setFormData({ ...formData, firstname: e.target.value });
+                if (errors.firstname)
+                  setErrors({ ...errors, firstname: undefined });
               }}
-              placeholder="johndoe1"
-              className={`w-full px-6 py-3.5 rounded-full border ${
-                errors.username
-                  ? "border-red-400 text-red-500"
-                  : "border-gray-300 text-gray-900"
-              } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
+              placeholder="Jean"
+              error={errors.firstname}
               disabled={isLoading}
+              fullWidth
             />
-            {errors.username && (
-              <p className="text-xs text-red-400 ml-1">{errors.username}</p>
-            )}
+
+            <InputText
+              id="lastname"
+              label="Nom"
+              type="text"
+              value={formData.lastname}
+              onChange={(e) => {
+                setFormData({ ...formData, lastname: e.target.value });
+                if (errors.lastname)
+                  setErrors({ ...errors, lastname: undefined });
+              }}
+              placeholder="Dupont"
+              error={errors.lastname}
+              disabled={isLoading}
+              fullWidth
+            />
           </div>
+
+          <InputText
+            id="username"
+            label="Nom d'utilisateur"
+            type="text"
+            autoComplete="username"
+            value={formData.username}
+            onChange={(e) => {
+              setFormData({ ...formData, username: e.target.value });
+              if (errors.username)
+                setErrors({ ...errors, username: undefined });
+            }}
+            placeholder="johndoe1"
+            error={errors.username}
+            disabled={isLoading}
+            fullWidth
+          />
 
           {/* Email */}
-          <div className="space-y-1">
-            <label htmlFor="email" className="block text-sm text-gray-600 ml-1">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              autoComplete="email"
-              value={formData.email}
-              onChange={(e) => {
-                setFormData({ ...formData, email: e.target.value });
-                if (errors.email) setErrors({ ...errors, email: undefined });
-              }}
-              placeholder="votre@email.com"
-              className={`w-full px-6 py-3.5 rounded-full border ${
-                errors.email
-                  ? "border-red-400 text-red-500"
-                  : "border-gray-300 text-gray-900"
-              } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
-              disabled={isLoading}
-            />
-            {errors.email && (
-              <p className="text-xs text-red-400 ml-1">{errors.email}</p>
-            )}
-          </div>
+          <InputText
+            id="email"
+            label="Email"
+            type="email"
+            autoComplete="email"
+            value={formData.email}
+            onChange={(e) => {
+              setFormData({ ...formData, email: e.target.value });
+              if (errors.email) setErrors({ ...errors, email: undefined });
+            }}
+            placeholder="votre@email.com"
+            error={errors.email}
+            disabled={isLoading}
+            fullWidth
+          />
 
           {/* Date de naissance et genre */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <label
-                htmlFor="birthdate"
-                className="block text-sm text-gray-600 ml-1"
-              >
-                Date de naissance
-              </label>
-              <input
-                id="birthdate"
-                type="date"
-                value={formData.birthdate}
-                onChange={(e) => {
-                  setFormData({ ...formData, birthdate: e.target.value });
-                  if (errors.birthdate)
-                    setErrors({ ...errors, birthdate: undefined });
-                }}
-                className={`w-full px-6 py-3.5 rounded-full border ${
-                  errors.birthdate
-                    ? "border-red-400 text-red-500"
-                    : "border-gray-300 text-gray-900"
-                } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
-                disabled={isLoading}
-              />
-              {errors.birthdate && (
-                <p className="text-xs text-red-400 ml-1">{errors.birthdate}</p>
-              )}
-            </div>
+            <InputText
+              id="birthdate"
+              label="Date de naissance"
+              type="date"
+              value={formData.birthdate}
+              onChange={(e) => {
+                setFormData({ ...formData, birthdate: e.target.value });
+                if (errors.birthdate)
+                  setErrors({ ...errors, birthdate: undefined });
+              }}
+              error={errors.birthdate}
+              disabled={isLoading}
+              fullWidth
+            />
 
             <div className="space-y-1">
-              <label
-                htmlFor="gender"
-                className="block text-sm text-gray-600 ml-1"
-              >
+              <label htmlFor="gender" className="block text-sm text-black ml-1">
                 Genre
               </label>
               <div className="relative">
@@ -423,10 +354,10 @@ const Register = () => {
                     if (errors.gender)
                       setErrors({ ...errors, gender: undefined });
                   }}
-                  className={`w-full px-6 py-3.5 rounded-full border appearance-none bg-white ${
+                  className={`w-full px-6 py-3.5 rounded-full border appearance-none ${
                     errors.gender
                       ? "border-red-400 text-red-500"
-                      : "border-gray-300 text-gray-900"
+                      : "border-gray-300 text-black"
                   } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
                   disabled={isLoading}
                 >
@@ -439,7 +370,7 @@ const Register = () => {
                     </option>
                   ))}
                 </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-black">
                   <svg
                     className="fill-current h-4 w-4"
                     xmlns="http://www.w3.org/2000/svg"
@@ -456,41 +387,28 @@ const Register = () => {
           </div>
 
           {/* Téléphone (optionnel) */}
-          <div className="space-y-1">
-            <label
-              htmlFor="phoneNumber"
-              className="block text-sm text-gray-600 ml-1"
-            >
-              Numéro de téléphone (optionnel)
-            </label>
-            <input
-              id="phoneNumber"
-              type="tel"
-              value={formData.phoneNumber}
-              onChange={(e) => {
-                setFormData({ ...formData, phoneNumber: e.target.value });
-                if (errors.phoneNumber)
-                  setErrors({ ...errors, phoneNumber: undefined });
-              }}
-              placeholder="123456789"
-              className={`w-full px-6 py-3.5 rounded-full border ${
-                errors.phoneNumber
-                  ? "border-red-400 text-red-500"
-                  : "border-gray-300 text-gray-900"
-              } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
-              disabled={isLoading}
-            />
-            {errors.phoneNumber && (
-              <p className="text-xs text-red-400 ml-1">{errors.phoneNumber}</p>
-            )}
-          </div>
+          <InputText
+            id="phoneNumber"
+            label="Numéro de téléphone (optionnel)"
+            type="tel"
+            value={formData.phoneNumber}
+            onChange={(e) => {
+              setFormData({ ...formData, phoneNumber: e.target.value });
+              if (errors.phoneNumber)
+                setErrors({ ...errors, phoneNumber: undefined });
+            }}
+            placeholder="123456789"
+            error={errors.phoneNumber}
+            disabled={isLoading}
+            fullWidth
+          />
 
           {/* Mots de passe */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1">
               <label
                 htmlFor="password"
-                className="block text-sm text-gray-600 ml-1"
+                className="block text-sm text-black ml-1"
               >
                 Mot de passe
               </label>
@@ -509,21 +427,23 @@ const Register = () => {
                   className={`w-full px-6 py-3.5 rounded-full border ${
                     errors.password
                       ? "border-red-400 text-red-500"
-                      : "border-gray-300 text-gray-900"
+                      : "border-gray-300 text-black"
                   } focus:outline-none focus:ring-1 focus:ring-primary transition-colors pr-12`}
                   disabled={isLoading}
                 />
-                <button
+                <Button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-black hover:text-black dark:hover:text-white p-0"
                 >
                   {showPassword ? (
                     <AiOutlineEyeInvisible className="w-5 h-5" />
                   ) : (
                     <AiOutlineEye className="w-5 h-5" />
                   )}
-                </button>
+                </Button>
               </div>
               {errors.password && (
                 <p className="text-xs text-red-400 ml-1">{errors.password}</p>
@@ -533,7 +453,7 @@ const Register = () => {
             <div className="space-y-1">
               <label
                 htmlFor="passwordRepeated"
-                className="block text-sm text-gray-600 ml-1"
+                className="block text-sm text-black ml-1"
               >
                 Confirmer le mot de passe
               </label>
@@ -555,21 +475,22 @@ const Register = () => {
                   className={`w-full px-6 py-3.5 rounded-full border ${
                     errors.passwordRepeated
                       ? "border-red-400 text-red-500"
-                      : "border-gray-300 text-gray-900"
+                      : "border-gray-300 text-black"
                   } focus:outline-none focus:ring-1 focus:ring-primary transition-colors pr-12`}
                   disabled={isLoading}
                 />
-                <button
+                <Button
                   type="button"
                   onClick={() => setShowPasswordRepeated(!showPasswordRepeated)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  variant="ghost"
+                  size="sm"
                 >
                   {showPasswordRepeated ? (
                     <AiOutlineEyeInvisible className="w-5 h-5" />
                   ) : (
                     <AiOutlineEye className="w-5 h-5" />
                   )}
-                </button>
+                </Button>
               </div>
               {errors.passwordRepeated && (
                 <p className="text-xs text-red-400 ml-1">
@@ -580,20 +501,20 @@ const Register = () => {
           </div>
 
           <div className="pt-4">
-            <button
+            <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-primary text-white font-bold py-3.5 rounded-full shadow-lg hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center relative"
+              variant="primary"
+              size="lg"
             >
               <span>{isLoading ? "Inscription..." : "S'inscrire"}</span>
-              <MdArrowForwardIos className="absolute right-6 w-4 h-4" />
-            </button>
+            </Button>
           </div>
         </form>
 
         {/* Lien vers login */}
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-black">
             Vous avez déjà un compte ?{" "}
             <Link
               to="/login"

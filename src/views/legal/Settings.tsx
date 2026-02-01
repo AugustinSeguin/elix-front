@@ -5,6 +5,8 @@ import ThemeToggle from "../../components/toggle/ThemeToggle";
 import { useAuth } from "../../contexts/AuthContext";
 import { MdArrowForwardIos } from "react-icons/md";
 import api from "../../api/axiosConfig";
+import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ const Settings = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       logout();
       navigate("/login");
@@ -68,8 +70,8 @@ const Settings = () => {
     title: string;
     children: React.ReactNode;
   }) => (
-    <div className="mb-4 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-      <p className="text-[13px] text-gray-400 pt-4 px-4 font-medium">{title}</p>
+    <div className="mb-4 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <p className="text-[13px] text-black pt-4 px-4 font-medium">{title}</p>
       <div className="flex flex-col">{children}</div>
     </div>
   );
@@ -92,9 +94,9 @@ const Settings = () => {
     onToggle?: (val: boolean) => void;
   }) => {
     const content = (
-      <div className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors cursor-pointer border-b border-gray-100 last:border-0">
+      <div className="flex items-center justify-between p-4 transition-colors cursor-pointer border-b border-gray-100 last:border-0">
         <span className={`text-[15px] font-medium ${color}`}>{label}</span>
-        {arrow && <MdArrowForwardIos className="w-4 h-4 text-gray-400" />}
+        {arrow && <MdArrowForwardIos className="w-4 h-4 text-black" />}
         {onToggle && (
           <div onClick={(e) => e.stopPropagation()}>
             <Toggle enabled={toggle || false} onChange={onToggle} />
@@ -119,16 +121,13 @@ const Settings = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-24">
-      {/* Header */}
-      <header className="relative flex items-center justify-center min-h-[60px] py-6 border-b border-gray-200 px-4 bg-white z-10 shadow-sm mb-6">
-        <h1 className="text-2xl font-bold text-black text-center tracking-wide">
-          Paramètres
-        </h1>
-      </header>
+    <div className="min-h-screen pb-24">
+      <div className="mb-4">
+        <Header title="Paramètres" sticky={true} />
+      </div>
 
       {/* Content */}
-      <main className="px-4 max-w-md mx-auto">
+      <main className="container-app px-4 pt-6 space-y-4 w-full">
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6">
             {error}
@@ -174,37 +173,40 @@ const Settings = () => {
           />
         </Section>
 
-        <button
+        <Button
           onClick={handleLogout}
           disabled={loading}
-          className="w-full bg-white text-red-500 font-bold rounded-xl p-4 shadow-sm border border-gray-100 hover:bg-red-50 transition-colors mt-4"
+          variant="ghost"
+          className="w-full text-red-500 font-bold rounded-xl p-4 shadow-sm border border-gray-100 hover:bg-red-50 transition-colors mt-4"
         >
           {loading ? "Chargement..." : "Déconnexion"}
-        </button>
+        </Button>
       </main>
 
       {/* Delete Account Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl animate-in fade-in zoom-in duration-200">
-            <p className="text-center text-gray-600 mb-6 text-[15px]">
+          <div className="rounded-2xl p-6 w-full max-w-sm shadow-xl animate-in fade-in zoom-in duration-200">
+            <p className="text-center text-black mb-6 text-[15px]">
               Veux-tu vraiment supprimer ton compte ?
             </p>
             <div className="flex flex-col gap-3">
-              <button
+              <Button
                 onClick={confirmDeleteAccount}
                 disabled={loading}
+                variant="primary"
                 className="w-full bg-primary text-white font-bold py-3 rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 {loading ? "Suppression..." : "Supprimer mon compte"}
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={() => setShowDeleteModal(false)}
                 disabled={loading}
-                className="w-full bg-gray-300 text-gray-700 font-bold py-3 rounded-full hover:bg-gray-400 transition-colors disabled:opacity-50"
+                variant="ghost"
+                className="w-full bg-gray-300 text-black font-bold py-3 rounded-full hover:bg-gray-400 transition-colors disabled:opacity-50"
               >
                 Annuler
-              </button>
+              </Button>
             </div>
           </div>
         </div>

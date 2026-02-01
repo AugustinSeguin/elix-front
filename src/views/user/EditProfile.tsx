@@ -4,32 +4,8 @@ import { useAuth } from "../../contexts/AuthContext";
 import InputText from "../../components/input-text/InputText";
 import Button from "../../components/button/Button";
 import api from "../../api/axiosConfig";
-
-interface EditFormData {
-  username?: string;
-  birthdate?: string;
-  gender?: number;
-  phoneNumber?: string;
-  password: string;
-  passwordRepeated: string;
-  pictureFile?: File;
-}
-
-interface FormErrors {
-  username?: string;
-  birthdate?: string;
-  gender?: string;
-  phoneNumber?: string;
-  password?: string;
-  passwordRepeated?: string;
-  general?: string;
-}
-
-const GENDER_OPTIONS = [
-  { label: "Fille", value: 0 },
-  { label: "Garçon", value: 1 },
-  { label: "Non binaire", value: 2 },
-];
+import Header from "../../components/header/Header";
+import { FormErrors, EditFormData } from "../../types/user";
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -46,8 +22,14 @@ const EditProfile = () => {
     passwordRepeated: "",
   });
   const [previewImage, setPreviewImage] = useState<string | null>(
-    user?.pictureMediaPath || null
+    user?.pictureMediaPath || null,
   );
+
+  const GENDER_OPTIONS = [
+    { label: "Fille", value: 0 },
+    { label: "Garçon", value: 1 },
+    { label: "Non binaire", value: 2 },
+  ];
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -139,7 +121,7 @@ const EditProfile = () => {
               Authorization: `Bearer ${token}`,
               "Content-Type": "multipart/form-data",
             },
-          }
+          },
         );
         // Utiliser la réponse avec la photo mise à jour
         setUser(pictureResponse.data);
@@ -167,16 +149,16 @@ const EditProfile = () => {
   if (!user) {
     return (
       <div className="flex items-center justify-center min-h-screen pb-20">
-        <p className="text-lg text-gray-600">Chargement...</p>
+        <p className="text-lg text-black">Chargement...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen pb-20">
       {/* Header */}
-      <div className="bg-primary text-white py-8 px-4 text-center sticky top-0 z-10">
-        <h1 className="text-3xl font-bold">Modifier mon profil</h1>
+      <div className="mb-4">
+        <Header title="Modifier mon profil" sticky={true} />
       </div>
 
       {/* Form */}
@@ -196,7 +178,7 @@ const EditProfile = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Profile Picture */}
           <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Photo de profil
             </label>
             <div className="text-center mb-4">
@@ -232,26 +214,20 @@ const EditProfile = () => {
           />
 
           {/* Birthdate */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-2">
-              Date de naissance
-            </label>
-            <input
-              type="date"
-              value={formData.birthdate || ""}
-              onChange={(e) =>
-                setFormData({ ...formData, birthdate: e.target.value })
-              }
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-            {errors.birthdate && (
-              <p className="text-red-500 text-sm mt-1">{errors.birthdate}</p>
-            )}
-          </div>
+          <InputText
+            label="Date de naissance"
+            type="date"
+            value={formData.birthdate || ""}
+            onChange={(e) =>
+              setFormData({ ...formData, birthdate: e.target.value })
+            }
+            error={errors.birthdate}
+            fullWidth
+          />
 
           {/* Gender */}
           <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Genre
             </label>
             <select
@@ -292,9 +268,9 @@ const EditProfile = () => {
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Mot de passe{" "}
-              <span className="text-gray-500">
+              <span className="text-black">
                 (laissez vide pour ne pas le changer)
               </span>
             </label>
@@ -325,6 +301,8 @@ const EditProfile = () => {
 
           {/* Submit Button */}
           <Button
+            variant="primary"
+            size="lg"
             label={
               isLoading ? "Mise à jour..." : "Enregistrer les modifications"
             }
@@ -334,12 +312,13 @@ const EditProfile = () => {
         </form>
 
         {/* Back Button */}
-        <button
+        <Button
           onClick={() => navigate("/profile")}
+          variant="ghost"
           className="w-full mt-4 text-primary hover:text-blue-700 font-semibold"
         >
           Retour au profil
-        </button>
+        </Button>
       </div>
     </div>
   );

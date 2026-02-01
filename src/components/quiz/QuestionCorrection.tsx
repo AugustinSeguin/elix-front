@@ -14,10 +14,10 @@ const QuestionCorrection = ({
   const total = results.length || 10;
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
+    <div className="rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-bold text-black">Corrections</h3>
-        <span className="text-sm font-semibold text-gray-600">
+        <span className="text-sm font-semibold text-black">
           Note: {correctCount}/{total}
         </span>
       </div>
@@ -25,7 +25,7 @@ const QuestionCorrection = ({
         {results.map((res, idx) => {
           const userAnswerTitle = getSelectedAnswerTitle(
             res.question,
-            res.selectedAnswerId
+            res.selectedAnswerId,
           );
           const correctAnswerTitle = res.answer?.title || "";
           const isCorrect = res.isCorrect;
@@ -55,7 +55,7 @@ const QuestionCorrection = ({
                   <span className="font-semibold text-blue-600">
                     Correction:
                   </span>{" "}
-                  <span className="text-gray-700">{correctAnswerTitle}</span>
+                  <span className="text-black">{correctAnswerTitle}</span>
                 </p>
               )}
             </div>

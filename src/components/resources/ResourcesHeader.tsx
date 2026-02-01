@@ -1,5 +1,8 @@
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Button from "../button/Button";
+import Header from "../header/Header";
+import InputText from "../input-text/InputText";
 
 interface ResourcesHeaderProps {
   activeTab: "list" | "map";
@@ -15,46 +18,49 @@ const ResourcesHeader = ({
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white pt-6 pb-4 px-4 sticky top-0 z-20">
-      {/* Title */}
-      <h1 className="text-2xl font-bold text-center text-black mb-6">
-        Ressources
-      </h1>
+    <div className="min-h-screen flex flex-col">
+      <div className="mb-4">
+      <Header title="Ressources" sticky={true} />
+      </div>
 
       {/* Search Bar */}
       <div className="relative mb-6">
-        <input
+        <InputText
           type="text"
           placeholder="Ressource recherchée"
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full py-3 pl-4 pr-12 rounded-full border border-gray-200 text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 shadow-sm"
+          fullWidth
         />
-        <FaSearch className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg" />
+        <FaSearch className="absolute right-5 top-1/2 transform -translate-y-1/2 text-black dark:text-white text-lg pointer-events-none" />
       </div>
 
       {/* Toggle Switch */}
-      <div className="flex bg-white rounded-full p-1 gap-4 mb-2">
-        <button
+      <div className="flex rounded-full p-1 gap-4 mb-2">
+        <Button
           onClick={() => navigate("/resources")}
+          variant="ghost"
+          size="sm"
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "list"
-              ? "bg-secondary text-black shadow-sm"
-              : "bg-white text-black border border-gray-200"
+              ? "bg-primary shadow-sm"
+              : "text-black border border-gray-200"
           }`}
         >
           Liste
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => navigate("/resources/map")}
+          variant="ghost"
+          size="sm"
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "map"
-              ? "bg-secondary text-black shadow-sm"
-              : "bg-white text-black border border-gray-200"
+              ? "bg-primary shadow-sm"
+              : "text-black border border-gray-200"
           }`}
         >
           Carte
-        </button>
+        </Button>
       </div>
     </div>
   );

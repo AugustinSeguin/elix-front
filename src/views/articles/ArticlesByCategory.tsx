@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { IoArrowBack } from "react-icons/io5";
 import { useAuth } from "../../contexts/AuthContext";
 import { Article } from "../../types/article";
 import api from "../../api/axiosConfig";
+import Header from "../../components/header/Header";
 
 const ArticlesByCategory = () => {
   const { categoryId } = useParams();
@@ -54,20 +54,9 @@ const ArticlesByCategory = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white px-6 pt-8 pb-24">
-      <div className="mb-8 flex items-center gap-4">
-        <button
-          onClick={() => navigate(-1)}
-          className="p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
-        >
-          <IoArrowBack size={24} />
-        </button>
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Articles</h1>
-          <p className="text-gray-500 mt-1">
-            {categoryTitle ? categoryTitle : `Catégorie ${categoryId}`}
-          </p>
-        </div>
+    <div className="min-h-screen pb-24">
+      <div className="mb-4">
+        <Header title="Articles" sticky={true}></Header>
       </div>
 
       {loading ? (
@@ -77,7 +66,7 @@ const ArticlesByCategory = () => {
       ) : error ? (
         <div className="text-center py-12 text-red-500">{error}</div>
       ) : articles.length === 0 ? (
-        <div className="text-center py-12 text-gray-500">
+        <div className="text-center py-12 text-black">
           Aucun article disponible dans cette catégorie.
         </div>
       ) : (
@@ -86,7 +75,7 @@ const ArticlesByCategory = () => {
             <div
               key={article.id}
               onClick={() => handleArticleClick(article.id)}
-              className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+              className="border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
             >
               {article.mediaPath && (
                 <img
@@ -95,7 +84,7 @@ const ArticlesByCategory = () => {
                   className="w-full h-40 object-cover rounded-xl mb-4"
                 />
               )}
-              <h3 className="text-lg font-bold text-gray-900 mb-1">
+              <h3 className="text-lg font-bold text-black mb-1">
                 {article.title}
               </h3>
               {article.subtitle && (
@@ -103,7 +92,7 @@ const ArticlesByCategory = () => {
                   {article.subtitle}
                 </p>
               )}
-              <p className="text-gray-600 text-sm line-clamp-3">
+              <p className="text-black text-sm line-clamp-3">
                 {article.content}
               </p>
             </div>

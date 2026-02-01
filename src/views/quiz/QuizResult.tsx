@@ -2,6 +2,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import QuestionCorrection from "../../components/quiz/QuestionCorrection";
 import { QuizQuestionResultDto } from "../../types/quiz";
+import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 
 const QuizResult = () => {
   const location = useLocation();
@@ -30,7 +32,7 @@ const QuizResult = () => {
   if (!quizResults) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-lg text-gray-600">Chargement des résultats...</p>
+        <p className="text-lg text-black">Chargement des résultats...</p>
       </div>
     );
   }
@@ -59,11 +61,14 @@ const QuizResult = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen pb-20">
       {/* Header */}
+      <div className="mb-4">
+        <Header title="Résultats du Quiz" sticky={true}></Header>
+      </div>
+
       <div className="text-white py-8 px-4 text-center">
-        <h1 className="text-2xl font-bold text-gray-900">Résultats du Quiz</h1>
-        <p className="text-gray-500 mt-1">
+        <p className="text-black mt-1">
           Score: {score}/{totalQuestions}
         </p>
       </div>
@@ -102,7 +107,7 @@ const QuizResult = () => {
               <span className={`text-5xl font-bold ${getResultColor()}`}>
                 {percentage}%
               </span>
-              <span className="text-gray-500 text-sm mt-2">
+              <span className="text-black text-sm mt-2">
                 {score}/{totalQuestions}
               </span>
             </div>
@@ -112,7 +117,7 @@ const QuizResult = () => {
             <h2 className={`text-3xl font-bold ${getResultColor()}`}>
               {getResultMessage()}
             </h2>
-            <p className="text-gray-500 mt-2">{getResultDescription()}</p>
+            <p className="text-black mt-2">{getResultDescription()}</p>
           </div>
         </div>
 
@@ -121,18 +126,20 @@ const QuizResult = () => {
 
         {/* Action buttons */}
         <div className="flex gap-3">
-          <button
+          <Button
             onClick={() => navigate("/run-quiz")}
+            variant="primary"
             className="flex-1 py-3 px-4 rounded-lg bg-primary text-white font-semibold hover:bg-blue-600 transition-colors"
           >
             Refaire le quiz
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => navigate("/")}
-            className="flex-1 py-3 px-4 rounded-lg border-2 border-primary text-primary font-semibold bg-white hover:bg-gray-100 transition-colors"
+            variant="ghost"
+            className="flex-1 py-3 px-4 rounded-lg border-2 border-primary text-primary font-semibold hover:bg-gray-100 transition-colors"
           >
             Accueil
-          </button>
+          </Button>
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>(
       className = "",
       ...props
     },
-    ref
+    ref,
   ) => {
     const [imgSrc, setImgSrc] = useState(placeholderSrc || src);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -118,7 +118,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>(
         </div>
 
         {showCaption && (caption || alt) && (
-          <figcaption className="mt-2 text-sm text-gray-600 text-center">
+          <figcaption className="mt-2 text-sm text-black text-center">
             {caption || alt}
           </figcaption>
         )}
@@ -130,7 +130,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>(
         )}
       </figure>
     );
-  }
+  },
 );
 
 Image.displayName = "Image";

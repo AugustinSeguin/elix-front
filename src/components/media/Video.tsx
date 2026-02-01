@@ -13,6 +13,7 @@ import {
   FaExpand,
   FaCompress,
 } from "react-icons/fa";
+import Button from "../button/Button";
 
 interface VideoProps extends VideoHTMLAttributes<HTMLVideoElement> {
   src: string;
@@ -40,7 +41,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
       className = "",
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(muted);
@@ -156,7 +157,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
       return () =>
         document.removeEventListener(
           "fullscreenchange",
-          handleFullscreenChange
+          handleFullscreenChange,
         );
     }, []);
 
@@ -215,9 +216,11 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-3">
                 {/* Play/Pause */}
-                <button
+                <Button
                   onClick={togglePlay}
-                  className="text-white hover:text-primary-400 transition-colors focus:outline-none"
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:text-primary-400 transition-colors focus:outline-none p-0"
                   aria-label={isPlaying ? "Pause" : "Lecture"}
                 >
                   {isPlaying ? (
@@ -225,12 +228,14 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
                   ) : (
                     <FaPlay className="w-5 h-5" />
                   )}
-                </button>
+                </Button>
 
                 {/* Mute/Unmute */}
-                <button
+                <Button
                   onClick={toggleMute}
-                  className="text-white hover:text-primary-400 transition-colors focus:outline-none"
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:text-primary-400 transition-colors focus:outline-none p-0"
                   aria-label={isMuted ? "Activer le son" : "Couper le son"}
                 >
                   {isMuted ? (
@@ -238,7 +243,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
                   ) : (
                     <FaVolumeUp className="w-5 h-5" />
                   )}
-                </button>
+                </Button>
 
                 {/* Timer */}
                 <span className="text-white text-sm font-medium">
@@ -247,9 +252,11 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
               </div>
 
               {/* Fullscreen */}
-              <button
+              <Button
                 onClick={toggleFullscreen}
-                className="text-white hover:text-primary-400 transition-colors focus:outline-none"
+                variant="ghost"
+                size="sm"
+                className="text-white hover:text-primary-400 transition-colors focus:outline-none p-0"
                 aria-label={
                   isFullscreen ? "Quitter le plein écran" : "Plein écran"
                 }
@@ -259,7 +266,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
                 ) : (
                   <FaExpand className="w-5 h-5" />
                 )}
-              </button>
+              </Button>
             </div>
           </div>
         )}
@@ -271,7 +278,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
               <p className="text-white text-lg mb-2">
                 Erreur de chargement de la vidéo
               </p>
-              <p className="text-gray-400 text-sm">
+              <p className="text-black text-sm">
                 Le fichier vidéo est introuvable ou corrompu.
               </p>
             </div>
@@ -279,7 +286,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Video.displayName = "Video";

@@ -7,6 +7,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import ResourcesHeader from "../../components/resources/ResourcesHeader";
 import { Resource } from "../../types/resource";
 import { renderToStaticMarkup } from "react-dom/server";
+import Button from "../../components/button/Button";
 
 // Fix for default marker icon in Leaflet with React
 import icon from "leaflet/dist/images/marker-icon.png";
@@ -50,7 +51,7 @@ const createCustomIcon = (color: string) => {
       <div
         style={{ transform: "rotate(45deg)", color: "white", fontSize: "16px" }}
       ></div>
-    </div>
+    </div>,
   );
 
   return L.divIcon({
@@ -75,13 +76,13 @@ const ResourcesMap = () => {
   const { token } = useAuth();
   const [resources, setResources] = useState<Resource[]>([]);
   const [userLocation, setUserLocation] = useState<[number, number] | null>(
-    null
+    null,
   );
   const [mapCenter, setMapCenter] = useState<[number, number]>([
     45.1885, 5.7245,
   ]);
   const [searchTerm, setSearchTerm] = useState(
-    () => localStorage.getItem("resources_search") || ""
+    () => localStorage.getItem("resources_search") || "",
   );
 
   // Persist keyword across views
@@ -106,7 +107,7 @@ const ResourcesMap = () => {
         },
         (error) => {
           console.error("Error getting location:", error);
-        }
+        },
       );
     }
   }, []);
@@ -134,7 +135,7 @@ const ResourcesMap = () => {
         let url = "/api/Resource";
         if (searchTerm && searchTerm.length >= 3) {
           url = `/api/Resource/search/keyword?keyword=${encodeURIComponent(
-            searchTerm
+            searchTerm,
           )}`;
         }
 
@@ -164,7 +165,7 @@ const ResourcesMap = () => {
   }, [token, searchTerm]);
 
   return (
-    <div className="flex flex-col h-screen bg-white pb-[83px]">
+    <div className="flex flex-col h-screen pb-[83px]">
       <ResourcesHeader
         activeTab="map"
         searchTerm={searchTerm}
@@ -221,15 +222,17 @@ const ResourcesMap = () => {
                         </a>
                       </p>
                     )}
-                    <button
+                    <Button
                       onClick={() => {
                         const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
                         window.open(url, "_blank");
                       }}
-                      className="text-sm text-primary hover:underline"
+                      variant="ghost"
+                      size="sm"
+                      className="text-sm text-primary hover:underline p-0"
                     >
                       Itinéraire
-                    </button>
+                    </Button>
                   </div>
                 </Popup>
               </Marker>
@@ -239,12 +242,14 @@ const ResourcesMap = () => {
 
         {/* Recenter Button */}
         {userLocation && (
-          <button
+          <Button
             onClick={() => setMapCenter(userLocation)}
-            className="absolute bottom-4 right-4 z-[1000] bg-white p-3 rounded-full shadow-lg text-gray-700 hover:text-primary transition-colors"
+            variant="ghost"
+            size="sm"
+            className="absolute bottom-4 right-4 z-[1000] p-3 rounded-full shadow-lg text-black hover:text-primary transition-colors"
           >
             <FaLocationArrow size={20} />
-          </button>
+          </Button>
         )}
       </div>
     </div>
