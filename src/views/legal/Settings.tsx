@@ -125,7 +125,7 @@ const Settings = () => {
       <Header title="Paramètres" />
 
       {/* Content */}
-      <main className="px-4 max-w-md mx-auto">
+      <main className="space-y-4 w-full max-w-md mx-auto">
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6">
             {error}
