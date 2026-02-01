@@ -1,7 +1,6 @@
 import { useState, FormEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { MdArrowForwardIos } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import api from "../../api/axiosConfig";
 import Button from "../../components/button/Button";
@@ -246,7 +245,6 @@ const Register = () => {
       </div>
 
       <div className="w-full max-w-2xl">
-
         {/* Erreur générale */}
         {errors.general && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">

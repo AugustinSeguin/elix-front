@@ -1,9 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 
 const AboutUs = () => {
-  const navigate = useNavigate();
-
   const items = [
     {
       label: "Nom officiel de l'application",

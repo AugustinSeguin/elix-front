@@ -1,9 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 
 const CGU = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}

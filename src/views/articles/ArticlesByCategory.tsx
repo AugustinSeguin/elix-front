@@ -13,19 +13,6 @@ const ArticlesByCategory = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [categoryTitle, setCategoryTitle] = useState<string>("");
-
-  useEffect(() => {
-    // Tenter de récupérer le titre de la catégorie depuis le cache
-    const cachedCategories = localStorage.getItem("categories");
-    if (cachedCategories && categoryId) {
-      const categories = JSON.parse(cachedCategories);
-      const category = categories.find((c: any) => c.id === Number(categoryId));
-      if (category) {
-        setCategoryTitle(category.title);
-      }
-    }
-  }, [categoryId]);
 
   useEffect(() => {
     const fetchArticles = async () => {

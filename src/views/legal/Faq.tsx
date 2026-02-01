@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { FaqItem } from "../../types/faq";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
 
 const Faq = () => {
-  const navigate = useNavigate();
   const [questions, setQuestions] = useState<FaqItem[]>([]);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -27,7 +25,7 @@ const Faq = () => {
       <div className="mb-4">
         <Header title="FAQ" sticky={true}></Header>
       </div>
-      
+
       {/* Content */}
       <main className="flex-1 overflow-y-auto p-6 pb-24 flex flex-col items-center">
         <div className="w-full max-w-md border border-gray-200 rounded-lg p-5 shadow-sm">
