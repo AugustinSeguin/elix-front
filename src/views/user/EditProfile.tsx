@@ -157,7 +157,9 @@ const EditProfile = () => {
   return (
     <div className="min-h-screen pb-20">
       {/* Header */}
-      <Header title="Modifier mon profil" />
+      <div className="mb-4">
+        <Header title="Modifier mon profil" sticky={true} />
+      </div>
 
       {/* Form */}
       <div className="max-w-md mx-auto px-4 py-8">

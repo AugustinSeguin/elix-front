@@ -55,7 +55,9 @@ const ArticlesByCategory = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Header title="Articles" sticky={true}></Header>
+      <div className="mb-4">
+        <Header title="Articles" sticky={true}></Header>
+      </div>
 
       {loading ? (
         <div className="flex justify-center py-12">

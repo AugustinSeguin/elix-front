@@ -121,11 +121,13 @@ const Settings = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header title="Paramètres" />
+    <div className="min-h-screen pb-24">
+      <div className="mb-4">
+        <Header title="Paramètres" sticky={true} />
+      </div>
 
       {/* Content */}
-      <main className="space-y-4 w-full max-w-md mx-auto">
+      <main className="container-app px-4 pt-6 space-y-4 w-full">
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6">
             {error}

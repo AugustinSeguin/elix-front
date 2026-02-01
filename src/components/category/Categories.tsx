@@ -71,7 +71,7 @@ const Categories = ({ onSelect }: CategoriesProps) => {
         <div
           key={category.id}
           onClick={() => onSelect && onSelect(category.id)}
-          className="flex items-center p-3 bg-blue-50 rounded-2xl cursor-pointer hover:bg-blue-100 transition-colors shadow-sm"
+          className="flex items-center p-3 rounded-2xl cursor-pointer hover:bg-blue-100 transition-colors shadow-sm"
         >
           <div className="flex-shrink-0">
             <img

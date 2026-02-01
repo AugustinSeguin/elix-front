@@ -63,7 +63,9 @@ const QuizResult = () => {
   return (
     <div className="min-h-screen pb-20">
       {/* Header */}
-      <Header title="Résultats du Quiz" sticky={true}></Header>
+      <div className="mb-4">
+        <Header title="Résultats du Quiz" sticky={true}></Header>
+      </div>
 
       <div className="text-white py-8 px-4 text-center">
         <p className="text-black mt-1">

@@ -246,9 +246,6 @@ const Register = () => {
       </div>
 
       <div className="w-full max-w-2xl">
-        <h2 className="text-2xl font-bold text-center text-black mb-8 tracking-wide">
-          Inscription
-        </h2>
 
         {/* Erreur générale */}
         {errors.general && (

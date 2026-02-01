@@ -10,10 +10,12 @@ const ArticlesList = () => {
   };
 
   return (
-    <div className="min-h-screen pb-24">
-      <Header title="Articles" sticky={true}></Header>
+    <div className="min-h-screen flex flex-col">
+      <div className="mb-4">
+        <Header title="Articles" sticky={true}></Header>
+      </div>
 
-      <div className="mb-8">
+      <div className="mb-4">
         <p className="text-black mt-1">Choisis le thème</p>
       </div>
 

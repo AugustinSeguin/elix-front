@@ -19,7 +19,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       ...props
     },
-    ref
+    ref,
   ) => {
     // Styles de base pour tous les boutons
     const baseStyles =
@@ -28,15 +28,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // Styles par variante
     const variantStyles = {
       primary:
-        "bg-primary text-white hover:opacity-90 focus:ring-primary active:opacity-100",
+        "bg-primary text-[#000] hover:opacity-90 focus:ring-primary active:opacity-100",
       secondary:
-        "bg-secondary text-white hover:opacity-90 focus:ring-secondary active:opacity-100",
+        "bg-secondary text-[#000] hover:opacity-90 focus:ring-secondary active:opacity-100",
       outline:
-        "border-2 border-primary text-primary hover:bg-primary/10 focus:ring-primary active:bg-primary/20",
+        "border-2 border-primary text-[#000] hover:bg-primary/10 focus:ring-primary active:bg-primary/20",
       ghost:
-        "text-primary hover:bg-primary/10 focus:ring-primary active:bg-primary/20",
+        "text-[#000] hover:bg-primary/10 focus:ring-primary active:bg-primary/20",
       danger:
-        "bg-red-500 text-white hover:bg-red-600 focus:ring-red-500 active:bg-red-700",
+        "bg-red-500 text-[#000] hover:bg-red-600 focus:ring-red-500 active:bg-red-700",
     };
 
     // Styles par taille
@@ -63,7 +63,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {label || children}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

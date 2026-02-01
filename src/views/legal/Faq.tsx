@@ -24,8 +24,10 @@ const Faq = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <Header title="FAQ" sticky={true}></Header>
-
+      <div className="mb-4">
+        <Header title="FAQ" sticky={true}></Header>
+      </div>
+      
       {/* Content */}
       <main className="flex-1 overflow-y-auto p-6 pb-24 flex flex-col items-center">
         <div className="w-full max-w-md border border-gray-200 rounded-lg p-5 shadow-sm">

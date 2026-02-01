@@ -76,8 +76,10 @@ const Article = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header title="Article" sticky={true}></Header>
+    <div className="min-h-screen">
+      <div className="mb-4">
+        <Header title="Article" sticky={true}></Header>
+      </div>
 
       {/* Badge catégorie */}
       {article.category && (

@@ -19,7 +19,9 @@ const ResourcesHeader = ({
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header title="Ressources" />
+      <div className="mb-4">
+      <Header title="Ressources" sticky={true} />
+      </div>
 
       {/* Search Bar */}
       <div className="relative mb-6">
@@ -41,7 +43,7 @@ const ResourcesHeader = ({
           size="sm"
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "list"
-              ? "bg-secondary text-black shadow-sm"
+              ? "bg-primary shadow-sm"
               : "text-black border border-gray-200"
           }`}
         >
@@ -53,7 +55,7 @@ const ResourcesHeader = ({
           size="sm"
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "map"
-              ? "bg-secondary text-black shadow-sm"
+              ? "bg-primary shadow-sm"
               : "text-black border border-gray-200"
           }`}
         >

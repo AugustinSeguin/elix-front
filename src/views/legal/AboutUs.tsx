@@ -37,7 +37,9 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header title="A propos" sticky={true}></Header>
+      <div className="mb-4">
+        <Header title="A propos" sticky={true}></Header>
+      </div>
 
       {/* Content */}
       <main className="flex-1 overflow-y-auto p-6 pb-24 flex flex-col items-center">

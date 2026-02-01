@@ -44,7 +44,9 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header title="EliX - Démo des composants" sticky={true}></Header>
+      <div className="mb-4">
+        <Header title="EliX - Démo des composants" sticky={true}></Header>
+      </div>
 
       <main className="flex-1 container-app py-8">
         <div className="max-w-4xl mx-auto space-y-8">
@@ -262,7 +264,6 @@ const Home = () => {
           </div>
         </div>
       </main>
-
       <Footer title="EliX" />
     </div>
   );
