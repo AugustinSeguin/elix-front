@@ -4,12 +4,10 @@ const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <div className="mb-4">
-        <Header title="Politiques de confidentialité" sticky={true}></Header>
-      </div>
+      <Header title="Politiques de confidentialité" sticky={true}></Header>
 
       {/* Content */}
-      <main className="flex-1 overflow-y-auto p-6 pb-24 flex flex-col items-center">
+      <main className="flex flex-col flex-1 overflow-hidden !mt-[120px]">
         <div className="w-full max-w-md border border-gray-200 rounded-lg p-5 shadow-sm">
           <p className="text-[15px] text-black mb-6">
             On protège tes données comme si c'étaient les nôtres.

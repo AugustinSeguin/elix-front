@@ -77,61 +77,60 @@ const Article = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="mb-4">
-        <Header title="Article" sticky={true}></Header>
-      </div>
-
-      {/* Badge catégorie */}
-      {article.category && (
-        <div className="px-6 pt-4 pb-2">
-          <span className="inline-block bg-green-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
-            {article.category.name}
-          </span>
-        </div>
-      )}
-
-      {/* Image */}
-      {article.mediaPath && (
-        <div className="px-6 py-4">
-          <img
-            src={article.mediaPath}
-            alt={article.title}
-            className="w-full h-auto rounded-lg object-cover"
-          />
-        </div>
-      )}
-
-      {/* Contenu */}
-      <div className="px-6 py-6 pb-28">
-        {/* Titre avec emphasis */}
-        <h2 className="text-2xl font-bold text-black mb-6 leading-tight">
-          {article.title}
-        </h2>
-
-        {/* Subtitle */}
-        {article.subtitle && (
-          <p className="text-base text-black font-medium mb-6">
-            {article.subtitle}
-          </p>
-        )}
-
-        {/* Contenu principal */}
-        <div className="text-sm text-black leading-relaxed space-y-4">
-          {article.content
-            .split("\n")
-            .map(
-              (paragraph, index) =>
-                paragraph.trim() && <p key={index}>{paragraph}</p>,
-            )}
-        </div>
-
-        {/* Footer */}
-        {article.footer && (
-          <div className="mt-8 pt-6 border-t border-gray-200 text-xs text-black italic">
-            {article.footer}
+      <Header title="Article" sticky={true}></Header>
+      <main>
+        {/* Badge catégorie */}
+        {article.category && (
+          <div className="px-6 pt-4 pb-2">
+            <span className="inline-block bg-green-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
+              {article.category.name}
+            </span>
           </div>
         )}
-      </div>
+
+        {/* Image */}
+        {article.mediaPath && (
+          <div className="px-6 py-4">
+            <img
+              src={article.mediaPath}
+              alt={article.title}
+              className="w-full h-auto rounded-lg object-cover"
+            />
+          </div>
+        )}
+
+        {/* Contenu */}
+        <div className="px-6 py-6 pb-28">
+          {/* Titre avec emphasis */}
+          <h2 className="text-2xl font-bold text-black mb-6 leading-tight">
+            {article.title}
+          </h2>
+
+          {/* Subtitle */}
+          {article.subtitle && (
+            <p className="text-base text-black font-medium mb-6">
+              {article.subtitle}
+            </p>
+          )}
+
+          {/* Contenu principal */}
+          <div className="text-sm text-black leading-relaxed space-y-4">
+            {article.content
+              .split("\n")
+              .map(
+                (paragraph, index) =>
+                  paragraph.trim() && <p key={index}>{paragraph}</p>,
+              )}
+          </div>
+
+          {/* Footer */}
+          {article.footer && (
+            <div className="mt-8 pt-6 border-t border-gray-200 text-xs text-black italic">
+              {article.footer}
+            </div>
+          )}
+        </div>
+      </main>
     </div>
   );
 };

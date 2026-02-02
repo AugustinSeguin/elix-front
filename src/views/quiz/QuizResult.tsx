@@ -63,9 +63,7 @@ const QuizResult = () => {
   return (
     <div className="min-h-screen pb-20">
       {/* Header */}
-      <div className="mb-4">
-        <Header title="Résultats du Quiz" sticky={true}></Header>
-      </div>
+      <Header title="Résultats du Quiz" sticky={true}></Header>
 
       <div className="text-white py-8 px-4 text-center">
         <p className="text-black mt-1">
@@ -129,14 +127,14 @@ const QuizResult = () => {
           <Button
             onClick={() => navigate("/run-quiz")}
             variant="primary"
-            className="flex-1 py-3 px-4 rounded-lg bg-primary text-white font-semibold hover:bg-blue-600 transition-colors"
+            className="flex-1 py-3 px-4 rounded-lg bg-primary text-black font-semibold hover:bg-blue-600 transition-colors"
           >
             Refaire le quiz
           </Button>
           <Button
             onClick={() => navigate("/")}
             variant="ghost"
-            className="flex-1 py-3 px-4 rounded-lg border-2 border-primary text-primary font-semibold hover:bg-gray-100 transition-colors"
+            className="flex-1 py-3 px-4 rounded-lg border-2 border-primary text-black font-semibold hover:bg-gray-100 transition-colors"
           >
             Accueil
           </Button>

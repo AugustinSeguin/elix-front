@@ -11,15 +11,14 @@ const ArticlesList = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="mb-4">
-        <Header title="Articles" sticky={true}></Header>
-      </div>
+      <Header title="Articles" sticky={true}></Header>
+      <main>
+        <div className="mb-4">
+          <p className="text-black mt-1">Choisis le thème</p>
+        </div>
 
-      <div className="mb-4">
-        <p className="text-black mt-1">Choisis le thème</p>
-      </div>
-
-      <Categories onSelect={handleCategorySelect} />
+        <Categories onSelect={handleCategorySelect} />
+      </main>
     </div>
   );
 };

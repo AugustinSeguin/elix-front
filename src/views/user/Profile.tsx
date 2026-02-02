@@ -30,9 +30,7 @@ const Profile = () => {
   return (
     <div className="min-h-screen pb-20">
       {/* Header */}
-      <div className="mb-4">
-        <Header title="Mon profil" sticky={true} />
-      </div>
+      <Header title="Mon profil" sticky={true} />
 
       {/* Profile Content */}
       <div className="max-w-md mx-auto px-4 py-8">

@@ -131,5 +131,7 @@ a:hover {
 }
 
 main {
-  padding: 0 6px;
+  padding: 0 20px;
+  margin-top: 80px;
+  margin-bottom: 30px;
 }

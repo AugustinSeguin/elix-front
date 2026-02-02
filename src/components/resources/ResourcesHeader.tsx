@@ -1,7 +1,6 @@
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/Button";
-import Header from "../header/Header";
 import InputText from "../input-text/InputText";
 
 interface ResourcesHeaderProps {
@@ -18,11 +17,7 @@ const ResourcesHeader = ({
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="mb-4">
-      <Header title="Ressources" sticky={true} />
-      </div>
-
+    <>
       {/* Search Bar */}
       <div className="relative mb-6">
         <InputText
@@ -32,7 +27,7 @@ const ResourcesHeader = ({
           onChange={(e) => onSearchChange(e.target.value)}
           fullWidth
         />
-        <FaSearch className="absolute right-5 top-1/2 transform -translate-y-1/2 text-black dark:text-white text-lg pointer-events-none" />
+        <FaSearch className="absolute right-5 top-1/2 transform -translate-y-1/2 text-black text-lg pointer-events-none" />
       </div>
 
       {/* Toggle Switch */}
@@ -62,7 +57,7 @@ const ResourcesHeader = ({
           Carte
         </Button>
       </div>
-    </div>
+    </>
   );
 };
 

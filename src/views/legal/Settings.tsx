@@ -122,9 +122,7 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <div className="mb-4">
-        <Header title="Paramètres" sticky={true} />
-      </div>
+      <Header title="Paramètres" sticky={true} />
 
       {/* Content */}
       <main className="container-app px-4 pt-6 space-y-4 w-full">

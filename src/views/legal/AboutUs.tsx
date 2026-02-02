@@ -34,9 +34,7 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="mb-4">
-        <Header title="A propos" sticky={true}></Header>
-      </div>
+      <Header title="A propos" sticky={true}></Header>
 
       {/* Content */}
       <main className="flex-1 overflow-y-auto p-6 pb-24 flex flex-col items-center">
@@ -83,7 +81,7 @@ const AboutUs = () => {
             {/* Site web officiel */}
             <div className="w-full border-b border-gray-200 pb-5">
               <h3 className="text-[15px] font-bold text-black mb-1">
-                Site web officiel : <span className="font-normal">elix.fr</span>
+                Site web officiel : <a className="font-normal" href="https://app.elix.cleanascode.fr" target="_blank" rel="noopener noreferrer">app.elix.cleanascode.fr</a>
               </h3>
             </div>
 

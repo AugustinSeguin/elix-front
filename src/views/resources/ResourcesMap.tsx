@@ -13,6 +13,7 @@ import Button from "../../components/button/Button";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import api from "../../api/axiosConfig";
+import Header from "../../components/header/Header";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
@@ -106,7 +107,9 @@ const ResourcesMap = () => {
           setMapCenter([latitude, longitude]);
         },
         (error) => {
-          console.error("Error getting location:", error);
+          console.warn("Geolocation not available:", error.message);
+          // Use default center if geolocation fails
+          // Map will still display with default location
         },
       );
     }
@@ -165,80 +168,86 @@ const ResourcesMap = () => {
   }, [token, searchTerm]);
 
   return (
-    <div className="flex flex-col h-screen pb-[83px]">
-      <ResourcesHeader
-        activeTab="map"
-        searchTerm={searchTerm}
-        onSearchChange={setSearchTerm}
-      />
+    <div className="flex flex-col h-screen pb-24">
+      <Header title="Ressources" sticky={true} />
 
-      <div className="flex-1 relative w-full">
-        <MapContainer
-          center={mapCenter}
-          zoom={13}
-          style={{ height: "100%", width: "100%" }}
-          zoomControl={false}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+      <main className="flex flex-col flex-1 overflow-hidden">
+        <ResourcesHeader
+          activeTab="map"
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+        />
 
-          <MapUpdater center={mapCenter} />
+        <div className="flex-1 w-full overflow-hidden min-h-0">
+          <MapContainer
+            center={mapCenter}
+            zoom={13}
+            style={{ height: "100%", width: "100%" }}
+            zoomControl={false}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
 
-          {/* User Location Marker */}
-          {userLocation && (
-            <Marker
-              position={userLocation}
-              icon={createCustomIcon(COLORS.userLocation)}
-            >
-              <Popup>Vous êtes ici</Popup>
-            </Marker>
-          )}
+            <MapUpdater center={mapCenter} />
 
-          {/* Resources Markers */}
-          {resources.map((resource) => {
-            const lat = resource.localization?.latitude;
-            const lng = resource.localization?.longitude;
-
-            if (!lat || !lng) {
-              console.warn(`Resource ${resource.id} missing coordinates`);
-              return null;
-            }
-
-            return (
+            {/* User Location Marker */}
+            {userLocation && (
               <Marker
-                key={resource.id}
-                position={[lat, lng]}
-                icon={createCustomIcon(COLORS.primary)}
+                position={userLocation}
+                icon={createCustomIcon(COLORS.userLocation)}
               >
-                <Popup>
-                  <div className="min-w-[200px]">
-                    <h3 className="font-bold text-lg mb-1">{resource.name}</h3>
-                    {resource.phoneNumber && (
-                      <p className="text-primary mb-2">
-                        <a href={`tel:${resource.phoneNumber}`}>
-                          {resource.phoneNumber}
-                        </a>
-                      </p>
-                    )}
-                    <Button
-                      onClick={() => {
-                        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-                        window.open(url, "_blank");
-                      }}
-                      variant="ghost"
-                      size="sm"
-                      className="text-sm text-primary hover:underline p-0"
-                    >
-                      Itinéraire
-                    </Button>
-                  </div>
-                </Popup>
+                <Popup>Vous êtes ici</Popup>
               </Marker>
-            );
-          })}
-        </MapContainer>
+            )}
+
+            {/* Resources Markers */}
+            {resources.map((resource) => {
+              const lat = resource.localization?.latitude;
+              const lng = resource.localization?.longitude;
+
+              if (!lat || !lng) {
+                console.warn(`Resource ${resource.id} missing coordinates`);
+                return null;
+              }
+
+              return (
+                <Marker
+                  key={resource.id}
+                  position={[lat, lng]}
+                  icon={createCustomIcon(COLORS.primary)}
+                >
+                  <Popup>
+                    <div className="min-w-[200px]">
+                      <h3 className="font-bold text-lg mb-1">
+                        {resource.name}
+                      </h3>
+                      {resource.phoneNumber && (
+                        <p className="text-primary mb-2">
+                          <a href={`tel:${resource.phoneNumber}`}>
+                            {resource.phoneNumber}
+                          </a>
+                        </p>
+                      )}
+                      <Button
+                        onClick={() => {
+                          const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                          window.open(url, "_blank");
+                        }}
+                        variant="ghost"
+                        size="sm"
+                        className="text-sm text-primary hover:underline p-0"
+                      >
+                        Itinéraire
+                      </Button>
+                    </div>
+                  </Popup>
+                </Marker>
+              );
+            })}
+          </MapContainer>
+        </div>
 
         {/* Recenter Button */}
         {userLocation && (
@@ -251,7 +260,7 @@ const ResourcesMap = () => {
             <FaLocationArrow size={20} />
           </Button>
         )}
-      </div>
+      </main>
     </div>
   );
 };

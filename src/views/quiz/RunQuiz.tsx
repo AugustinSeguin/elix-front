@@ -11,15 +11,15 @@ const RunQuiz = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="mb-4">
-        <Header title="Lancer un quiz" sticky={true} />
-      </div>
+      <Header title="Lancer un quiz" sticky={true} />
 
-      <div className="mb-4">
-        <p className="text-black mt-1">Choisis le thème</p>
-      </div>
-      
-      <Categories onSelect={handleCategorySelect} />
+      <main>
+        <div className="mb-4">
+          <p className="text-black mt-1">Choisis le thème</p>
+        </div>
+
+        <Categories onSelect={handleCategorySelect} />
+      </main>
     </div>
   );
 };

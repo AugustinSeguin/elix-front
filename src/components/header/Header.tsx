@@ -25,7 +25,7 @@ const Header = ({
         backgroundColor: "var(--color-primary-500)",
         borderBottomColor: "var(--color-primary-600)",
       }}
-      className={`shadow-md border-b ${sticky ? "sticky top-0 z-50" : ""}`}
+      className={`shadow-md border-b w-full ${sticky ? "fixed top-0 z-50" : ""}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-3 min-h-[60px]">
