@@ -145,7 +145,7 @@ const Quiz = () => {
 
   return (
     <div className="flex flex-col h-screen pb-20">
-      <Header title="Ressources" sticky={true} />
+      <Header title="Quiz" sticky={true} />
 
       <main>
         {/* Progress bar */}
@@ -197,7 +197,7 @@ const Quiz = () => {
               onClick={handleNextQuestion}
               disabled={selectedAnswerId === undefined}
               variant="primary"
-              className="flex-1 py-3 px-4 rounded-lg bg-primary text-black font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-600"
+              className="flex-1 py-3 px-4 rounded-lg bg-primary text-black font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLastQuestion ? "Terminer" : "Suivant"}
             </Button>
