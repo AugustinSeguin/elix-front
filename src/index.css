@@ -16,8 +16,8 @@
   --color-primary-400: #38bdf8;
   --color-primary-500: #9a3d80;
   --color-primary-600: #9a3d80;
-  --color-primary-700: #3c3c3b;
-  --color-primary-800: #075985;
+  --color-primary-700: #e8d8e7;
+  --color-primary-800: #9a3d8066;
   --color-primary-900: #0c4a6e;
 
   --color-secondary-50: #faf5ff;
@@ -67,8 +67,8 @@ html.dark {
   --color-primary-400: #4b5563;
   --color-primary-500: #9a3d80;
   --color-primary-600: #9ca3af;
-  --color-primary-700: #3c3c3b;
-  --color-primary-800: #e5e7eb;
+  --color-primary-700: #e8d8e7;
+  --color-primary-800: #9a3d8066;
   --color-primary-900: #f9fafb;
 
   --color-secondary-50: #1b1720;
@@ -137,4 +137,7 @@ main {
 }
 nav {
   position: fixed;
+}
+.resources-map {
+  min-height: auto;
 }

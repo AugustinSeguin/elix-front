@@ -12,7 +12,7 @@ import {
 } from "./components/routes/RouteGuards";
 import Login from "./views/auth/Login";
 import Register from "./views/auth/Register";
-import Home from "./views/user/Home";
+import Home from "./views/Home";
 import Quiz from "./views/quiz/Quiz";
 import QuizResult from "./views/quiz/QuizResult";
 import RunQuiz from "./views/quiz/RunQuiz";

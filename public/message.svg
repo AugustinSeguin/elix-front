@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.46 193.11">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #1d1d1b;
+      }
+
+      .cls-2 {
+        fill: #fffefa;
+      }
+    </style>
+  </defs>
+  <g id="Pictos_app" data-name="Pictos app">
+    <g id="bulle">
+      <path class="cls-1" d="M248.98,148.48c-1.9,13.3,19.01,34.21,30.41,34.21s-1.9,15.2-30.41,5.7c-28.51-9.5-17.11-13.3-34.21-13.3s-57.02,22.81-110.24,17.11S0,154.18,0,99.06C0,53.41,30.41,4.03,102.63.23s157.31,39.95,165.35,85.53c5.7,32.31-17.11,49.42-19.01,62.72Z"/>
+      <circle class="cls-2" cx="89.49" cy="106.51" r="13.47"/>
+      <circle class="cls-2" cx="132.58" cy="106.51" r="13.47"/>
+      <circle class="cls-2" cx="175.67" cy="106.51" r="13.47"/>
+    </g>
+  </g>
+</svg>

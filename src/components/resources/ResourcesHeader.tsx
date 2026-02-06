@@ -38,9 +38,14 @@ const ResourcesHeader = ({
           size="sm"
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "list"
-              ? "bg-primary shadow-sm"
+              ? "shadow-sm"
               : "text-black border border-gray-200"
           }`}
+          style={
+            activeTab === "list"
+              ? { backgroundColor: "var(--color-primary-700)" }
+              : undefined
+          }
         >
           Liste
         </Button>
@@ -50,9 +55,14 @@ const ResourcesHeader = ({
           size="sm"
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "map"
-              ? "bg-primary shadow-sm"
+              ? "shadow-sm"
               : "text-black border border-gray-200"
           }`}
+          style={
+            activeTab === "map"
+              ? { backgroundColor: "var(--color-primary-700)" }
+              : undefined
+          }
         >
           Carte
         </Button>

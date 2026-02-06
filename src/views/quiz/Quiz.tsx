@@ -7,6 +7,7 @@ import { QuizDto, UserAnswer } from "../../types/quiz";
 import api from "../../api/axiosConfig";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
+import { getCategoryColor } from "../../helpers/categoryHelper";
 
 const Quiz = () => {
   const { categoryId = "1" } = useParams<{ categoryId: string }>();
@@ -142,17 +143,38 @@ const Quiz = () => {
     (a) => a.questionId === currentQuestion.id,
   )?.answerIdSelected;
   const isLastQuestion = currentQuestionIndex === quiz.questions.length - 1;
+  const categoryTitle = (() => {
+    try {
+      const cached = localStorage.getItem("categories");
+      if (!cached) return undefined;
+      const categories = JSON.parse(cached) as Array<{
+        id: number;
+        title?: string;
+      }>;
+      return categories.find((category) => category.id === Number(categoryId))
+        ?.title;
+    } catch {
+      return undefined;
+    }
+  })();
+  const categoryColor = getCategoryColor(categoryTitle);
 
   return (
     <div className="flex flex-col h-screen pb-20">
-      <Header title="Quiz" sticky={true} />
+      <Header
+        title="Quiz"
+        sticky={true}
+        backgroundColor={categoryColor}
+        borderColor={categoryColor}
+      />
 
       <main>
         {/* Progress bar */}
-        <div className="bg-primary h-1">
+        <div className="h-1">
           <div
-            className="h-full bg-primary transition-all duration-300"
+            className="h-full transition-all duration-300"
             style={{
+              backgroundColor: categoryColor,
               width: `${
                 ((currentQuestionIndex + 1) / quiz.questions.length) * 100
               }%`,
@@ -201,7 +223,8 @@ const Quiz = () => {
               onClick={handleNextQuestion}
               disabled={selectedAnswerId === undefined}
               variant="primary"
-              className="flex-1 py-3 px-4 rounded-lg bg-primary text-black font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 py-3 px-4 rounded-lg text-black font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              style={{ backgroundColor: categoryColor }}
             >
               {isLastQuestion ? "Terminer" : "Suivant"}
             </Button>

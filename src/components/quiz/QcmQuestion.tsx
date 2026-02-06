@@ -1,4 +1,5 @@
 import { QuestionDto } from "../../types/quiz";
+import { getCategoryColor } from "../../helpers/categoryHelper";
 
 interface QcmQuestionProps {
   question: QuestionDto;
@@ -11,6 +12,23 @@ const QcmQuestion = ({
   selectedAnswerId,
   onAnswerSelect,
 }: QcmQuestionProps) => {
+  const categoryTitle = (() => {
+    try {
+      const cached = localStorage.getItem("categories");
+      if (!cached) return undefined;
+      const categories = JSON.parse(cached) as Array<{
+        id: number;
+        title?: string;
+      }>;
+      return categories.find((category) => category.id === question.categoryId)
+        ?.title;
+    } catch {
+      return undefined;
+    }
+  })();
+
+  const categoryColor = getCategoryColor(categoryTitle);
+
   // Calcul du pourcentage pour la barre de progression
   return (
     <div className="flex flex-col px-6 py-4 max-w-md mx-auto w-full">
@@ -37,8 +55,11 @@ const QcmQuestion = ({
               {/* Checkbox custom */}
               <div
                 className={`mt-1 min-w-[20px] h-[20px] border-2 rounded flex items-center justify-center border-gray-400 ${
-                  isSelected ? "bg-primary" : "bg-white"
+                  isSelected ? "bg-white" : "bg-white"
                 }`}
+                style={{
+                  backgroundColor: isSelected ? categoryColor : "white",
+                }}
               ></div>
 
               <p className="text-sm font-medium text-gray-800">

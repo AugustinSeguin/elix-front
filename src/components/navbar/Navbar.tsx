@@ -1,19 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import {
-  AiFillHome,
-  AiFillSetting,
-  AiFillFolder,
-  AiFillFileText,
-} from "react-icons/ai";
-import { IconType } from "react-icons";
-import Icon from "../icon/Icon";
-import { MdQuiz } from "react-icons/md";
-
 interface NavItem {
   id: string;
   path: string;
   label: string;
-  icon: IconType;
+  icon: string;
 }
 
 const Navbar = () => {
@@ -22,25 +12,25 @@ const Navbar = () => {
 
   // 5 items de navigation avec icônes différentes
   const navItems: NavItem[] = [
-    { id: "home", path: "/", label: "Accueil", icon: AiFillHome },
+    { id: "home", path: "/", label: "Accueil", icon: "/home.svg" },
+    { id: "run-quiz", path: "/run-quiz", label: "Quiz", icon: "/game.svg" },
     {
       id: "resources",
       path: "/resources",
       label: "Ressources",
-      icon: AiFillFolder,
+      icon: "/resources.svg",
     },
-    { id: "run-quiz", path: "/run-quiz", label: "Quiz", icon: MdQuiz },
     {
       id: "articles",
       path: "/articles",
       label: "Articles",
-      icon: AiFillFileText,
+      icon: "/articles.svg",
     },
     {
-      id: "settings",
-      path: "/settings",
-      label: "Setting",
-      icon: AiFillSetting,
+      id: "profile",
+      path: "/profile",
+      label: "Profil",
+      icon: "/profile.svg",
     },
   ];
 
@@ -58,15 +48,6 @@ const Navbar = () => {
     if (path === "/resources") {
       return location.pathname.toLowerCase().includes("resource");
     }
-    if (path === "/settings") {
-      return [
-        "/settings",
-        "/about",
-        "/cgu",
-        "/faq",
-        "/privacy-policy",
-      ].includes(location.pathname);
-    }
     return location.pathname === path;
   };
 
@@ -82,12 +63,23 @@ const Navbar = () => {
             className="flex flex-col items-center gap-[2px] cursor-pointer"
             onClick={() => handleNavClick(item.path)}
           >
-            <Icon
-              icon={item.icon}
-              size="lg"
-              className={`transition-colors duration-200 ${
-                isActive(item.path) ? "text-primary" : "text-secondary"
-              }`}
+            <span
+              role="img"
+              aria-label={item.label}
+              className="h-6 w-6"
+              style={{
+                backgroundColor: isActive(item.path)
+                  ? "var(--color-primary)"
+                  : "var(--color-primary-800)",
+                WebkitMaskImage: `url(${item.icon})`,
+                maskImage: `url(${item.icon})`,
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskPosition: "center",
+                maskPosition: "center",
+                WebkitMaskSize: "contain",
+                maskSize: "contain",
+              }}
             />
             <span
               className={`text-[10px] font-medium ${

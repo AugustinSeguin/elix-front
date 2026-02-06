@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import type { PointerEvent } from "react";
 import { QuestionDto } from "../../types/quiz";
+import { getCategoryColor } from "../../helpers/categoryHelper";
 
 interface TrueFalseQuestionProps {
   question: QuestionDto;
@@ -16,6 +17,23 @@ const TrueFalseQuestion = ({
   onAnswerSelect,
   onAutoNext,
 }: TrueFalseQuestionProps) => {
+  const categoryTitle = (() => {
+    try {
+      const cached = localStorage.getItem("categories");
+      if (!cached) return undefined;
+      const categories = JSON.parse(cached) as Array<{
+        id: number;
+        title?: string;
+      }>;
+      return categories.find((category) => category.id === question.categoryId)
+        ?.title;
+    } catch {
+      return undefined;
+    }
+  })();
+
+  const categoryColor = getCategoryColor(categoryTitle);
+
   const answers = question.answers || [];
   // On suppose que l'index 0 est "Vrai" (droite) et index 1 est "Faux" (gauche)
   const rightAnswer =
@@ -97,8 +115,9 @@ const TrueFalseQuestion = ({
 
         {/* La Carte Tinder */}
         <div
-          className="w-full h-full rounded-[32px] bg-primary shadow-2xl touch-none select-none flex flex-col items-center justify-center p-8 text-center"
+          className="w-full h-full rounded-[32px] shadow-2xl touch-none select-none flex flex-col items-center justify-center p-8 text-center"
           style={{
+            backgroundColor: categoryColor,
             transform:
               exitX !== 0
                 ? `translateX(${exitX}px) rotate(${exitX / 10}deg)`

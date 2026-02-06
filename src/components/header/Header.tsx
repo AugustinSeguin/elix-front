@@ -9,6 +9,8 @@ interface HeaderProps {
   children?: ReactNode;
   sticky?: boolean;
   onMenuClick?: () => void;
+  backgroundColor?: string;
+  borderColor?: string;
 }
 
 const Header = ({
@@ -16,14 +18,16 @@ const Header = ({
   children,
   sticky = true,
   onMenuClick,
+  backgroundColor,
+  borderColor,
 }: HeaderProps) => {
   const navigate = useNavigate();
 
   return (
     <header
       style={{
-        backgroundColor: "var(--color-primary-500)",
-        borderBottomColor: "var(--color-primary-600)",
+        backgroundColor: backgroundColor || "var(--color-primary-500)",
+        borderBottomColor: borderColor || "var(--color-primary-600)",
       }}
       className={`shadow-md border-b w-full ${sticky ? "fixed top-0 z-50" : ""}`}
     >
@@ -37,7 +41,7 @@ const Header = ({
               className="p-2 w-10 h-10 !rounded-full border border-black/20 hover:bg-black/10 transition-colors focus:outline-none focus:ring-2 focus:ring-black/20"
               aria-label="Retour"
             >
-              <MdArrowBackIosNew className="w-5 h-5 text-black" />
+              <MdArrowBackIosNew className="w-5 h-5 text-white" />
             </Button>
 
             {/* Menu icon */}
@@ -49,14 +53,14 @@ const Header = ({
                 className="p-2 rounded-lg hover:bg-black/10 transition-colors focus:outline-none focus:ring-2 focus:ring-black/20"
                 aria-label="Menu"
               >
-                <FaBars className="w-6 h-6 text-black" />
+                <FaBars className="w-6 h-6 text-white" />
               </Button>
             )}
           </div>
 
           {/* Title */}
           {title && (
-            <h1 className="text-xl font-bold text-black text-center flex-1 px-2 leading-tight">
+            <h1 className="text-xl font-bold text-white text-center flex-1 px-2 leading-tight">
               {title}
             </h1>
           )}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 283.46 183.99">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #1d1d1b;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-4 {
+        fill: #fffefa;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" width="141.73" height="183.99"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-2" x="141.73" width="141.73" height="183.99"/>
+    </clipPath>
+  </defs>
+  <g id="Pictos_app" data-name="Pictos app">
+    <g id="game">
+      <g>
+        <g id="_Répétition_miroir_" data-name="&amp;lt;Répétition miroir&amp;gt;">
+          <g class="cls-5">
+            <path class="cls-1" d="M141.73,0C86.19.54,48.15,4.74,16.96,38.33,1.48,55-.69,72.93.16,95.92c2.4,64.79,74.39,112.78,79.19,74.39,1.82-14.57,4.75-34.92,14.4-43.19,16.8-14.4,40.79-17.17,47.99-16.8V0Z"/>
+          </g>
+        </g>
+        <g id="_Répétition_miroir_-2" data-name="&amp;lt;Répétition miroir&amp;gt;">
+          <g class="cls-3">
+            <path class="cls-1" d="M141.73,0c55.54.54,93.58,4.74,124.78,38.33,15.48,16.67,17.65,34.6,16.8,57.59-2.4,64.79-74.39,112.78-79.19,74.39-1.82-14.57-4.75-34.92-14.4-43.19-16.8-14.4-40.79-17.17-47.99-16.8V0Z"/>
+          </g>
+        </g>
+      </g>
+      <circle class="cls-4" cx="62.55" cy="76.72" r="33.59"/>
+      <circle class="cls-1" cx="61.76" cy="75.63" r="19.99"/>
+    </g>
+  </g>
+</svg>

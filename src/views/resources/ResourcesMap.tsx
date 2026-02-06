@@ -171,7 +171,7 @@ const ResourcesMap = () => {
     <div className="flex flex-col h-screen pb-24">
       <Header title="Ressources" sticky={true} />
 
-      <main className="flex flex-col flex-1 overflow-hidden">
+      <main className="flex flex-col flex-1 overflow-hidden resources-map">
         <ResourcesHeader
           activeTab="map"
           searchTerm={searchTerm}

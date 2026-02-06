@@ -30,7 +30,31 @@ const Profile = () => {
   return (
     <div className="min-h-screen pb-20">
       {/* Header */}
-      <Header title="Mon profil" sticky={true} />
+      <Header title="Mon profil" sticky={true}>
+        <button
+          type="button"
+          onClick={() => navigate("/settings")}
+          className="p-2 rounded-full transition-colors"
+          aria-label="Paramètres"
+        >
+          <span
+            role="img"
+            className="h-6 w-6 inline-block"
+            style={{
+              backgroundColor: "var(--color-primary-700)",
+              display: "inline-block",
+              WebkitMaskImage: `url(/settings.svg)`,
+              maskImage: `url(/settings.svg)`,
+              WebkitMaskRepeat: "no-repeat",
+              maskRepeat: "no-repeat",
+              WebkitMaskPosition: "center",
+              maskPosition: "center",
+              WebkitMaskSize: "contain",
+              maskSize: "contain",
+            }}
+          />
+        </button>
+      </Header>
 
       {/* Profile Content */}
       <div className="max-w-md mx-auto px-4 py-8">

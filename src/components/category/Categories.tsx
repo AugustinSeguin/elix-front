@@ -3,6 +3,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { FaPlay } from "react-icons/fa";
 import { Category } from "../../types/category";
 import api from "../../api/axiosConfig";
+import { getCategoryColor } from "../../helpers/categoryHelper";
 
 interface CategoriesProps {
   onSelect?: (categoryId: number) => void;
@@ -74,6 +75,7 @@ const Categories = ({ onSelect }: CategoriesProps) => {
           key={category.id}
           onClick={() => onSelect && onSelect(category.id)}
           className="flex items-center p-3 rounded-2xl cursor-pointer transition-colors shadow-sm"
+          style={{ backgroundColor: getCategoryColor(category.title) }}
         >
           <div className="flex-shrink-0">
             <img
@@ -96,9 +98,6 @@ const Categories = ({ onSelect }: CategoriesProps) => {
             <h3 className="font-bold text-black text-base truncate">
               {index + 1}. {category.title}
             </h3>
-          </div>
-          <div className="ml-2 text-primary">
-            <FaPlay className="w-4 h-4" />
           </div>
         </div>
       ))}
