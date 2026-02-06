@@ -16,8 +16,8 @@ const QuestionCorrection = ({
   return (
     <div className="rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-bold text-black">Corrections</h3>
-        <span className="text-sm font-semibold text-black">
+        <h3 className="text-lg font-bold color-text">Corrections</h3>
+        <span className="text-sm font-semibold color-text">
           Note: {correctCount}/{total}
         </span>
       </div>
@@ -39,7 +39,7 @@ const QuestionCorrection = ({
                   : "border-red-300 bg-red-50"
               }`}
             >
-              <p className="font-semibold text-black">
+              <p className="font-semibold color-text">
                 Question {idx + 1}: {res.question.title}
               </p>
               <p
@@ -55,7 +55,7 @@ const QuestionCorrection = ({
                   <span className="font-semibold text-blue-600">
                     Correction:
                   </span>{" "}
-                  <span className="text-black">{correctAnswerTitle}</span>
+                  <span className="color-text">{correctAnswerTitle}</span>
                 </p>
               )}
             </div>

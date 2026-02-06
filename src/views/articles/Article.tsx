@@ -102,19 +102,19 @@ const Article = () => {
         {/* Contenu */}
         <div className="px-6 py-6 pb-28">
           {/* Titre avec emphasis */}
-          <h2 className="text-2xl font-bold text-black mb-6 leading-tight">
+          <h2 className="text-2xl font-bold color-text mb-6 leading-tight">
             {article.title}
           </h2>
 
           {/* Subtitle */}
           {article.subtitle && (
-            <p className="text-base text-black font-medium mb-6">
+            <p className="text-base color-text font-medium mb-6">
               {article.subtitle}
             </p>
           )}
 
           {/* Contenu principal */}
-          <div className="text-sm text-black leading-relaxed space-y-4">
+          <div className="text-sm color-text leading-relaxed space-y-4">
             {article.content
               .split("\n")
               .map(
@@ -125,7 +125,7 @@ const Article = () => {
 
           {/* Footer */}
           {article.footer && (
-            <div className="mt-8 pt-6 border-t border-gray-200 text-xs text-black italic">
+            <div className="mt-8 pt-6 border-t border-gray-200 text-xs color-text italic">
               {article.footer}
             </div>
           )}

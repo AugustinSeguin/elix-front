@@ -27,7 +27,7 @@ const ResourcesHeader = ({
           onChange={(e) => onSearchChange(e.target.value)}
           fullWidth
         />
-        <FaSearch className="absolute right-5 top-1/2 transform -translate-y-1/2 text-black text-lg pointer-events-none" />
+        <FaSearch className="absolute right-5 top-1/2 transform -translate-y-1/2 color-text text-lg pointer-events-none" />
       </div>
 
       {/* Toggle Switch */}
@@ -39,7 +39,7 @@ const ResourcesHeader = ({
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "list"
               ? "shadow-sm"
-              : "text-black border border-gray-200"
+              : "color-text border border-gray-200"
           }`}
           style={
             activeTab === "list"
@@ -56,7 +56,7 @@ const ResourcesHeader = ({
           className={`flex-1 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeTab === "map"
               ? "shadow-sm"
-              : "text-black border border-gray-200"
+              : "color-text border border-gray-200"
           }`}
           style={
             activeTab === "map"

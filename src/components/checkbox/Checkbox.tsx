@@ -80,7 +80,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             <label
               htmlFor={checkboxId}
               className={`cursor-pointer select-none ${
-                error ? "text-red-600" : "text-black"
+                error ? "text-red-600" : "color-text"
               } ${labelSizeStyles[checkboxSize]}`}
             >
               {label}
@@ -90,7 +90,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
         {(error || helperText) && (
           <span
-            className={`text-sm ml-7 ${error ? "text-red-600" : "text-black"}`}
+            className={`text-sm ml-7 ${error ? "text-red-600" : "color-text"}`}
           >
             {error || helperText}
           </span>

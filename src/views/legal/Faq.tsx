@@ -35,7 +35,7 @@ const Faq = () => {
                   className="flex justify-between items-start cursor-pointer gap-4"
                   onClick={() => toggleItem(index)}
                 >
-                  <h3 className="text-[15px] font-bold text-black text-left flex-1 leading-tight">
+                  <h3 className="text-[15px] font-bold color-text text-left flex-1 leading-tight">
                     {item.question}
                   </h3>
                   <Button
@@ -53,7 +53,7 @@ const Faq = () => {
                 </div>
 
                 {isOpen && (
-                  <div className="mt-3 text-[13px] text-black text-left whitespace-pre-line leading-relaxed pl-1">
+                  <div className="mt-3 text-[13px] color-text text-left whitespace-pre-line leading-relaxed pl-1">
                     {item.answer}
                   </div>
                 )}

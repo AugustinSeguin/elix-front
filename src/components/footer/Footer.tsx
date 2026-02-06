@@ -25,7 +25,7 @@ const Footer = ({
             {/* Logo et titre */}
             <div className="flex items-center justify-center gap-2">
               <FaHeart className="w-5 h-5 text-primary-500" />
-              <h3 className="text-lg font-semibold text-black">{title}</h3>
+              <h3 className="text-lg font-semibold color-text">{title}</h3>
             </div>
 
             {/* Navigation links */}
@@ -35,7 +35,7 @@ const Footer = ({
                   <li>
                     <a
                       href="#"
-                      className="text-black hover:text-primary-600 transition-colors"
+                      className="color-text hover:text-primary-600 transition-colors"
                     >
                       Mentions légales
                     </a>
@@ -43,7 +43,7 @@ const Footer = ({
                   <li>
                     <a
                       href="#"
-                      className="text-black hover:text-primary-600 transition-colors"
+                      className="color-text hover:text-primary-600 transition-colors"
                     >
                       RGPD
                     </a>
@@ -51,7 +51,7 @@ const Footer = ({
                   <li>
                     <a
                       href="#"
-                      className="text-black hover:text-primary-600 transition-colors"
+                      className="color-text hover:text-primary-600 transition-colors"
                     >
                       Qui sommes-nous ?
                     </a>
@@ -59,7 +59,7 @@ const Footer = ({
                   <li>
                     <a
                       href="#"
-                      className="text-black hover:text-primary-600 transition-colors"
+                      className="color-text hover:text-primary-600 transition-colors"
                     >
                       Le projet Elix
                     </a>
@@ -69,7 +69,7 @@ const Footer = ({
             )}
 
             {/* Copyright */}
-            <p className="text-center text-sm text-black">
+            <p className="text-center text-sm color-text">
               © {currentYear} Elix - Éducation sexuelle pour les jeunes
             </p>
           </div>

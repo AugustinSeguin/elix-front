@@ -50,7 +50,7 @@ const Home = () => {
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Section Formulaire */}
           <div className="card">
-            <h2 className="text-2xl font-bold text-black mb-6">
+            <h2 className="text-2xl font-bold color-text mb-6">
               📝 Formulaire d'inscription
             </h2>
 
@@ -134,7 +134,7 @@ const Home = () => {
 
           {/* Section Boutons */}
           <div className="card">
-            <h2 className="text-2xl font-bold text-black mb-6">
+            <h2 className="text-2xl font-bold color-text mb-6">
               🎨 Variantes de boutons
             </h2>
             <div className="space-y-4">
@@ -156,7 +156,7 @@ const Home = () => {
 
           {/* Section Icônes */}
           <div className="card">
-            <h2 className="text-2xl font-bold text-black mb-6">⭐ Icônes</h2>
+            <h2 className="text-2xl font-bold color-text mb-6">⭐ Icônes</h2>
             <div className="flex items-center gap-6">
               <Icon icon={FaHeart} size="sm" color="red" />
               <Icon icon={FaUser} size="md" color="blue" />
@@ -167,7 +167,7 @@ const Home = () => {
 
           {/* Section Image */}
           <div className="card">
-            <h2 className="text-2xl font-bold text-black mb-6">
+            <h2 className="text-2xl font-bold color-text mb-6">
               🖼️ Composant Image
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -193,7 +193,7 @@ const Home = () => {
 
           {/* Section Vidéo */}
           <div className="card">
-            <h2 className="text-2xl font-bold text-black mb-6">
+            <h2 className="text-2xl font-bold color-text mb-6">
               🎥 Composant Vidéo
             </h2>
             <Video
@@ -207,7 +207,7 @@ const Home = () => {
 
           {/* Section Inputs avancés */}
           <div className="card">
-            <h2 className="text-2xl font-bold text-black mb-6">
+            <h2 className="text-2xl font-bold color-text mb-6">
               🔧 Autres composants
             </h2>
             <div className="space-y-6">

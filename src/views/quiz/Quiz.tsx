@@ -117,7 +117,7 @@ const Quiz = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-lg text-black">Chargement du quiz...</p>
+        <p className="text-lg color-text">Chargement du quiz...</p>
       </div>
     );
   }
@@ -133,7 +133,7 @@ const Quiz = () => {
   if (!quiz || quiz.questions.length === 0) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-lg text-black">Aucune question disponible</p>
+        <p className="text-lg color-text">Aucune question disponible</p>
       </div>
     );
   }
@@ -184,7 +184,7 @@ const Quiz = () => {
 
         {/* Quiz title */}
         <div className="shadow-sm p-4">
-          <p className="text-sm text-black">
+          <p className="text-sm color-text">
             Question {currentQuestionIndex + 1} / {quiz.questions.length}
           </p>
         </div>
@@ -215,7 +215,7 @@ const Quiz = () => {
               onClick={handlePreviousQuestion}
               disabled={currentQuestionIndex === 0}
               variant="ghost"
-              className="flex-1 py-3 px-4 rounded-lg border-2 border-gray-300 font-semibold text-black disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 py-3 px-4 rounded-lg border-2 border-gray-300 font-semibold color-text disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Précédent
             </Button>
@@ -223,7 +223,7 @@ const Quiz = () => {
               onClick={handleNextQuestion}
               disabled={selectedAnswerId === undefined}
               variant="primary"
-              className="flex-1 py-3 px-4 rounded-lg text-black font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 py-3 px-4 rounded-lg color-text font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ backgroundColor: categoryColor }}
             >
               {isLastQuestion ? "Terminer" : "Suivant"}

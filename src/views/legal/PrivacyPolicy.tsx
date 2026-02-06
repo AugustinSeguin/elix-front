@@ -9,17 +9,17 @@ const PrivacyPolicy = () => {
       {/* Content */}
       <main className="flex flex-col flex-1 overflow-hidden !mt-[120px]">
         <div className="w-full max-w-md border border-gray-200 rounded-lg p-5 shadow-sm">
-          <p className="text-[15px] text-black mb-6">
+          <p className="text-[15px] color-text mb-6">
             On protège tes données comme si c'étaient les nôtres.
           </p>
 
           <div className="space-y-6">
             {/* Section 1 */}
             <div>
-              <h3 className="text-[15px] font-bold text-black mb-2">
+              <h3 className="text-[15px] font-bold color-text mb-2">
                 1. Quelles données on collecte ?
               </h3>
-              <ul className="list-disc pl-5 text-[15px] text-black space-y-1">
+              <ul className="list-disc pl-5 text-[15px] color-text space-y-1">
                 <li>
                   <span className="font-bold">Ton pseudo</span> : Pour
                   personnaliser ton expérience.
@@ -40,10 +40,10 @@ const PrivacyPolicy = () => {
 
             {/* Section 2 */}
             <div>
-              <h3 className="text-[15px] font-bold text-black mb-2">
+              <h3 className="text-[15px] font-bold color-text mb-2">
                 2. Pourquoi on les collecte ?
               </h3>
-              <p className="text-[15px] text-black">
+              <p className="text-[15px] color-text">
                 Uniquement pour que l'application fonctionne bien et pour savoir
                 quels sujets intéressent le plus les jeunes de ton âge (de façon
                 anonyme).
@@ -52,10 +52,10 @@ const PrivacyPolicy = () => {
 
             {/* Section 3 */}
             <div>
-              <h3 className="text-[15px] font-bold text-black mb-2">
+              <h3 className="text-[15px] font-bold color-text mb-2">
                 3. Qui voit tes infos ?
               </h3>
-              <ul className="list-disc pl-5 text-[15px] text-black space-y-1">
+              <ul className="list-disc pl-5 text-[15px] color-text space-y-1">
                 <li>
                   <span className="font-bold">Toi</span> : Tu es le seul à avoir
                   accès à ton profil.
@@ -75,13 +75,13 @@ const PrivacyPolicy = () => {
 
             {/* Section 4 */}
             <div>
-              <h3 className="text-[15px] font-bold text-black mb-2">
+              <h3 className="text-[15px] font-bold color-text mb-2">
                 4. Tes droits
               </h3>
-              <p className="text-[15px] text-black mb-2">
+              <p className="text-[15px] color-text mb-2">
                 Tu es le boss de tes données. Dans les Paramètres, tu peux :
               </p>
-              <ul className="list-disc pl-5 text-[15px] text-black space-y-1">
+              <ul className="list-disc pl-5 text-[15px] color-text space-y-1">
                 <li>Effacer ton historique de lecture à tout moment.</li>
                 <li>
                   Supprimer ton compte définitivement (toutes tes infos
@@ -92,10 +92,10 @@ const PrivacyPolicy = () => {
 
             {/* Section 5 */}
             <div>
-              <h3 className="text-[15px] font-bold text-black mb-2">
+              <h3 className="text-[15px] font-bold color-text mb-2">
                 5. Sécurité
               </h3>
-              <p className="text-[15px] text-black">
+              <p className="text-[15px] color-text">
                 On utilise des technologies de pointe pour que personne ne
                 puisse pirater tes informations. Pour plus de sécurité, n'oublie
                 pas d'activer le Code PIN dans les paramètres de l'appli !

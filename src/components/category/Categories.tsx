@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import { FaPlay } from "react-icons/fa";
 import { Category } from "../../types/category";
 import api from "../../api/axiosConfig";
 import { getCategoryColor } from "../../helpers/categoryHelper";

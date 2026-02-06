@@ -29,10 +29,10 @@ const Answer = ({ answers, onAnswerSelect, selectedAnswerId }: AnswerProps) => {
           }`}
         >
           <div className="flex flex-col items-center gap-2">
-            <span className="text-lg font-bold text-black">
+            <span className="text-lg font-bold color-text">
               {letters[index]}
             </span>
-            <p className="text-sm text-black text-center">{answer.title}</p>
+            <p className="text-sm color-text text-center">{answer.title}</p>
           </div>
         </Button>
       ))}

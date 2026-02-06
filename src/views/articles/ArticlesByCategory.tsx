@@ -52,7 +52,7 @@ const ArticlesByCategory = () => {
         ) : error ? (
           <div className="text-center py-12 text-red-500">{error}</div>
         ) : articles.length === 0 ? (
-          <div className="text-center py-12 text-black">
+          <div className="text-center py-12 color-text">
             Aucun article disponible dans cette catégorie.
           </div>
         ) : (
@@ -70,7 +70,7 @@ const ArticlesByCategory = () => {
                     className="w-full h-40 object-cover rounded-xl mb-4"
                   />
                 )}
-                <h3 className="text-lg font-bold text-black mb-1">
+                <h3 className="text-lg font-bold color-text mb-1">
                   {article.title}
                 </h3>
                 {article.subtitle && (
@@ -78,7 +78,7 @@ const ArticlesByCategory = () => {
                     {article.subtitle}
                   </p>
                 )}
-                <p className="text-black text-sm line-clamp-3">
+                <p className="color-text text-sm line-clamp-3">
                   {article.content}
                 </p>
               </div>

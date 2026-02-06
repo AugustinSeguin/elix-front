@@ -71,7 +71,7 @@ const Settings = () => {
     children: React.ReactNode;
   }) => (
     <div className="mb-4 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-      <p className="text-[13px] text-black pt-4 px-4 font-medium">{title}</p>
+      <p className="text-[13px] color-text pt-4 px-4 font-medium">{title}</p>
       <div className="flex flex-col">{children}</div>
     </div>
   );
@@ -80,7 +80,7 @@ const Settings = () => {
     label,
     onClick,
     href,
-    color = "text-black",
+    color = "color-text",
     arrow = false,
     toggle,
     onToggle,
@@ -96,7 +96,7 @@ const Settings = () => {
     const content = (
       <div className="flex items-center justify-between p-4 transition-colors cursor-pointer border-b border-gray-100 last:border-0">
         <span className={`text-[15px] font-medium ${color}`}>{label}</span>
-        {arrow && <MdArrowForwardIos className="w-4 h-4 text-black" />}
+        {arrow && <MdArrowForwardIos className="w-4 h-4 color-text" />}
         {onToggle && (
           <div onClick={(e) => e.stopPropagation()}>
             <Toggle enabled={toggle || false} onChange={onToggle} />
@@ -185,7 +185,7 @@ const Settings = () => {
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4">
           <div className="rounded-2xl p-6 w-full max-w-sm shadow-xl animate-in fade-in zoom-in duration-200">
-            <p className="text-center text-black mb-6 text-[15px]">
+            <p className="text-center color-text mb-6 text-[15px]">
               Veux-tu vraiment supprimer ton compte ?
             </p>
             <div className="flex flex-col gap-3">
@@ -201,7 +201,7 @@ const Settings = () => {
                 onClick={() => setShowDeleteModal(false)}
                 disabled={loading}
                 variant="ghost"
-                className="w-full bg-gray-300 text-black font-bold py-3 rounded-full hover:bg-gray-400 transition-colors disabled:opacity-50"
+                className="w-full bg-gray-300 color-text font-bold py-3 rounded-full hover:bg-gray-400 transition-colors disabled:opacity-50"
               >
                 Annuler
               </Button>

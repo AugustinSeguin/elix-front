@@ -151,7 +151,7 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
                 ? "text-primary-600"
                 : error
                   ? "text-red-600"
-                  : "text-black"
+                  : "color-text"
             }`}
           >
             {label}
@@ -171,11 +171,11 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
             aria-haspopup="listbox"
             aria-expanded={isOpen}
           >
-            <span className={value ? "text-black" : "text-black"}>
+            <span className={value ? "color-text" : "color-text"}>
               {getDisplayLabel()}
             </span>
             <FaChevronDown
-              className={`w-4 h-4 text-black transition-transform duration-200 ${
+              className={`w-4 h-4 color-text transition-transform duration-200 ${
                 isOpen ? "rotate-180" : ""
               }`}
             />
@@ -189,7 +189,7 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
                 <div className="p-2 border-b border-gray-200">
                   <input
                     type="text"
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white dark:bg-gray-800 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white dark:bg-gray-800 color-text dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     placeholder="Rechercher..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -201,7 +201,7 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
               {/* Options List */}
               <div className="overflow-y-auto max-h-48">
                 {filteredOptions.length === 0 ? (
-                  <div className="px-4 py-3 text-sm text-black text-center">
+                  <div className="px-4 py-3 text-sm color-text text-center">
                     Aucune option trouvée
                   </div>
                 ) : (
@@ -226,7 +226,7 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
                         className={`text-sm ${
                           isSelected(option.value)
                             ? "font-medium text-primary-700"
-                            : "text-black"
+                            : "color-text"
                         }`}
                       >
                         {option.label}
@@ -243,7 +243,7 @@ const SelectList = forwardRef<HTMLDivElement, SelectListProps>(
         </div>
 
         {(error || helperText) && (
-          <span className={`text-sm ${error ? "text-red-600" : "text-black"}`}>
+          <span className={`text-sm ${error ? "text-red-600" : "color-text"}`}>
             {error || helperText}
           </span>
         )}

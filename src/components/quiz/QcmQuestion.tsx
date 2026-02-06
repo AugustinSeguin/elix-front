@@ -34,7 +34,7 @@ const QcmQuestion = ({
     <div className="flex flex-col px-6 py-4 max-w-md mx-auto w-full">
       {/* Titre "Quiz" et Question */}
       <div className="text-center mb-8">
-        <h2 className="text-xl font-extrabold text-black leading-tight">
+        <h2 className="text-xl font-extrabold color-text leading-tight">
           {question.title}
         </h2>
       </div>

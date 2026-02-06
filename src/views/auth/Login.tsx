@@ -90,7 +90,7 @@ const Login = () => {
             }}
           />
         </div>
-        <h2 className="text-xl font-semibold text-black">Connexion</h2>
+        <h2 className="text-xl font-semibold color-text">Connexion</h2>
       </div>
 
       <div className="w-full max-w-md">
@@ -164,11 +164,11 @@ const Login = () => {
 
           {/* Register Link */}
           <div className="text-center pt-2">
-            <span className="text-sm text-black">
+            <span className="text-sm color-text">
               Pas de compte ?{" "}
               <Link
                 to="/register"
-                className="text-black underline hover:opacity-80 transition-opacity"
+                className="color-text underline hover:opacity-80 transition-opacity"
               >
                 Je m'inscris
               </Link>

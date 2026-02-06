@@ -149,7 +149,7 @@ const EditProfile = () => {
   if (!user) {
     return (
       <div className="flex items-center justify-center min-h-screen pb-20">
-        <p className="text-lg text-black">Chargement...</p>
+        <p className="text-lg color-text">Chargement...</p>
       </div>
     );
   }
@@ -157,7 +157,7 @@ const EditProfile = () => {
   return (
     <div className="min-h-screen pb-20">
       {/* Header */}
-        <Header title="Modifier mon profil" sticky={true} />
+      <Header title="Modifier mon profil" sticky={true} />
 
       {/* Form */}
       <div className="max-w-md mx-auto px-4 py-8">
@@ -176,7 +176,7 @@ const EditProfile = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Profile Picture */}
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">
+            <label className="block text-sm font-semibold color-text mb-2">
               Photo de profil
             </label>
             <div className="text-center mb-4">
@@ -225,7 +225,7 @@ const EditProfile = () => {
 
           {/* Gender */}
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">
+            <label className="block text-sm font-semibold color-text mb-2">
               Genre
             </label>
             <select
@@ -266,9 +266,9 @@ const EditProfile = () => {
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">
+            <label className="block text-sm font-semibold color-text mb-2">
               Mot de passe{" "}
-              <span className="text-black">
+              <span className="color-text">
                 (laissez vide pour ne pas le changer)
               </span>
             </label>

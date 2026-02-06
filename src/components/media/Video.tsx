@@ -278,7 +278,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
               <p className="text-white text-lg mb-2">
                 Erreur de chargement de la vidéo
               </p>
-              <p className="text-black text-sm">
+              <p className="color-text text-sm">
                 Le fichier vidéo est introuvable ou corrompu.
               </p>
             </div>

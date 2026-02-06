@@ -14,7 +14,7 @@ const ArticlesList = () => {
       <Header title="Articles" sticky={true}></Header>
       <main>
         <div className="mb-4">
-          <p className="text-black mt-1">Choisis le thème</p>
+          <p className="color-text mt-1">Choisis le thème</p>
         </div>
 
         <Categories onSelect={handleCategorySelect} />

@@ -118,7 +118,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>(
         </div>
 
         {showCaption && (caption || alt) && (
-          <figcaption className="mt-2 text-sm text-black text-center">
+          <figcaption className="mt-2 text-sm color-text text-center">
             {caption || alt}
           </figcaption>
         )}

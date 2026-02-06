@@ -30,6 +30,7 @@
   --color-secondary-700: #7e22ce;
   --color-secondary-800: #6b21a8;
   --color-secondary-900: #581c87;
+  --color-text: #000000;
 
   /* Spacing system */
   --spacing-xs: 0.25rem;
@@ -81,6 +82,8 @@ html.dark {
   --color-secondary-700: #c3abd6;
   --color-secondary-800: #dcc9ee;
   --color-secondary-900: #f3e8ff;
+
+  --color-text: #ffffff;
 }
 
 /* Styles de base */
@@ -103,7 +106,7 @@ body {
     color 0.3s;
 }
 
-html.dark .text-black {
+html.dark .color-text {
   color: var(--color-primary-50) !important;
 }
 

@@ -45,7 +45,7 @@ const AboutUs = () => {
                 key={index}
                 className="w-full border-b border-gray-200 pb-5 last:border-0"
               >
-                <h3 className="text-[15px] font-bold text-black mb-1">
+                <h3 className="text-[15px] font-bold color-text mb-1">
                   {item.label} :{" "}
                   <span className="font-normal">{item.value}</span>
                 </h3>
@@ -54,13 +54,13 @@ const AboutUs = () => {
 
             {/* Équipe et auteurs - Special formatting */}
             <div className="w-full border-b border-gray-200 pb-5">
-              <h3 className="text-[15px] font-bold text-black mb-1">
+              <h3 className="text-[15px] font-bold color-text mb-1">
                 Équipe et auteurs :{" "}
                 <span className="font-normal">
                   Les contenus ont été rédigé et vérifié par :
                 </span>
               </h3>
-              <ul className="list-disc pl-5 text-[15px] text-black mt-1 space-y-1">
+              <ul className="list-disc pl-5 text-[15px] color-text mt-1 space-y-1">
                 <li>Des professionnels de la santé (médecins, infirmiers).</li>
                 <li>Des éducateurs sexuels certifiés.</li>
                 <li>Des psychologues.</li>
@@ -69,7 +69,7 @@ const AboutUs = () => {
 
             {/* Sources d'information */}
             <div className="w-full border-b border-gray-200 pb-5">
-              <h3 className="text-[15px] font-bold text-black mb-1">
+              <h3 className="text-[15px] font-bold color-text mb-1">
                 Sources d'information :{" "}
                 <span className="font-normal">
                   Les contenus sont basés sur des sources scientifiques et des
@@ -80,14 +80,22 @@ const AboutUs = () => {
 
             {/* Site web officiel */}
             <div className="w-full border-b border-gray-200 pb-5">
-              <h3 className="text-[15px] font-bold text-black mb-1">
-                Site web officiel : <a className="font-normal" href="https://app.elix.cleanascode.fr" target="_blank" rel="noopener noreferrer">app.elix.cleanascode.fr</a>
+              <h3 className="text-[15px] font-bold color-text mb-1">
+                Site web officiel :{" "}
+                <a
+                  className="font-normal"
+                  href="https://app.elix.cleanascode.fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  app.elix.cleanascode.fr
+                </a>
               </h3>
             </div>
 
             {/* Crédits & remerciements */}
             <div className="w-full border-b border-gray-200 pb-5">
-              <h3 className="text-[15px] font-bold text-black mb-1">
+              <h3 className="text-[15px] font-bold color-text mb-1">
                 Crédits & remerciements :{" "}
                 <span className="font-normal">
                   Liste des contributeurs majeurs, des développeurs, et des

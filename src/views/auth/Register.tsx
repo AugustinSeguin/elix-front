@@ -241,7 +241,7 @@ const Register = () => {
             }}
           />
         </div>
-        <h2 className="text-xl font-semibold text-black">Inscription</h2>
+        <h2 className="text-xl font-semibold color-text">Inscription</h2>
       </div>
 
       <div className="w-full max-w-2xl">
@@ -340,7 +340,7 @@ const Register = () => {
             />
 
             <div className="space-y-1">
-              <label htmlFor="gender" className="block text-sm text-black ml-1">
+              <label htmlFor="gender" className="block text-sm color-text ml-1">
                 Genre
               </label>
               <div className="relative">
@@ -355,7 +355,7 @@ const Register = () => {
                   className={`w-full px-6 py-3.5 rounded-full border appearance-none ${
                     errors.gender
                       ? "border-red-400 text-red-500"
-                      : "border-gray-300 text-black"
+                      : "border-gray-300 color-text"
                   } focus:outline-none focus:ring-1 focus:ring-primary transition-colors`}
                   disabled={isLoading}
                 >
@@ -368,7 +368,7 @@ const Register = () => {
                     </option>
                   ))}
                 </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-black">
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 color-text">
                   <svg
                     className="fill-current h-4 w-4"
                     xmlns="http://www.w3.org/2000/svg"
@@ -406,7 +406,7 @@ const Register = () => {
             <div className="space-y-1">
               <label
                 htmlFor="password"
-                className="block text-sm text-black ml-1"
+                className="block text-sm color-text ml-1"
               >
                 Mot de passe
               </label>
@@ -425,7 +425,7 @@ const Register = () => {
                   className={`w-full px-6 py-3.5 rounded-full border ${
                     errors.password
                       ? "border-red-400 text-red-500"
-                      : "border-gray-300 text-black"
+                      : "border-gray-300 color-text"
                   } focus:outline-none focus:ring-1 focus:ring-primary transition-colors pr-12`}
                   disabled={isLoading}
                 />
@@ -434,7 +434,7 @@ const Register = () => {
                   onClick={() => setShowPassword(!showPassword)}
                   variant="ghost"
                   size="sm"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-black hover:text-black dark:hover:text-white p-0"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 color-text hover:color-text dark:hover:text-white p-0"
                 >
                   {showPassword ? (
                     <AiOutlineEyeInvisible className="w-5 h-5" />
@@ -451,7 +451,7 @@ const Register = () => {
             <div className="space-y-1">
               <label
                 htmlFor="passwordRepeated"
-                className="block text-sm text-black ml-1"
+                className="block text-sm color-text ml-1"
               >
                 Confirmer le mot de passe
               </label>
@@ -473,7 +473,7 @@ const Register = () => {
                   className={`w-full px-6 py-3.5 rounded-full border ${
                     errors.passwordRepeated
                       ? "border-red-400 text-red-500"
-                      : "border-gray-300 text-black"
+                      : "border-gray-300 color-text"
                   } focus:outline-none focus:ring-1 focus:ring-primary transition-colors pr-12`}
                   disabled={isLoading}
                 />
@@ -512,7 +512,7 @@ const Register = () => {
 
         {/* Lien vers login */}
         <div className="mt-6 text-center">
-          <p className="text-sm text-black">
+          <p className="text-sm color-text">
             Vous avez déjà un compte ?{" "}
             <Link
               to="/login"

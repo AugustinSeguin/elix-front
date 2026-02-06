@@ -136,7 +136,7 @@ const Resources = () => {
           ) : error ? (
             <div className="text-center py-12 text-red-500">{error}</div>
           ) : resources.length === 0 ? (
-            <div className="text-center py-12 text-black">
+            <div className="text-center py-12 color-text">
               Aucune ressource trouvée.
             </div>
           ) : (
@@ -146,14 +146,14 @@ const Resources = () => {
                 className="border border-gray-200 rounded-xl p-4 shadow-sm flex items-center justify-between"
               >
                 <div className="flex-1">
-                  <h3 className="font-medium text-black text-base">
+                  <h3 className="font-medium color-text text-base">
                     {resource.name}
                   </h3>
                 </div>
 
                 <div className="flex items-center gap-4">
                   {userLocation && (
-                    <span className="text-xs text-black">
+                    <span className="text-xs color-text">
                       {calculateDistance(
                         userLocation[0],
                         userLocation[1],
