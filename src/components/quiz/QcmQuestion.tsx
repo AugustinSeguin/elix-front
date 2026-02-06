@@ -1,5 +1,3 @@
-import Question from "./Question";
-import Answer from "./Answer";
 import { QuestionDto } from "../../types/quiz";
 
 interface QcmQuestionProps {
@@ -13,20 +11,43 @@ const QcmQuestion = ({
   selectedAnswerId,
   onAnswerSelect,
 }: QcmQuestionProps) => {
+  // Calcul du pourcentage pour la barre de progression
   return (
-    <div className="flex flex-col gap-6">
-      <div className="rounded-3xl bg-primary/10 shadow-sm">
-        <Question
-          title={question.title}
-          mediaPath={question.mediaPath ?? undefined}
-        />
+    <div className="flex flex-col px-6 py-4 max-w-md mx-auto w-full">
+      {/* Titre "Quiz" et Question */}
+      <div className="text-center mb-8">
+        <h2 className="text-xl font-extrabold text-black leading-tight">
+          {question.title}
+        </h2>
       </div>
 
-      <Answer
-        answers={question.answers || []}
-        onAnswerSelect={onAnswerSelect}
-        selectedAnswerId={selectedAnswerId}
-      />
+      {/* Liste des Réponses (QCM) */}
+      <div className="flex flex-col gap-3">
+        {(question.answers || []).map((answer, index) => {
+          const letter = String.fromCharCode(65 + index); // A, B, C, D
+          const isSelected = selectedAnswerId === answer.id;
+
+          return (
+            <button
+              key={answer.id}
+              onClick={() => onAnswerSelect(answer.id)}
+              className={`flex items-start gap-4 p-4 rounded-xl border-2 transition-all text-left border-gray-100 bg-white hover:border-gray-200"
+              `}
+            >
+              {/* Checkbox custom */}
+              <div
+                className={`mt-1 min-w-[20px] h-[20px] border-2 rounded flex items-center justify-center border-gray-400 ${
+                  isSelected ? "bg-primary" : "bg-white"
+                }`}
+              ></div>
+
+              <p className="text-sm font-medium text-gray-800">
+                <span className="font-bold">{letter}.</span> {answer.title}
+              </p>
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 };

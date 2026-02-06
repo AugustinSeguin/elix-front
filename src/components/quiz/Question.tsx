@@ -1,4 +1,3 @@
-import Image from "../media/Image";
 import Video from "../media/Video";
 
 interface QuestionProps {
