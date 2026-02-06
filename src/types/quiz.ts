@@ -11,6 +11,7 @@ interface QuestionDto {
   title: string;
   mediaPath?: string | null;
   categoryId: number;
+  typeQuestion?: number;
   answers?: AnswerDto[];
 }
 
@@ -20,7 +21,7 @@ interface QuizQuestionResultDto {
   selectedAnswerId: number;
   isCorrect: boolean;
   explanation?: string | null;
-  answer: AnswerDto; 
+  answer: AnswerDto;
 }
 
 interface UserAnswer {
@@ -35,5 +36,10 @@ interface QuizDto {
   questions: QuestionDto[];
 }
 
-
-export type { QuestionDto, AnswerDto, QuizQuestionResultDto, UserAnswer, QuizDto };
+export type {
+  QuestionDto,
+  AnswerDto,
+  QuizQuestionResultDto,
+  UserAnswer,
+  QuizDto,
+};

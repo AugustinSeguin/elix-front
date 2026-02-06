@@ -187,7 +187,7 @@ const EditProfile = () => {
                   className="w-32 h-32 rounded-full mx-auto object-cover"
                 />
               ) : (
-                <div className="w-32 h-32 rounded-full mx-auto bg-blue-200 flex items-center justify-center">
+                <div className="w-32 h-32 rounded-full mx-auto flex items-center justify-center">
                   <span className="text-4xl text-primary">📷</span>
                 </div>
               )}
@@ -313,7 +313,7 @@ const EditProfile = () => {
         <Button
           onClick={() => navigate("/profile")}
           variant="ghost"
-          className="w-full mt-4 text-primary hover:text-blue-700 font-semibold"
+          className="w-full mt-4 text-primary font-semibold"
         >
           Retour au profil
         </Button>

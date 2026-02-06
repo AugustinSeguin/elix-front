@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Question from "../../components/quiz/Question";
-import Answer from "../../components/quiz/Answer";
+import QcmQuestion from "../../components/quiz/QcmQuestion";
+import TrueFalseQuestion from "../../components/quiz/TrueFalseQuestion";
 import { useAuth } from "../../contexts/AuthContext";
 import { QuizDto, UserAnswer } from "../../types/quiz";
 import api from "../../api/axiosConfig";
@@ -151,7 +151,7 @@ const Quiz = () => {
         {/* Progress bar */}
         <div className="bg-primary h-1">
           <div
-            className="h-full bg-blue-600 transition-all duration-300"
+            className="h-full bg-primary transition-all duration-300"
             style={{
               width: `${
                 ((currentQuestionIndex + 1) / quiz.questions.length) * 100
@@ -169,20 +169,24 @@ const Quiz = () => {
 
         {/* Question section (top) */}
         <div className="flex-1 flex items-center justify-center overflow-y-auto">
-          <Question
-            title={currentQuestion.title}
-            mediaPath={currentQuestion.mediaPath ?? undefined}
-          />
+          {currentQuestion.typeQuestion === 1 ? (
+            <TrueFalseQuestion
+              question={currentQuestion}
+              onAnswerSelect={handleAnswerSelect}
+              onAutoNext={handleNextQuestion}
+              selectedAnswerId={selectedAnswerId}
+            />
+          ) : (
+            <QcmQuestion
+              question={currentQuestion}
+              onAnswerSelect={handleAnswerSelect}
+              selectedAnswerId={selectedAnswerId}
+            />
+          )}
         </div>
 
         {/* Answers section (bottom) */}
         <div className="shadow-lg">
-          <Answer
-            answers={currentQuestion.answers || []}
-            onAnswerSelect={handleAnswerSelect}
-            selectedAnswerId={selectedAnswerId}
-          />
-
           {/* Navigation buttons */}
           <div className="flex gap-4 px-4 py-6">
             <Button

@@ -28,9 +28,11 @@ const Categories = ({ onSelect }: CategoriesProps) => {
       if (cachedData) {
         setCategories(JSON.parse(cachedData));
         setLoading(false);
+        return;
       }
 
       try {
+        setLoading(true);
         const response = await api.get("/api/Category", {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -71,7 +73,7 @@ const Categories = ({ onSelect }: CategoriesProps) => {
         <div
           key={category.id}
           onClick={() => onSelect && onSelect(category.id)}
-          className="flex items-center p-3 rounded-2xl cursor-pointer hover:bg-blue-100 transition-colors shadow-sm"
+          className="flex items-center p-3 rounded-2xl cursor-pointer transition-colors shadow-sm"
         >
           <div className="flex-shrink-0">
             <img

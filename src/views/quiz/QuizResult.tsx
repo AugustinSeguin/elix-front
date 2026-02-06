@@ -127,14 +127,14 @@ const QuizResult = () => {
           <Button
             onClick={() => navigate("/run-quiz")}
             variant="primary"
-            className="flex-1 py-3 px-4 rounded-lg bg-primary text-black font-semibold hover:bg-blue-600 transition-colors"
+            className="flex-1 py-3 px-4 rounded-lg bg-primary text-black font-semibold transition-colors"
           >
             Refaire le quiz
           </Button>
           <Button
             onClick={() => navigate("/")}
             variant="ghost"
-            className="flex-1 py-3 px-4 rounded-lg border-2 border-primary text-black font-semibold hover:bg-gray-100 transition-colors"
+            className="flex-1 py-3 px-4 rounded-lg border-2 border-primary text-black font-semibold transition-colors"
           >
             Accueil
           </Button>

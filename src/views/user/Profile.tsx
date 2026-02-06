@@ -43,7 +43,7 @@ const Profile = () => {
               className="w-32 h-32 rounded-full mx-auto object-cover mb-4"
             />
           ) : (
-            <div className="w-32 h-32 rounded-full mx-auto bg-blue-200 flex items-center justify-center mb-4">
+            <div className="w-32 h-32 rounded-full mx-auto flex items-center justify-center mb-4">
               <span className="text-4xl text-primary">👤</span>
             </div>
           )}
@@ -128,7 +128,7 @@ const Profile = () => {
         <Button
           onClick={() => navigate("/edit-profile")}
           variant="primary"
-          className="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
+          className="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
         >
           <Icon icon={FaEdit} size="md" color="white" />
           Modifier mon profil
