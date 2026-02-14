@@ -130,6 +130,27 @@ header:not([style*="#9a3d80"]):not([style*="var(--color-primary-500)"])
   color: #000000 !important;
 }
 
+/* Progress bars */
+.progress-bar {
+  --progress-color: var(--color-primary-700);
+  --progress-track: #ffffff;
+}
+
+.progress-bar__track {
+  height: 10px;
+  border-radius: 999px;
+  background-color: var(--progress-track);
+  border: 1.5px solid var(--progress-color);
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background-color: var(--progress-color);
+  border-radius: 999px;
+  transition: width 300ms ease;
+}
+
 h1 {
   font-size: 1.875rem;
   font-weight: 700;
