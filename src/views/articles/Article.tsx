@@ -67,7 +67,7 @@ const Article = () => {
         <Button
           onClick={() => navigate(-1)}
           variant="primary"
-          className="mt-6 px-6 py-2 bg-primary-500 text-white rounded-full hover:opacity-90"
+          className="mt-6 px-6 py-2 bg-primary-500 color-text rounded-full hover:opacity-90"
         >
           Retour
         </Button>
@@ -82,7 +82,7 @@ const Article = () => {
         {/* Badge catégorie */}
         {article.category && (
           <div className="px-6 pt-4 pb-2">
-            <span className="inline-block bg-green-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
+            <span className="inline-block bg-green-500 color-text text-xs font-semibold px-4 py-1.5 rounded-full">
               {article.category.name}
             </span>
           </div>

@@ -107,7 +107,7 @@ const TrueFalseQuestion = ({
               opacity: opacity,
             }}
           >
-            <span className="text-7xl font-bold text-white shadow-sm">
+            <span className="text-7xl font-bold color-text shadow-sm">
               {dragX > 0 ? "✓" : "✕"}
             </span>
           </div>
@@ -136,11 +136,11 @@ const TrueFalseQuestion = ({
             setDragX(0);
           }}
         >
-          <h2 className="text-white text-2xl font-bold leading-tight">
+          <h2 className="color-text text-2xl font-bold leading-tight">
             {question.title}
           </h2>
 
-          <div className="absolute bottom-10 text-white/80 font-medium tracking-widest uppercase text-sm">
+          <div className="absolute bottom-10 color-text/80 font-medium tracking-widest uppercase text-sm">
             Vrai ou Faux ?
           </div>
         </div>

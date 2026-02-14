@@ -434,7 +434,7 @@ const Register = () => {
                   onClick={() => setShowPassword(!showPassword)}
                   variant="ghost"
                   size="sm"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 color-text hover:color-text dark:hover:text-white p-0"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 color-text hover:color-text dark:hover:color-text p-0"
                 >
                   {showPassword ? (
                     <AiOutlineEyeInvisible className="w-5 h-5" />

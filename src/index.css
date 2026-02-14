@@ -110,6 +110,26 @@ html.dark .color-text {
   color: var(--color-primary-50) !important;
 }
 
+/* Texte selon le fond principal pour bg-primary */
+.bg-primary {
+  color: var(--color-primary-50) !important;
+}
+
+.bg-primary[style]:not([style*="#9a3d80"]):not(
+    [style*="var(--color-primary-500)"]
+  ) {
+  color: #000000 !important;
+}
+
+header[style*="var(--color-primary-500)"] .color-text {
+  color: var(--color-primary-50) !important;
+}
+
+header:not([style*="#9a3d80"]):not([style*="var(--color-primary-500)"])
+  .color-text {
+  color: #000000 !important;
+}
+
 h1 {
   font-size: 1.875rem;
   font-weight: 700;

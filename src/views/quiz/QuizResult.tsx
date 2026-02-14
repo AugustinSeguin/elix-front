@@ -65,7 +65,7 @@ const QuizResult = () => {
       {/* Header */}
       <Header title="Résultats du Quiz" sticky={true}></Header>
 
-      <div className="text-white py-8 px-4 text-center">
+      <div className="color-text py-8 px-4 text-center">
         <p className="color-text mt-1">
           Score: {score}/{totalQuestions}
         </p>

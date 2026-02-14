@@ -152,7 +152,7 @@ const Profile = () => {
         <Button
           onClick={() => navigate("/edit-profile")}
           variant="primary"
-          className="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+          className="w-full bg-primary color-text py-3 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
         >
           <Icon icon={FaEdit} size="md" color="white" />
           Modifier mon profil

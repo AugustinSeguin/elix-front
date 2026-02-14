@@ -29,6 +29,7 @@ import AboutUs from "./views/legal/AboutUs";
 import Profile from "./views/user/Profile";
 import EditProfile from "./views/user/EditProfile";
 import Navbar from "./components/navbar/Navbar";
+import Instructions from "./views/quiz/Instructions";
 
 // Liste des routes publiques (accessible sans authentification)
 
@@ -114,6 +115,14 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <RunQuiz />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/instructions/:categoryId"
+          element={
+            <ProtectedRoute>
+              <Instructions />
             </ProtectedRoute>
           }
         />

@@ -220,7 +220,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
                   onClick={togglePlay}
                   variant="ghost"
                   size="sm"
-                  className="text-white hover:text-primary-400 transition-colors focus:outline-none p-0"
+                  className="color-text hover:text-primary-400 transition-colors focus:outline-none p-0"
                   aria-label={isPlaying ? "Pause" : "Lecture"}
                 >
                   {isPlaying ? (
@@ -235,7 +235,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
                   onClick={toggleMute}
                   variant="ghost"
                   size="sm"
-                  className="text-white hover:text-primary-400 transition-colors focus:outline-none p-0"
+                  className="color-text hover:text-primary-400 transition-colors focus:outline-none p-0"
                   aria-label={isMuted ? "Activer le son" : "Couper le son"}
                 >
                   {isMuted ? (
@@ -246,7 +246,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
                 </Button>
 
                 {/* Timer */}
-                <span className="text-white text-sm font-medium">
+                <span className="color-text text-sm font-medium">
                   {formatTime(currentTime)} / {formatTime(duration)}
                 </span>
               </div>
@@ -256,7 +256,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
                 onClick={toggleFullscreen}
                 variant="ghost"
                 size="sm"
-                className="text-white hover:text-primary-400 transition-colors focus:outline-none p-0"
+                className="color-text hover:text-primary-400 transition-colors focus:outline-none p-0"
                 aria-label={
                   isFullscreen ? "Quitter le plein écran" : "Plein écran"
                 }
@@ -275,7 +275,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
         {hasError && (
           <div className="absolute inset-0 flex items-center justify-center bg-gray-900/90">
             <div className="text-center p-6">
-              <p className="text-white text-lg mb-2">
+              <p className="color-text text-lg mb-2">
                 Erreur de chargement de la vidéo
               </p>
               <p className="color-text text-sm">

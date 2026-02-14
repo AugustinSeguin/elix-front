@@ -6,7 +6,7 @@ const RunQuiz = () => {
   const navigate = useNavigate();
 
   const handleCategorySelect = (categoryId: number) => {
-    navigate(`/quiz/${categoryId}`);
+    navigate(`/instructions/${categoryId}`);
   };
 
   return (

@@ -193,7 +193,7 @@ const Settings = () => {
                 onClick={confirmDeleteAccount}
                 disabled={loading}
                 variant="primary"
-                className="w-full bg-primary text-white font-bold py-3 rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="w-full bg-primary color-text font-bold py-3 rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 {loading ? "Suppression..." : "Supprimer mon compte"}
               </Button>

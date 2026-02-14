@@ -41,7 +41,7 @@ const Header = ({
               className="p-2 w-10 h-10 !rounded-full border border-black/20 hover:bg-black/10 transition-colors focus:outline-none focus:ring-2 focus:ring-black/20"
               aria-label="Retour"
             >
-              <MdArrowBackIosNew className="w-5 h-5 text-white" />
+              <MdArrowBackIosNew className="w-5 h-5 color-text" />
             </Button>
 
             {/* Menu icon */}
@@ -53,14 +53,14 @@ const Header = ({
                 className="p-2 rounded-lg hover:bg-black/10 transition-colors focus:outline-none focus:ring-2 focus:ring-black/20"
                 aria-label="Menu"
               >
-                <FaBars className="w-6 h-6 text-white" />
+                <FaBars className="w-6 h-6 color-text" />
               </Button>
             )}
           </div>
 
           {/* Title */}
           {title && (
-            <h1 className="text-xl font-bold text-white text-center flex-1 px-2 leading-tight">
+            <h1 className="text-xl font-bold color-text text-center flex-1 px-2 leading-tight">
               {title}
             </h1>
           )}
