@@ -5,12 +5,6 @@ import Icon from "../../components/icon/Icon";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
 
-const GENDER_MAP: Record<number, string> = {
-  0: "Fille",
-  1: "Garçon",
-  2: "Non binaire",
-};
-
 const Profile = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -57,7 +51,7 @@ const Profile = () => {
       </Header>
 
       {/* Profile Content */}
-      <div className="max-w-md mx-auto px-4 py-8">
+      <main className="max-w-md mx-auto px-4 py-8">
         {/* Profile Picture */}
         <div className="rounded-lg shadow-md p-6 mb-6 text-center">
           {user.pictureMediaPath ? (
@@ -119,16 +113,6 @@ const Profile = () => {
             </div>
           )}
 
-          {/* Gender */}
-          {user.gender !== undefined && (
-            <div>
-              <p className="text-sm color-text">Genre</p>
-              <p className="text-lg font-semibold color-text">
-                {GENDER_MAP[user.gender] || "-"}
-              </p>
-            </div>
-          )}
-
           {/* Phone Number */}
           {user.phoneNumber && (
             <div>
@@ -138,14 +122,6 @@ const Profile = () => {
               </p>
             </div>
           )}
-
-          {/* Premium Status */}
-          <div>
-            <p className="text-sm color-text">Statut</p>
-            <p className="text-lg font-semibold color-text">
-              {user.isPremium ? "Premium ⭐" : "Gratuit"}
-            </p>
-          </div>
         </div>
 
         {/* Edit Button */}
@@ -157,7 +133,7 @@ const Profile = () => {
           <Icon icon={FaEdit} size="md" color="white" />
           Modifier mon profil
         </Button>
-      </div>
+      </main>
     </div>
   );
 };

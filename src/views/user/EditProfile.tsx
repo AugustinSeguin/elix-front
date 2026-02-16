@@ -25,12 +25,6 @@ const EditProfile = () => {
     user?.pictureMediaPath || null,
   );
 
-  const GENDER_OPTIONS = [
-    { label: "Fille", value: 0 },
-    { label: "Garçon", value: 1 },
-    { label: "Non binaire", value: 2 },
-  ];
-
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
@@ -160,7 +154,7 @@ const EditProfile = () => {
       <Header title="Modifier mon profil" sticky={true} />
 
       {/* Form */}
-      <div className="max-w-md mx-auto px-4 py-8">
+      <main className="max-w-md mx-auto px-4 py-8">
         {success && (
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6">
             Profil mis à jour avec succès ! Redirection...
@@ -222,35 +216,6 @@ const EditProfile = () => {
             error={errors.birthdate}
             fullWidth
           />
-
-          {/* Gender */}
-          <div>
-            <label className="block text-sm font-semibold color-text mb-2">
-              Genre
-            </label>
-            <select
-              value={formData.gender !== undefined ? formData.gender : ""}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  gender: e.target.value
-                    ? Number.parseInt(e.target.value)
-                    : undefined,
-                })
-              }
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            >
-              <option value="">Sélectionner un genre</option>
-              {GENDER_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-            {errors.gender && (
-              <p className="text-red-500 text-sm mt-1">{errors.gender}</p>
-            )}
-          </div>
 
           {/* Phone Number */}
           <InputText
@@ -317,7 +282,7 @@ const EditProfile = () => {
         >
           Retour au profil
         </Button>
-      </div>
+      </main>
     </div>
   );
 };
