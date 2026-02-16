@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Toggle from "../../components/toggle/Toggle";
 import ThemeToggle from "../../components/toggle/ThemeToggle";
@@ -8,6 +8,11 @@ import api from "../../api/axiosConfig";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
 
+interface BeforeInstallPromptEvent extends Event {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
+}
+
 const Settings = () => {
   const navigate = useNavigate();
   const { user, token, logout } = useAuth();
@@ -15,6 +20,42 @@ const Settings = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [installPrompt, setInstallPrompt] =
+    useState<BeforeInstallPromptEvent | null>(null);
+  const [isStandalone, setIsStandalone] = useState(false);
+  const [isIos, setIsIos] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeInstall = (event: Event) => {
+      event.preventDefault();
+      setInstallPrompt(event as BeforeInstallPromptEvent);
+    };
+
+    const handleInstalled = () => {
+      setInstallPrompt(null);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstall);
+    window.addEventListener("appinstalled", handleInstalled);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
+      window.removeEventListener("appinstalled", handleInstalled);
+    };
+  }, []);
+
+  useEffect(() => {
+    const isStandaloneMode =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      ("standalone" in navigator &&
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (navigator as any).standalone === true);
+
+    setIsStandalone(isStandaloneMode);
+
+    const ua = window.navigator.userAgent.toLowerCase();
+    setIsIos(/iphone|ipad|ipod/.test(ua));
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -42,6 +83,16 @@ const Settings = () => {
 
   const handleDeleteAccount = () => {
     setShowDeleteModal(true);
+  };
+
+  const handleInstall = async () => {
+    if (!installPrompt) {
+      return;
+    }
+
+    await installPrompt.prompt();
+    await installPrompt.userChoice;
+    setInstallPrompt(null);
   };
 
   const confirmDeleteAccount = async () => {
@@ -131,6 +182,42 @@ const Settings = () => {
             {error}
           </div>
         )}
+
+        <Section title="Télécharger l'application">
+          <div className="flex flex-col gap-3 p-4">
+            <p className="text-[14px] color-text">
+              Installe Elix sur ton appareil pour y acceder plus vite.
+            </p>
+            {isStandalone && (
+              <p className="text-[13px] color-text">
+                L'application est deja installee sur cet appareil.
+              </p>
+            )}
+            {!isStandalone && !installPrompt && isIos && (
+              <p className="text-[13px] color-text">
+                Sur iOS, utilise le menu Partager puis "Sur l'ecran d'accueil".
+              </p>
+            )}
+            {!isStandalone && !installPrompt && !isIos && (
+              <p className="text-[13px] color-text">
+                Ouvre le menu du navigateur et choisis "Installer
+                l'application".
+              </p>
+            )}
+            <Button
+              onClick={handleInstall}
+              disabled={!installPrompt || isStandalone}
+              variant="primary"
+              className="w-full bg-primary color-text font-bold py-3 rounded-full hover:opacity-90 transition-opacity disabled:opacity-60"
+            >
+              {isStandalone
+                ? "Deja installee"
+                : installPrompt
+                  ? "Installer l'application"
+                  : "Installation indisponible"}
+            </Button>
+          </div>
+        </Section>
 
         <Section title="Compte et Sécurité">
           <Item

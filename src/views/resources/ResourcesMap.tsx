@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import { FaLocationArrow } from "react-icons/fa";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useAuth } from "../../contexts/AuthContext";
