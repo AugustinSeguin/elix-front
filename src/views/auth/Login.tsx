@@ -32,40 +32,35 @@ const Login = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // Reset des erreurs
     setErrors({});
 
-    // Validation simple
     if (!formData.email || !formData.password) {
       return;
     }
 
     setIsLoading(true);
-
+      
     try {
       const response = await api.post(`/api/User/login`, {
         email: formData.email,
         password: formData.password,
       });
 
-      if (response.data.token) {
-        login(response.data.token);
-        try {
-          const userResponse = await api.get("/api/User/me", {
-            headers: {
-              Authorization: `Bearer ${response.data.token}`,
-            },
-          });
-          setUser(userResponse.data);
-        } catch (err) {
-          console.error("Error fetching user data:", err);
-        }
-      }
+      const token = response.data.token;
 
-      navigate("/");
+      if (token) {
+        login(token); 
+        
+        const userResponse = await api.get("/api/User/me", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        
+        setUser(userResponse.data);
+        
+        navigate("/", { replace: true });
+      }
     } catch (error: any) {
       console.error("Login error:", error);
-      // Erreur générique comme sur la maquette
       setErrors({
         email: "L'identifiant ou le mot de passe est erroné",
         password: "L'identifiant ou le mot de passe est erroné",

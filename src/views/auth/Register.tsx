@@ -25,7 +25,7 @@ interface RegisterErrors {
 const Register = () => {
   const navigate = useNavigate();
   const { login, setUser } = useAuth();
-  
+
   const [step, setStep] = useState<number>(1);
   const [isLoading, setIsLoading] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -50,16 +50,22 @@ const Register = () => {
     const newErrors: RegisterErrors = {};
 
     if (!formData.lastname) newErrors.lastname = "Le nom est requis";
-    else if (formData.lastname.length < 2) newErrors.lastname = "Min 2 caractères";
+    else if (formData.lastname.length < 2)
+      newErrors.lastname = "Min 2 caractères";
 
     if (!formData.firstname) newErrors.firstname = "Le prénom est requis";
-    else if (formData.firstname.length < 2) newErrors.firstname = "Min 2 caractères";
+    else if (formData.firstname.length < 2)
+      newErrors.firstname = "Min 2 caractères";
 
-    if (!formData.birthdate) newErrors.birthdate = "La date de naissance est requise";
+    if (!formData.birthdate)
+      newErrors.birthdate = "La date de naissance est requise";
 
-    if (!formData.username) newErrors.username = "Le nom d'utilisateur est requis";
-    else if (formData.username.length < 3) newErrors.username = "Min 3 caractères";
-    else if (!/^[a-zA-Z0-9_]+$/.test(formData.username)) newErrors.username = "Lettres, chiffres et _";
+    if (!formData.username)
+      newErrors.username = "Le nom d'utilisateur est requis";
+    else if (formData.username.length < 3)
+      newErrors.username = "Min 3 caractères";
+    else if (!/^[a-zA-Z0-9_]+$/.test(formData.username))
+      newErrors.username = "Lettres, chiffres et _";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -70,16 +76,21 @@ const Register = () => {
     const newErrors: RegisterErrors = {};
 
     if (!formData.email) newErrors.email = "L'email est requis";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Email invalide";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      newErrors.email = "Email invalide";
 
     if (!formData.password) newErrors.password = "Le mot de passe est requis";
-    else if (formData.password.length < 8) newErrors.password = "Min 8 caractères";
-    else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password)) newErrors.password = "Format incorrect";
+    else if (formData.password.length < 8)
+      newErrors.password = "Min 8 caractères";
+    else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password))
+      newErrors.password = "Format incorrect";
 
-    if (!formData.passwordRepeated) newErrors.passwordRepeated = "Confirmation requise";
-    else if (formData.password !== formData.passwordRepeated) newErrors.passwordRepeated = "Mots de passe différents";
+    if (!formData.passwordRepeated)
+      newErrors.passwordRepeated = "Confirmation requise";
+    else if (formData.password !== formData.passwordRepeated)
+      newErrors.passwordRepeated = "Mots de passe différents";
 
-    if(!acceptTerms) newErrors.terms = "Vous devez accepter les conditions";
+    if (!acceptTerms) newErrors.terms = "Vous devez accepter les conditions";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -87,8 +98,8 @@ const Register = () => {
 
   const handleNext = () => {
     if (validateStep1()) {
-        setStep(2);
-        setErrors({});
+      setStep(2);
+      setErrors({});
     }
   };
 
@@ -105,7 +116,7 @@ const Register = () => {
 
     setIsLoading(true);
 
-    try {
+try {
       const formattedBirthdate = new Date(formData.birthdate).toISOString();
 
       const payload = {
@@ -124,17 +135,25 @@ const Register = () => {
       const response = await api.post(`/api/User/register`, payload);
 
       if (response.data.token) {
-        login(response.data.token);
+        const token = response.data.token;
+
+        login(token); 
+
         try {
           const userResponse = await api.get("/api/User/me", {
-            headers: { Authorization: `Bearer ${response.data.token}` },
+            headers: { Authorization: `Bearer ${token}` },
           });
+          
           setUser(userResponse.data);
+          
+          navigate("/", { replace: true });
         } catch (err) {
-          console.error(err);
+          console.error("Erreur post-inscription (me):", err);
+          navigate("/login");
         }
+      } else {
+        navigate("/login");
       }
-      navigate("/");
     } catch (error: any) {
       if (error.response) {
         const { status, data } = error.response;
@@ -164,7 +183,6 @@ const Register = () => {
   return (
     // Utilisation de var(--color-primary-100) pour le fond global
     <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12 sm:px-8 bg-[var(--color-primary-100)] transition-colors duration-300">
-      
       {/* Logo Section */}
       <div className="flex flex-col items-center justify-center mb-6">
         <div className="flex items-center gap-3 mb-6">
@@ -175,13 +193,12 @@ const Register = () => {
           />
         </div>
         <h2 className="text-2xl font-bold text-[var(--color-text)] uppercase tracking-widest">
-            {step === 1 ? "Inscription" : "Inscription Suite"}
+          Inscription
         </h2>
       </div>
 
       {/* Card Container - Utilisation de secondary-50 comme surface de carte pour supporter le dark mode */}
       <div className="w-full max-w-md p-8 rounded-[40px] shadow-sm">
-        
         {errors.general && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
             <p className="text-sm text-red-600 text-center">{errors.general}</p>
@@ -189,42 +206,42 @@ const Register = () => {
         )}
 
         {step === 1 && (
-            <RegisterFirst 
-                formData={formData}
-                setFormData={setFormData}
-                errors={errors}
-                setErrors={setErrors}
-                onNext={handleNext}
-            />
+          <RegisterFirst
+            formData={formData}
+            setFormData={setFormData}
+            errors={errors}
+            setErrors={setErrors}
+            onNext={handleNext}
+          />
         )}
 
         {step === 2 && (
-            <RegisterSecond
-                formData={formData}
-                setFormData={setFormData}
-                errors={errors}
-                setErrors={setErrors}
-                onSubmit={handleSubmit}
-                onBack={handleBack}
-                isLoading={isLoading}
-                acceptTerms={acceptTerms}
-                setAcceptTerms={setAcceptTerms}
-            />
+          <RegisterSecond
+            formData={formData}
+            setFormData={setFormData}
+            errors={errors}
+            setErrors={setErrors}
+            onSubmit={handleSubmit}
+            onBack={handleBack}
+            isLoading={isLoading}
+            acceptTerms={acceptTerms}
+            setAcceptTerms={setAcceptTerms}
+          />
         )}
       </div>
-      
-        {/* Lien Login - Utilisation de primary-500 pour le lien */}
-        <div className="mt-8 text-center">
-          <p className="text-sm text-[var(--color-text)]">
-            Vous avez déjà un compte ?{" "}
-            <Link
-              to="/login"
-              className="color-text underline hover:opacity-80 transition-opacity"
-            >
-              Se connecter
-            </Link>
-          </p>
-        </div>
+
+      {/* Lien Login - Utilisation de primary-500 pour le lien */}
+      <div className="mt-8 text-center">
+        <p className="text-sm text-[var(--color-text)]">
+          Vous avez déjà un compte ?{" "}
+          <Link
+            to="/login"
+            className="color-text underline hover:opacity-80 transition-opacity"
+          >
+            Se connecter
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
