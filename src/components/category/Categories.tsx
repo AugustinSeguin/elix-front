@@ -16,8 +16,6 @@ const Categories = ({ onSelect }: CategoriesProps) => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      console.log("categories fetch initiated", categories);
-
       if (!token) {
         setLoading(false);
         return;

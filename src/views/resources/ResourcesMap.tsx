@@ -248,18 +248,6 @@ const ResourcesMap = () => {
             })}
           </MapContainer>
         </div>
-
-        {/* Recenter Button */}
-        {userLocation && (
-          <Button
-            onClick={() => setMapCenter(userLocation)}
-            variant="ghost"
-            size="sm"
-            className="absolute bottom-4 right-4 z-[1000] p-3 rounded-full shadow-lg color-text hover:text-primary transition-colors"
-          >
-            <FaLocationArrow size={20} />
-          </Button>
-        )}
       </main>
     </div>
   );

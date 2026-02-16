@@ -93,12 +93,12 @@ const Login = () => {
         <h2 className="text-xl font-semibold color-text">Connexion</h2>
       </div>
 
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md p-8 rounded-[40px] shadow-sm">
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email/Identifiant Field */}
           <InputText
             id="email"
-            label="Identifiant"
+            label="Adresse mail"
             type="email"
             value={formData.email}
             onChange={(e) => {
@@ -113,12 +113,10 @@ const Login = () => {
 
           {/* Password Field */}
           <div className="space-y-2">
-            <label htmlFor="password" className="block text-xs">
-              Mot de passe
-            </label>
             <div className="relative">
               <InputText
                 id="password"
+                label="Mot de passe"
                 type={showPassword ? "text" : "password"}
                 value={formData.password}
                 onChange={(e) => {
@@ -132,19 +130,21 @@ const Login = () => {
                 fullWidth
                 className="pr-10"
               />
-              <Button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                variant="ghost"
-                size="sm"
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-0"
-              >
-                {showPassword ? (
-                  <AiOutlineEyeInvisible className="w-5 h-5" />
-                ) : (
-                  <AiOutlineEye className="w-5 h-5" />
-                )}
-              </Button>
+              <div className="absolute right-4 top-[34px] z-10">
+                <Button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  variant="ghost"
+                  size="sm"
+                  className="p-0 text-[var(--color-text)] hover:bg-transparent"
+                >
+                  {showPassword ? (
+                    <AiOutlineEyeInvisible className="w-5 h-5" />
+                  ) : (
+                    <AiOutlineEye className="w-5 h-5" />
+                  )}
+                </Button>
+              </div>
             </div>
             {/* Mot de passe oublié */}
             <div className="text-left">
