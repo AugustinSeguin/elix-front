@@ -29,7 +29,9 @@ const Progress = () => {
 
   useEffect(() => {
     const fetchUserPoints = async () => {
-      if (!token) {
+      setLoading(true);
+
+      if (!token || !user?.id) {
         setUserPoints([]);
         setLoading(false);
         return;
@@ -57,7 +59,7 @@ const Progress = () => {
     };
 
     fetchUserPoints();
-  }, []);
+  }, [token, user?.id]);
 
   if (loading) {
     return (
