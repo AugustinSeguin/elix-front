@@ -193,28 +193,42 @@ const Settings = () => {
                 L'application est deja installee sur cet appareil.
               </p>
             )}
-            {!isStandalone && !installPrompt && isIos && (
+            {!isStandalone && isIos && (
+              <div className="text-[13px] color-text space-y-2">
+                <p className="font-semibold">Instructions pour iOS :</p>
+                <ol className="list-decimal list-inside space-y-1 pl-2">
+                  <li>
+                    Appuie sur le bouton Partager (icône carré avec flèche)
+                  </li>
+                  <li>Fais défiler et sélectionne "Sur l'écran d'accueil"</li>
+                  <li>Appuie sur "Ajouter"</li>
+                </ol>
+              </div>
+            )}
+            {!isStandalone && !isIos && !installPrompt && (
               <p className="text-[13px] color-text">
-                Sur iOS, utilise le menu Partager puis "Sur l'ecran d'accueil".
+                Ouvre le menu du navigateur (⋮) et choisis "Installer
+                l'application" ou "Ajouter à l'écran d'accueil".
               </p>
             )}
-            {!isStandalone && !installPrompt && !isIos && (
-              <p className="text-[13px] color-text">
-                Ouvre le menu du navigateur et choisis "Installer
-                l'application".
+            {!isStandalone && installPrompt && (
+              <p className="text-[13px] text-green-600 font-medium">
+                ✓ Installation disponible ! Clique sur le bouton ci-dessous.
               </p>
             )}
             <Button
               onClick={handleInstall}
-              disabled={!installPrompt || isStandalone}
+              disabled={(!installPrompt && !isIos) || isStandalone}
               variant="primary"
               className="w-full bg-primary color-text font-bold py-3 rounded-full hover:opacity-90 transition-opacity disabled:opacity-60"
             >
               {isStandalone
-                ? "Deja installee"
+                ? "✓ Deja installee"
                 : installPrompt
                   ? "Installer l'application"
-                  : "Installation indisponible"}
+                  : isIos
+                    ? "Suivre les instructions ci-dessus"
+                    : "Utiliser le menu du navigateur"}
             </Button>
           </div>
         </Section>

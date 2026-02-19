@@ -33,11 +33,6 @@ const ErrorPage = () => {
       <Header title="Elix" />
       <div className="flex-1 flex items-center justify-center px-4 pt-20">
         <div className="text-center max-w-2xl">
-          {statusCode && (
-            <p className="text-6xl font-bold text-primary-500 mb-4">
-              {statusCode}
-            </p>
-          )}
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
             {errorMessage}
           </h2>

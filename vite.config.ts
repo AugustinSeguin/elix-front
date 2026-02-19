@@ -12,7 +12,30 @@ export default defineConfig(({ mode }) => {
       VitePWA({
         registerType: "autoUpdate",
         devOptions: {
-          enabled: false,
+          enabled: true,
+          type: "module",
+        },
+        workbox: {
+          globPatterns:
+            mode === "production"
+              ? ["**/*.{js,css,html,ico,png,svg,json,txt}"]
+              : [],
+          runtimeCaching: [
+            {
+              urlPattern: /^https:\/\/api\.elix\.cleanascode\.fr\/.*/i,
+              handler: "NetworkFirst",
+              options: {
+                cacheName: "api-cache",
+                expiration: {
+                  maxEntries: 50,
+                  maxAgeSeconds: 60 * 60 * 24, // 24 heures
+                },
+                cacheableResponse: {
+                  statuses: [0, 200],
+                },
+              },
+            },
+          ],
         },
         includeAssets: ["logo.svg"],
         manifest: {
@@ -22,12 +45,25 @@ export default defineConfig(({ mode }) => {
           theme_color: "#9a3d80",
           background_color: "#f0f9ff",
           display: "standalone",
+          orientation: "portrait",
           start_url: "/",
           scope: "/",
           icons: [
             {
               src: "/logo.svg",
               sizes: "any",
+              type: "image/svg+xml",
+              purpose: "any maskable",
+            },
+            {
+              src: "/logo.svg",
+              sizes: "512x512",
+              type: "image/svg+xml",
+              purpose: "any",
+            },
+            {
+              src: "/logo.svg",
+              sizes: "192x192",
               type: "image/svg+xml",
               purpose: "any",
             },
