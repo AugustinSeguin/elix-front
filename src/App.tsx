@@ -30,6 +30,7 @@ import Profile from "./views/user/Profile";
 import EditProfile from "./views/user/EditProfile";
 import Navbar from "./components/navbar/Navbar";
 import Instructions from "./views/quiz/Instructions";
+import ErrorPage from "./views/Error";
 
 // Liste des routes publiques (accessible sans authentification)
 
@@ -206,6 +207,9 @@ const AppContent = () => {
             </ProtectedRoute>
           }
         />
+
+        {/* Page d'erreur */}
+        <Route path="/error" element={<ErrorPage />} />
 
         {/* Redirection par défaut */}
         <Route path="*" element={<Navigate to="/" replace />} />

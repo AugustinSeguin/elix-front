@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import api from "../../api/axiosConfig";
 import ProgressBar from "./ProgressBar";
 import type { Category } from "../../types/category";
+import { useAuth } from "../../contexts/AuthContext";
 
 interface UserPointDto {
   id: number;
@@ -14,6 +15,7 @@ interface UserPointDto {
 const Progress = () => {
   const [userPoints, setUserPoints] = useState<UserPointDto[]>([]);
   const [loading, setLoading] = useState(true);
+  const { user, token } = useAuth();
 
   const categories = useMemo(() => {
     try {
@@ -27,7 +29,6 @@ const Progress = () => {
 
   useEffect(() => {
     const fetchUserPoints = async () => {
-      const token = localStorage.getItem("authToken");
       if (!token) {
         setUserPoints([]);
         setLoading(false);
@@ -36,7 +37,7 @@ const Progress = () => {
 
       try {
         const response = await api.get<UserPointDto[]>(
-          "/api/UserPoint/user/1",
+          `/api/UserPoint/user/${user?.id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -44,6 +45,8 @@ const Progress = () => {
             },
           },
         );
+        console.log("User :", user);
+        console.log("User points response:", response.data);
         setUserPoints(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
         console.error("Error fetching user points:", error);
