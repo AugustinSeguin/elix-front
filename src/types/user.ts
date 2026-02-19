@@ -10,6 +10,7 @@ interface User {
   isPremium: boolean;
   phoneNumber?: number;
   pictureMediaPath?: string;
+  badgeUrl?: string;
   isAdmin?: boolean;
 }
 

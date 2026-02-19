@@ -29,7 +29,6 @@ api.interceptors.response.use(
           "errorMessage",
           errorMessages[status] || "Une erreur est survenue",
         );
-        sessionStorage.setItem("errorStatusCode", status.toString());
 
         globalThis.location.href = "/error";
       }
@@ -38,7 +37,6 @@ api.interceptors.response.use(
         "errorMessage",
         "Impossible de contacter le serveur. Vérifiez votre connexion internet.",
       );
-      sessionStorage.setItem("errorStatusCode", "");
 
       globalThis.location.href = "/error";
     }

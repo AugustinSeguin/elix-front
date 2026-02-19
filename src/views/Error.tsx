@@ -5,16 +5,13 @@ import Header from "../components/header/Header";
 const ErrorPage = () => {
   const location = useLocation();
   const [errorMessage, setErrorMessage] = useState("");
-  const [statusCode, setStatusCode] = useState("");
 
   useEffect(() => {
     // Récupérer le message d'erreur depuis sessionStorage ou location.state
     const storedMessage = sessionStorage.getItem("errorMessage");
-    const storedStatusCode = sessionStorage.getItem("errorStatusCode");
 
     if (storedMessage) {
       setErrorMessage(storedMessage);
-      setStatusCode(storedStatusCode || "");
 
       // Nettoyer le sessionStorage
       sessionStorage.removeItem("errorMessage");
@@ -24,7 +21,6 @@ const ErrorPage = () => {
       setErrorMessage(
         location.state?.errorMessage || "Une erreur est survenue",
       );
-      setStatusCode(location.state?.statusCode || "");
     }
   }, [location]);
 

@@ -124,6 +124,16 @@ const Profile = () => {
           )}
         </div>
 
+        <div className="rounded-lg shadow-md p-6 mb-6 text-center">
+          {user.badgeUrl && (
+            <img
+              src={user.badgeUrl}
+              alt="Badge"
+              className="w-32 h-32 rounded-full mx-auto object-cover mb-4"
+            />
+          )}
+        </div>
+
         {/* Edit Button */}
         <Button
           onClick={() => navigate("/edit-profile")}
