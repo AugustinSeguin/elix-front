@@ -124,7 +124,7 @@ const Profile = () => {
           )}
         </div>
 
-        <div className="rounded-lg shadow-md p-6 mb-6 text-center">
+        {/* <div className="rounded-lg shadow-md p-6 mb-6 text-center">
           {user.badgeUrl && (
             <img
               src={user.badgeUrl}
@@ -132,7 +132,7 @@ const Profile = () => {
               className="w-32 h-32 rounded-full mx-auto object-cover mb-4"
             />
           )}
-        </div>
+        </div> */}
 
         {/* Edit Button */}
         <Button

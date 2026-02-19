@@ -47,8 +47,6 @@ const Progress = () => {
             },
           },
         );
-        console.log("User :", user);
-        console.log("User points response:", response.data);
         setUserPoints(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
         console.error("Error fetching user points:", error);
